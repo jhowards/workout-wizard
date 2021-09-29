@@ -1,0 +1,64 @@
+/* .login {
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+} */
+
+.login_navbar {
+  background-color: #17325d;
+  color: white;
+}
+
+.login_window {
+  padding: 10px;
+  width: 400px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+
+.formheight {
+  height: 55px;
+}
+
+.login_window_logintext {
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 35px;
+}
+
+.login_window_forgotpass {
+  font-size: 14px;
+  color: #2c5282;
+}
+
+.login_window_loginbtn {
+  height: 50px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  background-color: #04c45c;
+  border: none;
+}
+
+.login_window_googleloginbtn {
+  height: 50px;
+  background-color: #17325d;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.login_window_googleicon {
+  height: 55%;
+  margin-right: 8px;
+}
+
+.login_jointext {
+  position: absolute;
+  bottom: 15%;
+  font-size: 20px;
+  line-height: 28px;
+  color: #616161;
+}
