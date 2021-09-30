@@ -28,7 +28,15 @@
 
 .sidebar_navlink {
   display: block;
-  padding: 0.8rem 2rem;
+  padding: 0.5rem 2rem;
+  border-radius: 25px;
+  border: none;
+  display: block;
+}
+
+.sidebar_navlink:hover {
+  background-color: #304c79;
+  color: white;
 }
 
 .sidebar_navlink_active {

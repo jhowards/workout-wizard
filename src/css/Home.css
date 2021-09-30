@@ -1,0 +1,141 @@
+.home_mainbody {
+  font-family: "Lexend", sans-serif;
+  /* padding: 20px 50px 20px 50px; */
+}
+
+.home_dailyheader {
+  background: #f5f5f5;
+  box-shadow: 0px 1px 2px rgba(0, 14, 51, 0.25);
+  border-radius: 10px;
+  border: none;
+}
+
+.home_timeperiod_text {
+  color: rgba(81, 81, 81, 0.5);
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 1px 8px;
+  border: none;
+}
+
+.home_timeperiod_text:hover {
+  background-color: rgba(81, 166, 227, 0.178);
+  color: rgb(37, 37, 37);
+}
+
+.home_timeperiod_text_active {
+  color: black;
+  background-color: rgba(81, 166, 227, 0.58);
+  border-radius: 10px;
+  padding: 1px 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.home_dailyheader_image {
+  height: 180px;
+  width: 180px;
+  display: inline;
+}
+
+.home_dailyheader_morningtext {
+  font-size: 2rem;
+}
+
+.home_dailyheader_taskstext {
+  font-size: 28px;
+}
+
+.home_schedule {
+  background: #f5f5f5;
+  box-shadow: 0px 1px 2px rgba(0, 14, 51, 0.25);
+  border-radius: 10px;
+  border: none;
+}
+
+.home_schedule_todaytext {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 140%;
+  color: #2d3748;
+}
+
+.home_schedule_datetext {
+  font-size: 14px;
+  color: #a0aec0;
+}
+
+.home_schedule_button {
+  background-color: #008b9f;
+  border: none;
+  width: 150px;
+}
+
+.home_calendar {
+  background: #f5f5f5;
+  box-shadow: 0px 1px 2px rgba(0, 14, 51, 0.25);
+  border-radius: 10px;
+  border: none;
+}
+
+.home_goals {
+  background: #f5f5f5;
+  box-shadow: 0px 1px 2px rgba(0, 14, 51, 0.25);
+  border-radius: 10px;
+  border: none;
+}
+
+.home_goals_goaltag_1 {
+  font-size: 12px;
+  line-height: 10px;
+  color: #ffac4b;
+}
+
+.home_goals_goaltag_2 {
+  font-size: 12px;
+  line-height: 10px;
+  color: #83dc7f;
+}
+
+.home_goals_goaltag_3 {
+  font-size: 12px;
+  line-height: 10px;
+  color: #ff5a5a;
+}
+
+.home_goals_goaltext {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.home_goals_goaldeadline {
+  font-size: 12px;
+  line-height: 10px;
+  color: #91d7e0;
+}
+
+.home_goals_goalbody {
+  position: relative;
+  padding: 0.8rem 0.8rem 0.8rem 0rem;
+}
+
+.home_goals_cardcolor_1 {
+  height: 100%;
+  width: 8px;
+  border-radius: 25px;
+  background-color: #ffac4b;
+}
+
+.home_goals_cardcolor_2 {
+  height: 100%;
+  width: 8px;
+  border-radius: 25px;
+  background-color: #83dc7f;
+}
+
+.home_goals_cardcolor_3 {
+  height: 100%;
+  width: 8px;
+  border-radius: 25px;
+  background-color: #ff5a5a;
+}
