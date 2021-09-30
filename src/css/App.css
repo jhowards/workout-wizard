@@ -24,3 +24,11 @@ div#root {
 .navbar-toggler {
   border: none !important;
 }
+
+.navbar_logo {
+  font-family: "Lexend", sans-serif;
+}
+
+.navbar_logowrapper {
+  width: 300px;
+}
