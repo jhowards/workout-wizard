@@ -20,3 +20,7 @@ div#root {
   display: flex;
   flex-direction: column;
 }
+
+.navbar-toggler {
+  border: none !important;
+}
