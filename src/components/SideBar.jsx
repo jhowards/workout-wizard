@@ -14,10 +14,10 @@ const SideBar = () => {
     <div className="d-none d-lg-block">
       <div className="sidebar d-flex flex-column flex-shrink-0 p-3">
         <hr className="linebreak mb-5" />
-        <nav className="mb-auto">
+        <nav className="mb-auto mt-3">
           <ul className="sidebar_navlist">
             <li>
-              <Link className="sidebar_navlink_active">
+              <Link to="/home" className="sidebar_navlink_active">
                 <AiFillHome size={32} className="mr-3 text-white" />
                 <span className="sidebar_navlink_textalign">Home</span>
               </Link>
@@ -29,27 +29,27 @@ const SideBar = () => {
               </Link>
             </li>
             <li className="mt-3">
-              <Link to="/" className="sidebar_navlink">
+              <Link to="/calendar" className="sidebar_navlink">
                 <BsCalendar size={32} className="mr-3 text-white" />
                 <span className="sidebar_navlink_textalign">Calendar</span>
               </Link>
             </li>
             <li className="mt-3">
-              <Link to="/" className="sidebar_navlink">
+              <Link to="/dailies" className="sidebar_navlink">
                 <IoMdCheckboxOutline size={32} className="mr-3 text-white" />
                 <span className="sidebar_navlink_textalign">Dailies</span>
               </Link>
             </li>
             <li className="mt-3">
-              <Link to="/" className="sidebar_navlink">
+              <Link to="/goals" className="sidebar_navlink">
                 <CgNotes size={32} className="mr-3 text-white" />
-                <span className="sidebar_navlink_textalign">Notes</span>
+                <span className="sidebar_navlink_textalign">Goals</span>
               </Link>
             </li>
           </ul>
         </nav>
         <span className="sidebar_bottomrow">
-          <Link to="/">
+          <Link to="/settings">
             <IoSettingsSharp size={38} className="text-white ml-4 mb-4" />
           </Link>
           <MdKeyboardArrowLeft

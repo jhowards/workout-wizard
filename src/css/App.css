@@ -25,10 +25,19 @@ div#root {
   border: none !important;
 }
 
-.navbar_logo {
+.navbar {
   font-family: "Lexend", sans-serif;
 }
 
 .navbar_logowrapper {
   width: 300px;
+}
+
+.navbar_profilephoto {
+  height: 40px;
+}
+
+.navbar_profilename {
+  font-size: 18px;
+  vertical-align: middle;
 }

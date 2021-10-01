@@ -74,7 +74,7 @@ const Home = () => {
                 <Card.Body className="home_goals_goalbody d-flex">
                   <div className="home_goals_cardcolor_1 my-auto mr-3"></div>
                   <div>
-                    <Card.Text className="home_goals_goaltag_1 mb-1">
+                    <Card.Text className="home_goals_goaltag mb-1">
                       Reading
                     </Card.Text>
                     <Card.Title className="home_goals_goaltext mb-2">
@@ -93,7 +93,7 @@ const Home = () => {
                 <Card.Body className="home_goals_goalbody d-flex">
                   <div className="home_goals_cardcolor_2 my-auto mr-3"></div>
                   <div>
-                    <Card.Text className="home_goals_goaltag_2 mb-1"></Card.Text>
+                    <Card.Text className="home_goals_goaltag mb-1"></Card.Text>
                     <Card.Title className="home_goals_goaltext mb-2"></Card.Title>
                     <Card.Text className="home_goals_goaldeadline"></Card.Text>
                   </div>
@@ -106,7 +106,7 @@ const Home = () => {
                 <Card.Body className="home_goals_goalbody d-flex">
                   <div className="home_goals_cardcolor_3 my-auto mr-3"></div>
                   <div>
-                    <Card.Text className="home_goals_goaltag_3 mb-1"></Card.Text>
+                    <Card.Text className="home_goals_goaltag mb-1"></Card.Text>
                     <Card.Title className="home_goals_goaltext mb-2"></Card.Title>
                     <Card.Text className="home_goals_goaldeadline"></Card.Text>
                   </div>

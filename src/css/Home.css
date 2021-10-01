@@ -85,22 +85,10 @@
   border: none;
 }
 
-.home_goals_goaltag_1 {
+.home_goals_goaltag {
   font-size: 12px;
   line-height: 10px;
-  color: #ffac4b;
-}
-
-.home_goals_goaltag_2 {
-  font-size: 12px;
-  line-height: 10px;
-  color: #83dc7f;
-}
-
-.home_goals_goaltag_3 {
-  font-size: 12px;
-  line-height: 10px;
-  color: #ff5a5a;
+  color: #000000;
 }
 
 .home_goals_goaltext {
@@ -111,7 +99,8 @@
 .home_goals_goaldeadline {
   font-size: 12px;
   line-height: 10px;
-  color: #91d7e0;
+  color: #000000;
+  font-weight: 700;
 }
 
 .home_goals_goalbody {
