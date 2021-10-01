@@ -3,6 +3,10 @@ import SideBar from "./SideBar";
 import "../css/Home.css";
 import { Row, Col, Card, Button } from "react-bootstrap";
 import profilephoto from "../images/placeholder.png";
+import Calendar from "react-calendar";
+import "../css/homecalendar.css";
+import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
 
 const Home = () => {
   return (
@@ -59,7 +63,13 @@ const Home = () => {
               style={{ width: "100%", height: "50%" }}
             >
               <Card.Body>
-                <Card.Title>Calendar</Card.Title>
+                <Calendar
+                  prev2Label={null}
+                  next2Label={null}
+                  nextLabel={<IoIosArrowForward size={22} />}
+                  prevLabel={<IoIosArrowBack size={22} />}
+                  className="m-auto"
+                />
               </Card.Body>
             </Card>
             <Button className="home_schedule_button mx-auto mt-3 mb-4">
