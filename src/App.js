@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <NavBar />
+        <NavBar loggedin={true} />
         <Route exact path="/">
           // if loggedin true redirect to home
           {<Redirect to="/login" />}

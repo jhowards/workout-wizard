@@ -34,10 +34,23 @@ div#root {
 }
 
 .navbar_profilephoto {
-  height: 40px;
+  height: 38px;
 }
 
 .navbar_profilename {
   font-size: 18px;
   vertical-align: middle;
+}
+
+.navbar_profilesection {
+  border-radius: 5px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-top: -4px;
+  margin-bottom: -4px;
+}
+
+.navbar_profilesection:hover {
+  background-color: rgba(47, 70, 119, 0.513);
+  cursor: pointer;
 }
