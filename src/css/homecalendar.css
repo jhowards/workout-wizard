@@ -106,6 +106,7 @@ div.react-calendar__viewContainer > div > div {
   padding: 0.75em 0.5em;
   background: white;
   border-radius: 6px;
+  border: 1px solid rgba(158, 158, 158, 0.39) !important;
 }
 
 .react-calendar__navigation__label__labelText {

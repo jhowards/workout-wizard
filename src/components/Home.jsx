@@ -7,6 +7,7 @@ import Calendar from "react-calendar";
 import "../css/homecalendar.css";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
+import Greeting from "./Greeting";
 
 const Home = () => {
   return (
@@ -21,18 +22,18 @@ const Home = () => {
             >
               <Card.Body>
                 <Row>
-                  <Col xs={12} lg={4} className="px-3">
+                  <Col xs={12} lg={4} className="px-3 d-flex">
                     <Card.Img
-                      className="home_dailyheader_image"
+                      className="home_dailyheader_image mx-auto"
                       src={profilephoto}
                     />
                   </Col>
                   <Col xs={12} lg={8} className="text-center">
                     <Card.Title className="home_dailyheader_morningtext mt-5">
-                      Good Morning James
+                      <Greeting />
                     </Card.Title>
                     <Card.Text className="home_dailyheader_taskstext">
-                      Tasks Today: 7
+                      You've got 7 tasks today.
                     </Card.Text>
                   </Col>
                 </Row>
@@ -57,9 +58,9 @@ const Home = () => {
               View Schedule
             </Button>
           </Col>
-          <Col className="px-4 d-flex flex-column h-100">
+          <Col className="px-4 d-flex flex-column h-100 justify-content-between">
             <Card
-              className="mt-4 text-center home_calendar"
+              className="mt-4 text-center home_calendar mb-4"
               style={{ width: "100%", height: "50%" }}
             >
               <Card.Body>
@@ -72,59 +73,61 @@ const Home = () => {
                 />
               </Card.Body>
             </Card>
-            <Button className="home_schedule_button mx-auto mt-3 mb-4">
+            {/* <Button className="home_schedule_button mx-auto mt-3 mb-4">
               View Calendar
-            </Button>
-            <h4>Goals</h4>
-            <div className="d-flex flex-column">
-              <Card
-                className="mt-0 home_goals"
-                style={{ width: "100%", height: "90px" }}
-              >
-                <Card.Body className="home_goals_goalbody d-flex">
-                  <div className="home_goals_cardcolor_1 my-auto mr-3"></div>
-                  <div>
-                    <Card.Text className="home_goals_goaltag mb-1">
-                      Reading
-                    </Card.Text>
-                    <Card.Title className="home_goals_goaltext mb-2">
-                      Finish Self Help Book
-                    </Card.Title>
-                    <Card.Text className="home_goals_goaldeadline">
-                      November Deadline
-                    </Card.Text>
-                  </div>
-                </Card.Body>
-              </Card>
-              <Card
-                className="mt-2 home_goals"
-                style={{ width: "100%", height: "90px" }}
-              >
-                <Card.Body className="home_goals_goalbody d-flex">
-                  <div className="home_goals_cardcolor_2 my-auto mr-3"></div>
-                  <div>
-                    <Card.Text className="home_goals_goaltag mb-1"></Card.Text>
-                    <Card.Title className="home_goals_goaltext mb-2"></Card.Title>
-                    <Card.Text className="home_goals_goaldeadline"></Card.Text>
-                  </div>
-                </Card.Body>
-              </Card>
-              <Card
-                className="mt-2 home_goals"
-                style={{ width: "100%", height: "90px" }}
-              >
-                <Card.Body className="home_goals_goalbody d-flex">
-                  <div className="home_goals_cardcolor_3 my-auto mr-3"></div>
-                  <div>
-                    <Card.Text className="home_goals_goaltag mb-1"></Card.Text>
-                    <Card.Title className="home_goals_goaltext mb-2"></Card.Title>
-                    <Card.Text className="home_goals_goaldeadline"></Card.Text>
-                  </div>
-                </Card.Body>
-              </Card>
-              <Button className="home_schedule_button mx-auto mt-3 mb-4">
-                View Goals
-              </Button>
+            </Button> */}
+            <div>
+              <h4>Goals</h4>
+              <div className="d-flex flex-column">
+                <Card
+                  className="mt-0 home_goals"
+                  style={{ width: "100%", height: "90px" }}
+                >
+                  <Card.Body className="home_goals_goalbody d-flex">
+                    <div className="home_goals_cardcolor_1 my-auto mr-3"></div>
+                    <div>
+                      <Card.Text className="home_goals_goaltag mb-1">
+                        Reading
+                      </Card.Text>
+                      <Card.Title className="home_goals_goaltext mb-2">
+                        Finish Self Help Book
+                      </Card.Title>
+                      <Card.Text className="home_goals_goaldeadline">
+                        November Deadline
+                      </Card.Text>
+                    </div>
+                  </Card.Body>
+                </Card>
+                <Card
+                  className="mt-2 home_goals"
+                  style={{ width: "100%", height: "90px" }}
+                >
+                  <Card.Body className="home_goals_goalbody d-flex">
+                    <div className="home_goals_cardcolor_2 my-auto mr-3"></div>
+                    <div>
+                      <Card.Text className="home_goals_goaltag mb-1"></Card.Text>
+                      <Card.Title className="home_goals_goaltext mb-2"></Card.Title>
+                      <Card.Text className="home_goals_goaldeadline"></Card.Text>
+                    </div>
+                  </Card.Body>
+                </Card>
+                <Card
+                  className="mt-2 home_goals"
+                  style={{ width: "100%", height: "90px" }}
+                >
+                  <Card.Body className="home_goals_goalbody d-flex">
+                    <div className="home_goals_cardcolor_3 my-auto mr-3"></div>
+                    <div>
+                      <Card.Text className="home_goals_goaltag mb-1"></Card.Text>
+                      <Card.Title className="home_goals_goaltext mb-2"></Card.Title>
+                      <Card.Text className="home_goals_goaldeadline"></Card.Text>
+                    </div>
+                  </Card.Body>
+                </Card>
+                <Button className="home_schedule_button mx-auto mt-3 mb-4">
+                  View Goals
+                </Button>
+              </div>
             </div>
           </Col>
         </Row>
