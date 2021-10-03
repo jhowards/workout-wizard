@@ -17,6 +17,8 @@
 .sidebar_navlist {
   list-style-type: none;
   padding-left: 0;
+  margin-left: -16px;
+  margin-right: 10px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -26,25 +28,20 @@
   color: #d0d0d0;
 }
 
+.sidebar_navlink_icon {
+  margin-left: 16px;
+}
+
 .sidebar_navlink {
   display: block;
-  padding: 0.5rem 2rem;
-  border-radius: 25px;
+  padding: 0.65rem 2rem;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
   border: none;
-  display: block;
 }
 
 .sidebar_navlink:hover {
   background-color: #304c79;
-  color: white;
-}
-
-.sidebar_navlink_active {
-  border-radius: 25px;
-  border: none;
-  background-color: #275092;
-  display: block;
-  padding: 0.5rem 2rem;
   color: white;
 }
 
@@ -69,4 +66,9 @@ a:hover {
 .sidebar_leftarrow {
   position: absolute;
   right: 5px;
+}
+
+.sidebar_navlink_active {
+  background-color: #275092;
+  color: white;
 }

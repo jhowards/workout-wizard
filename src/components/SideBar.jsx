@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "../css/Sidebar.css";
 import { AiFillHome } from "react-icons/ai";
 import { AiOutlineClockCircle } from "react-icons/ai";
@@ -8,7 +8,6 @@ import { IoMdCheckboxOutline } from "react-icons/io";
 import { CgNotes } from "react-icons/cg";
 import { IoSettingsSharp } from "react-icons/io5";
 import { MdKeyboardArrowLeft } from "react-icons/md";
-
 const SideBar = () => {
   return (
     <div className="d-none d-lg-block">
@@ -17,34 +16,70 @@ const SideBar = () => {
         <nav className="mb-auto mt-3">
           <ul className="sidebar_navlist">
             <li>
-              <Link to="/home" className="sidebar_navlink_active">
-                <AiFillHome size={32} className="mr-3 text-white" />
+              <NavLink
+                to="/home"
+                className="sidebar_navlink"
+                exact
+                activeClassName="sidebar_navlink_active"
+              >
+                <AiFillHome
+                  size={32}
+                  className="sidebar_navlink_icon mr-3 text-white"
+                />
                 <span className="sidebar_navlink_textalign">Home</span>
-              </Link>
+              </NavLink>
             </li>
             <li className="mt-3">
-              <Link to="/schedule" className="sidebar_navlink">
-                <AiOutlineClockCircle size={32} className="mr-3 text-white" />
+              <NavLink
+                to="/schedule"
+                activeClassName="sidebar_navlink_active"
+                className="sidebar_navlink"
+              >
+                <AiOutlineClockCircle
+                  size={32}
+                  className="sidebar_navlink_icon mr-3 text-white"
+                />
                 <span className="sidebar_navlink_textalign">Schedule</span>
-              </Link>
+              </NavLink>
             </li>
             <li className="mt-3">
-              <Link to="/calendar" className="sidebar_navlink">
-                <BsCalendar size={32} className="mr-3 text-white" />
+              <NavLink
+                to="/calendar"
+                className="sidebar_navlink"
+                activeClassName="sidebar_navlink_active"
+              >
+                <BsCalendar
+                  size={32}
+                  className="sidebar_navlink_icon mr-3 text-white"
+                />
                 <span className="sidebar_navlink_textalign">Calendar</span>
-              </Link>
+              </NavLink>
             </li>
             <li className="mt-3">
-              <Link to="/dailies" className="sidebar_navlink">
-                <IoMdCheckboxOutline size={32} className="mr-3 text-white" />
+              <NavLink
+                to="/dailies"
+                className="sidebar_navlink"
+                activeClassName="sidebar_navlink_active"
+              >
+                <IoMdCheckboxOutline
+                  size={32}
+                  className="sidebar_navlink_icon mr-3 text-white"
+                />
                 <span className="sidebar_navlink_textalign">Dailies</span>
-              </Link>
+              </NavLink>
             </li>
             <li className="mt-3">
-              <Link to="/goals" className="sidebar_navlink">
-                <CgNotes size={32} className="mr-3 text-white" />
+              <NavLink
+                to="/goals"
+                className="sidebar_navlink"
+                activeClassName="sidebar_navlink_active"
+              >
+                <CgNotes
+                  size={32}
+                  className="sidebar_navlink_icon mr-3 text-white"
+                />
                 <span className="sidebar_navlink_textalign">Goals</span>
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </nav>
