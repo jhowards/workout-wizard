@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
 .schedule_mainbody {
   font-family: "Lexend", sans-serif;
 }
@@ -34,7 +36,7 @@
   position: absolute;
   right: 12%;
   top: 25%;
-  background-color: #2078a9a6;
+  background: rgba(0, 71, 255, 0.65);
   border-radius: 12px;
   color: white;
   font-weight: 600;
@@ -50,12 +52,25 @@
   height: 80px;
   border-radius: 8px;
   margin: 15px;
-  width: 75px;
+  width: 85px;
   color: black;
 }
 
 .schedule_dayselector_day:hover {
   background-color: #0048ff1a;
+  cursor: pointer;
+}
+
+.schedule_dayselector_day_active {
+  height: 80px;
+  border-radius: 8px;
+  margin: 15px;
+  width: 85px;
+  color: white;
+  background-color: #0047ff;
+}
+
+.schedule_dayselector_day_active:hover {
   cursor: pointer;
 }
 
@@ -68,19 +83,6 @@
 .schedule_dayselector_day_daynumber {
   font-weight: 600;
   font-size: 24px;
-}
-
-.schedule_dayselector_day_active {
-  height: 80px;
-  border-radius: 8px;
-  margin: 15px;
-  width: 75px;
-  color: white;
-  background-color: #0047ff;
-}
-
-.schedule_dayselector_day_active:hover {
-  cursor: pointer;
 }
 
 .schedule_dayselector_day_dayletter_active {
@@ -99,4 +101,117 @@
   width: 90%;
   border: none;
   margin-top: 0;
+}
+
+.schedule_activeschedule_headings {
+  color: #aaafb9;
+}
+.schedule_activeschedule_headings_addtask {
+  color: white;
+}
+.schedule_activeschedule_headings_autoschedule {
+  background: rgba(0, 71, 255, 0.65);
+  border-radius: 20px;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+}
+
+.schedule_activeschedule_body {
+  height: 600px;
+  /* font-family: "Poppins", sans-serif; */
+}
+
+.schedule_activeschedule_body_divider {
+  height: 500px;
+  width: 6px;
+  background-color: #faf9f9;
+}
+
+.schedule_activeschedule_body_times_largetime {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.schedule_activeschedule_body_times_smalltime {
+  font-weight: 500;
+  font-size: 16px;
+  color: #bcc1cd;
+}
+
+.schedule_activeschedule_body_times_margins {
+  margin-left: 40px;
+}
+
+.schedule_activeschedule_body_taskcontent {
+  width: 100%;
+  height: 90px;
+  background: rgba(179, 179, 179, 0.26);
+  border-radius: 16px;
+}
+
+.schedule_activeschedule_body_taskcontent_active {
+  width: 100%;
+  height: 90px;
+  background: #4dc591;
+  color: white;
+  border-radius: 16px;
+}
+
+.schedule_activeschedule_body_taskcontent_tasktext {
+  font-weight: 600;
+  font-size: 19px;
+}
+
+.schedule_activeschedule_body_taskcontent_tasktimetext {
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.schedule_activeschedule_body_taskcontent_dailybadge {
+  background: rgba(0, 71, 255, 0.65);
+  border-radius: 12px;
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  width: 45px;
+}
+.schedule_activeschedule_body_taskcontent_edittask {
+  color: rgb(0, 0, 0);
+  position: absolute;
+  right: 5%;
+  top: 10%;
+}
+.schedule_activeschedule_body_taskcontent_edittask:hover {
+  cursor: pointer;
+}
+
+.custom-control-input {
+  width: 1.45rem;
+  height: 1.45rem;
+  margin-top: 5px;
+}
+
+.custom-control-label::before {
+  border: 2px solid #575757;
+  width: 1.55rem;
+  height: 1.55rem;
+  background-color: inherit;
+}
+
+.custom-control-label::after {
+  width: 1.55rem;
+  height: 1.55rem;
+  background-color: inherit;
+}
+
+.custom-control-label:hover {
+  cursor: pointer;
+}
+
+.testtt {
+  position: absolute;
+  top: 33%;
+  left: 33%;
 }
