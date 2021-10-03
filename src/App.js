@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/NavBar";
 import Login from "./components/Login";
 import Home from "./components/Home";
+import Schedule from "./components/Schedule";
 import { useState } from "react";
 
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
@@ -20,6 +21,7 @@ function App() {
         </Route>
         <Route path="/login" component={Login} />
         <Route path="/home" component={Home} />
+        <Route path="/schedule" component={Schedule} />
       </div>
     </Router>
   );
