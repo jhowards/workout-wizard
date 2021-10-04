@@ -147,6 +147,7 @@ export const Tasks = () => {
                           type="checkbox"
                           id={task.id}
                           className="testtt"
+                          onChange={(e) => handleCheckInput(e, i)}
                         />
                       </Col>
                       <Col className="px-0 mt-2" xs={10}>
@@ -175,14 +176,15 @@ export const Tasks = () => {
                           type="checkbox"
                           id={task.id}
                           className="testtt"
+                          onChange={(e) => handleCheckInput(e, i)}
                         />
                       </Col>
                       <Col className="px-0 mt-2" xs={10}>
-                        <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0">
-                          {task.task}
-                        </p>
                         {task.daily ? (
                           <>
+                            <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0">
+                              {task.task}
+                            </p>
                             <p className="schedule_activeschedule_body_taskcontent_tasktimetext mt-0 mb-0">
                               {task.date}
                             </p>
@@ -192,6 +194,9 @@ export const Tasks = () => {
                           </>
                         ) : (
                           <>
+                            <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-2">
+                              {task.task}
+                            </p>
                             <p className="schedule_activeschedule_body_taskcontent_tasktimenodaily mt-2 mb-0">
                               {task.date}
                             </p>

@@ -41,11 +41,11 @@ const Home = () => {
                 </Row>
               </Card.Body>
             </Card>
-            <div className="home_timeperiod mb-2 ml-4">
+            {/* <div className="home_timeperiod mb-2 ml-4">
               <span className="mr-2 home_timeperiod_text_active">Daily</span>
               <span className="mr-2 home_timeperiod_text">Weekly</span>
               <span className="home_timeperiod_text">Monthly</span>
-            </div>
+            </div> */}
             <Card className="h-100 home_schedule" style={{ width: "100%" }}>
               <Card.Body className="h-100">
                 <Card.Title className="home_schedule_todaytext">
