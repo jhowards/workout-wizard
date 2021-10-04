@@ -119,14 +119,14 @@
 }
 
 .schedule_activeschedule_body {
-  height: 600px;
+  height: 100%;
   /* font-family: "Poppins", sans-serif; */
 }
 
 .schedule_activeschedule_body_divider {
-  height: 500px;
+  height: 106px;
   width: 6px;
-  background-color: #faf9f9;
+  background-color: rgb(241, 241, 241);
 }
 
 .schedule_activeschedule_body_times_largetime {
@@ -167,6 +167,11 @@
 .schedule_activeschedule_body_taskcontent_tasktimetext {
   font-weight: 500;
   font-size: 13px;
+}
+
+.schedule_activeschedule_body_taskcontent_tasktimenodaily {
+  font-weight: 500;
+  font-size: 15px;
 }
 
 .schedule_activeschedule_body_taskcontent_dailybadge {
