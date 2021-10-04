@@ -8,8 +8,10 @@ import "../css/homecalendar.css";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import Greeting from "./Greeting";
+import format from "date-fns/format";
 
 const Home = () => {
+  const date = format(new Date(), "do LLLL yyyy");
   return (
     <div className="d-flex h-100">
       <SideBar />
@@ -49,9 +51,7 @@ const Home = () => {
                 <Card.Title className="home_schedule_todaytext">
                   Today's Tasks
                 </Card.Title>
-                <Card.Text className="home_schedule_datetext">
-                  30th October 2021
-                </Card.Text>
+                <Card.Text className="home_schedule_datetext">{date}</Card.Text>
               </Card.Body>
             </Card>
             <Button className="home_schedule_button mx-auto mt-3 mb-4">

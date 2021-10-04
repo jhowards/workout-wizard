@@ -1,9 +1,10 @@
 import React from "react";
 import { Row, Col, Form } from "react-bootstrap";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { useState } from "react";
 
 export const Tasks = () => {
-  const tasks = [
+  const [tasks, setTasks] = useState([
     {
       id: 1,
       archived: true,
@@ -44,11 +45,21 @@ export const Tasks = () => {
       endtime: "12:00pm",
       active: false,
     },
-  ];
+  ]);
+
+  const handleCheckInput = (e, i) => {
+    console.log(e.target.checked);
+
+    // const changedTasks = tasks;
+
+    // changedTasks[i].archived = e.target.checked;
+    // console.log(changedTasks);
+    // setTasks(changedTasks);
+  };
 
   return (
     <div className="schedule_activeschedule_body mt-2" data-testid="tasks">
-      {tasks.map((task) =>
+      {tasks.map((task, i) =>
         task.archived === true ? (
           <Row className="mx-0" key={`${task.id}`}>
             <Col
@@ -80,6 +91,8 @@ export const Tasks = () => {
                         type="checkbox"
                         id={task.id}
                         className="testtt"
+                        defaultChecked={task.archived}
+                        onChange={(e) => handleCheckInput(e, i)}
                       />
                     </Col>
                     <Col className="px-0 mt-2" xs={10}>
