@@ -128,3 +128,30 @@
   border-radius: 25px;
   background-color: #ff5a5a;
 }
+
+.home_schedule_tasks_maintext {
+  color: #2d3748;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.home_schedule_tasks_timetext {
+  color: #a0aec0;
+  font-size: 16px;
+  font-weight: bold;
+}
+.home_schedule_tasks_dailybadge {
+  background: #00b697;
+  border-radius: 10px;
+  color: white;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  font-weight: normal;
+}
+.home_schedule_divider {
+  height: 100%;
+  width: 1px;
+  background-color: #e2e8f0;
+}

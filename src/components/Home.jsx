@@ -8,10 +8,10 @@ import "../css/homecalendar.css";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import Greeting from "./Greeting";
-import format from "date-fns/format";
+import { Link } from "react-router-dom";
+import HomeSchedule from "./HomeSchedule";
 
 const Home = () => {
-  const date = format(new Date(), "do LLLL yyyy");
   return (
     <div className="d-flex h-100">
       <SideBar />
@@ -47,12 +47,7 @@ const Home = () => {
               <span className="home_timeperiod_text">Monthly</span>
             </div> */}
             <Card className="h-100 home_schedule" style={{ width: "100%" }}>
-              <Card.Body className="h-100">
-                <Card.Title className="home_schedule_todaytext">
-                  Today's Tasks
-                </Card.Title>
-                <Card.Text className="home_schedule_datetext">{date}</Card.Text>
-              </Card.Body>
+              <HomeSchedule />
             </Card>
             {/* <Button className="home_schedule_button mx-auto mt-3 mb-4">
               View Schedule
@@ -77,7 +72,9 @@ const Home = () => {
               View Calendar
             </Button> */}
             <div>
-              <h4>Goals</h4>
+              <Link to="/goals">
+                <h4>Goals</h4>
+              </Link>
               <div className="d-flex flex-column">
                 <Card
                   className="mt-0 home_goals"

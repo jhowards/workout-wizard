@@ -77,13 +77,13 @@ const AddTaskModal = (props) => {
         }
 
         let fullduration = hourstomins + minutes;
-        let id = 0;
+        let id = Date.now();
 
-        if (props.tasks) {
-          id = props.tasks.length + 2;
-        } else {
-          id = 1;
-        }
+        // if (props.tasks) {
+        //   id = props.tasks.length + 2;
+        // } else {
+        //   id = 1;
+        // }
 
         let formatDate = format(selectedDate, "P");
 

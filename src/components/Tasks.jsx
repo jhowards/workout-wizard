@@ -334,7 +334,3 @@ const Tasks = (props) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tasks);
-
-{
-  /* <Checkbox id={task.id} taskDesc={task.task} /> */
-}
