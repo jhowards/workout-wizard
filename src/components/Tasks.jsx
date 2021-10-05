@@ -4,6 +4,8 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { useState } from "react";
 import { connect } from "react-redux";
 import { removeTaskAction, archiveTaskAction } from "../actions";
+import { format } from "date-fns";
+import { persistor } from "../store";
 
 const mapStateToProps = (state) => ({
   tasks: state.tasks,
@@ -15,6 +17,11 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const Tasks = (props) => {
+  let formatCurrentDate = format(props.date, "P");
+  let currentDateArray = props.tasks.filter(
+    (el) => el.date === formatCurrentDate
+  );
+
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
       href=""
@@ -117,7 +124,7 @@ const Tasks = (props) => {
   return (
     <div className="schedule_activeschedule_body mt-2" data-testid="tasks">
       {props.tasks
-        ? props.tasks.map((task, i) =>
+        ? currentDateArray.map((task, i) =>
             task.archived === true ? (
               <Row className="mx-0" key={`${task.id}`}>
                 {/* ----ARCHIVED TASKS-----*/}
@@ -194,7 +201,7 @@ const Tasks = (props) => {
                                 Edit Task
                               </Dropdown.Item>
                               <Dropdown.Item
-                                onClick={() => props.removeTask(i)}
+                                onClick={() => props.removeTask(task.id)}
                                 eventKey="2"
                               >
                                 Delete Task
@@ -284,7 +291,7 @@ const Tasks = (props) => {
                                   Edit Task
                                 </Dropdown.Item>
                                 <Dropdown.Item
-                                  onClick={() => props.removeTask(i)}
+                                  onClick={() => props.removeTask(task.id)}
                                   eventKey="2"
                                 >
                                   Delete Task
@@ -347,7 +354,7 @@ const Tasks = (props) => {
                                   Edit Task
                                 </Dropdown.Item>
                                 <Dropdown.Item
-                                  onClick={() => props.removeTask(i)}
+                                  onClick={() => props.removeTask(task.id)}
                                   eventKey="2"
                                 >
                                   Delete Task

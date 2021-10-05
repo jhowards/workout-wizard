@@ -5,6 +5,7 @@ import { FaPlus } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "../css/Modals.css";
+import { format } from "date-fns";
 
 import { connect } from "react-redux";
 import { addTaskAction } from "../actions";
@@ -18,14 +19,19 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const AddTaskModal = (props) => {
+  const [taskToAdd, settaskToAdd] = useState({
+    task: "",
+    durationhr: null,
+    durationmin: null,
+  });
+
   const [show, setShow] = useState(false);
-  const [selectedDate, setselectedDate] = useState(new Date());
+  const [selectedDate, setselectedDate] = useState(props.activeDate);
   const handleClose = () => {
     settaskToAdd((prevState) => {
       return {
         ...prevState,
         task: "",
-        date: todaysDate,
         durationhr: null,
         durationmin: null,
       };
@@ -33,21 +39,9 @@ const AddTaskModal = (props) => {
     setShow(false);
   };
   const handleShow = () => setShow(true);
-  const todaysDate = new Date();
-
-  const [taskToAdd, settaskToAdd] = useState({
-    task: "",
-    date: todaysDate,
-    durationhr: null,
-    durationmin: null,
-  });
 
   function dateChange(selectedDate) {
     setselectedDate(selectedDate);
-
-    settaskToAdd((prevState) => {
-      return { ...prevState, date: selectedDate };
-    });
   }
 
   const handleInput = (e, propertyName) => {
@@ -83,10 +77,12 @@ const AddTaskModal = (props) => {
         let id = 0;
 
         if (props.tasks) {
-          id = props.tasks.length + 1;
+          id = props.tasks.length + 2;
         } else {
           id = 1;
         }
+
+        let formatDate = format(selectedDate, "P");
 
         let taskToAddnew = {
           id: id,
@@ -97,7 +93,7 @@ const AddTaskModal = (props) => {
           starttime: "----",
           endtime: "",
           active: false,
-          date: taskToAdd.date,
+          date: formatDate,
         };
 
         console.log(taskToAddnew);
@@ -149,8 +145,10 @@ const AddTaskModal = (props) => {
               </Form.Label>
               <DatePicker
                 dateFormat="dd/MM/yyyy"
+                locale="en-GB"
                 selected={selectedDate}
                 onChange={dateChange}
+                todayButton="Today"
               />
             </Form.Group>
 

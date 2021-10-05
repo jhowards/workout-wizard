@@ -8,9 +8,9 @@ export const archiveTaskAction = (taskToArchive) => ({
   payload: taskToArchive,
 });
 
-export const removeTaskAction = (index) => ({
+export const removeTaskAction = (id) => ({
   type: "REMOVE_TASK",
-  payload: index,
+  payload: id,
 });
 
 // export const backButtonAction = (boolean) => ({
