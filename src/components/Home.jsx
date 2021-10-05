@@ -54,9 +54,9 @@ const Home = () => {
                 <Card.Text className="home_schedule_datetext">{date}</Card.Text>
               </Card.Body>
             </Card>
-            <Button className="home_schedule_button mx-auto mt-3 mb-4">
+            {/* <Button className="home_schedule_button mx-auto mt-3 mb-4">
               View Schedule
-            </Button>
+            </Button> */}
           </Col>
           <Col className="px-4 d-flex flex-column h-100 justify-content-between">
             <Card
@@ -124,9 +124,9 @@ const Home = () => {
                     </div>
                   </Card.Body>
                 </Card>
-                <Button className="home_schedule_button mx-auto mt-3 mb-4">
+                {/* <Button className="home_schedule_button mx-auto mt-3 mb-4">
                   View Goals
-                </Button>
+                </Button> */}
               </div>
             </div>
           </Col>
