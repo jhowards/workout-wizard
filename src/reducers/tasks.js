@@ -9,7 +9,9 @@ const tasksReducer = (state = initialState, action) => {
       };
 
     case "SET_TASK_ARCHIVED":
-      const index = action.payload;
+      // const index = action.payload;
+      const index = state.tasks.findIndex((task) => task.id == action.payload);
+      console.log("archived");
       const newArray = [...state.tasks];
       if (newArray[index].archived) {
         newArray[index].archived = false;

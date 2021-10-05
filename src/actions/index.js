@@ -12,8 +12,3 @@ export const removeTaskAction = (id) => ({
   type: "REMOVE_TASK",
   payload: id,
 });
-
-// export const backButtonAction = (boolean) => ({
-//   type: "BACK_BUTTON_PRESSED",
-//   payload: boolean,
-// });

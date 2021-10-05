@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   archiveTask: (taskToArchive) => dispatch(archiveTaskAction(taskToArchive)),
-  removeTask: (index) => dispatch(removeTaskAction(index)),
+  removeTask: (id) => dispatch(removeTaskAction(id)),
 });
 
 const Tasks = (props) => {
@@ -56,50 +56,8 @@ const Tasks = (props) => {
       );
     }
   );
-  // const [tasks, setTasks] = useState([
-  //   {
-  //     id: 1,
-  //     archived: true,
-  //     daily: true,
-  //     task: "Wake up and get ready",
-  //     duration: "30m -> 7:00am",
-  //     starttime: "6:30am",
-  //     endtime: "7:00am",
-  //     active: false,
-  //   },
-  //   {
-  //     id: 2,
-  //     archived: false,
-  //     daily: true,
-  //     task: "Morning Exercise",
-  //     duration: "40m -> 7:40am",
-  //     starttime: "7:00am",
-  //     endtime: "7:40am",
-  //     active: true,
-  //   },
-  //   {
-  //     id: 3,
-  //     archived: false,
-  //     daily: true,
-  //     task: "Eat Breakfast",
-  //     duration: "30m -> 8:30am",
-  //     starttime: "8:00am",
-  //     endtime: "8:30am",
-  //     active: false,
-  //   },
-  //   {
-  //     id: 4,
-  //     archived: false,
-  //     daily: false,
-  //     task: "Study for Project",
-  //     duration: "2hr30m -> 12:00pm",
-  //     starttime: "8:30am",
-  //     endtime: "12:00pm",
-  //     active: false,
-  //   },
-  // ]);
 
-  const handleCheckInput = (e, id) => {
+  const handleCheckInput = (id) => {
     // console.log(e.target.checked);
     // let isChecked = e.target.checked;
     props.archiveTask(id);
@@ -158,7 +116,7 @@ const Tasks = (props) => {
                             id={task.id}
                             className="testtt"
                             defaultChecked={task.archived}
-                            onChange={(e) => handleCheckInput(e, i)}
+                            onChange={() => handleCheckInput(task.id)}
                           />
                         </Col>
                         <Col className="px-0 mt-2" xs={10}>
@@ -248,7 +206,7 @@ const Tasks = (props) => {
                               type="checkbox"
                               id={task.id}
                               className="testtt"
-                              onChange={(e) => handleCheckInput(e, i)}
+                              onChange={() => handleCheckInput(task.id)}
                             />
                           </Col>
                           <Col className="px-0 mt-2" xs={10}>
@@ -311,7 +269,7 @@ const Tasks = (props) => {
                               type="checkbox"
                               id={task.id}
                               className="testtt"
-                              onChange={(e) => handleCheckInput(e, i)}
+                              onChange={() => handleCheckInput(task.id)}
                             />
                           </Col>
                           <Col className="px-0 mt-2" xs={10}>
