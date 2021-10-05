@@ -38,7 +38,10 @@ const AddTaskModal = (props) => {
     });
     setShow(false);
   };
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    setShow(true);
+    setselectedDate(props.activeDate);
+  };
 
   function dateChange(selectedDate) {
     setselectedDate(selectedDate);
