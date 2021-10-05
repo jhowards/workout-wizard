@@ -20,15 +20,26 @@ const mapDispatchToProps = (dispatch) => ({
 const AddTaskModal = (props) => {
   const [show, setShow] = useState(false);
   const [selectedDate, setselectedDate] = useState(new Date());
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    settaskToAdd((prevState) => {
+      return {
+        ...prevState,
+        task: "",
+        date: todaysDate,
+        durationhr: null,
+        durationmin: null,
+      };
+    });
+    setShow(false);
+  };
   const handleShow = () => setShow(true);
   const todaysDate = new Date();
 
   const [taskToAdd, settaskToAdd] = useState({
     task: "",
     date: todaysDate,
-    durationhr: "",
-    durationmin: "",
+    durationhr: null,
+    durationmin: null,
   });
 
   function dateChange(selectedDate) {
@@ -48,24 +59,26 @@ const AddTaskModal = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let hourstomins = null;
+    let minutes = null;
+
     if (taskToAdd.task === "") {
       alert("Please input a task!");
     } else {
-      if (taskToAdd.durationhr === "" && taskToAdd.durationmin === "") {
+      if (taskToAdd.durationhr === null && taskToAdd.durationmin === null) {
         alert("Please input a duration!");
       } else {
-        if (taskToAdd.durationhr === "") {
-          settaskToAdd((prevState) => {
-            return { ...prevState, durationhr: "0" };
-          });
+        if (taskToAdd.durationhr === "" || taskToAdd.durationhr === null) {
+          hourstomins = 0;
+        } else {
+          hourstomins = parseInt(taskToAdd.durationhr) * 60;
         }
-        if (taskToAdd.durationmin === "") {
-          settaskToAdd((prevState) => {
-            return { ...prevState, durationmin: "0" };
-          });
+        if (taskToAdd.durationmin === "" || taskToAdd.durationmin === null) {
+          minutes = 0;
+        } else {
+          minutes = parseInt(taskToAdd.durationmin);
         }
-        let hourstomins = taskToAdd.durationhr * 60;
-        let minutes = parseInt(taskToAdd.durationmin);
+
         let fullduration = hourstomins + minutes;
         let id = 0;
 
@@ -81,16 +94,19 @@ const AddTaskModal = (props) => {
           daily: false,
           task: taskToAdd.task,
           duration: fullduration,
-          starttime: "6:30am",
-          endtime: "7:00am",
+          starttime: "----",
+          endtime: "",
           active: false,
           date: taskToAdd.date,
         };
 
         console.log(taskToAddnew);
-        props.addTask(taskToAddnew);
-
-        handleClose();
+        if (fullduration === 0) {
+          alert("Please add a duration!");
+        } else {
+          props.addTask(taskToAddnew);
+          handleClose();
+        }
       }
     }
   };
@@ -147,6 +163,7 @@ const AddTaskModal = (props) => {
                   className="border border-dark durationform mr-3"
                   size="sm"
                   type="number"
+                  min="0"
                   placeholder="hours"
                   onChange={(e) => handleInput(e, "durationhr")}
                 />
@@ -154,6 +171,7 @@ const AddTaskModal = (props) => {
                   className="border border-dark durationform"
                   size="sm"
                   type="number"
+                  min="0"
                   placeholder="minutes"
                   onChange={(e) => handleInput(e, "durationmin")}
                 />

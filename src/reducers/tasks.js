@@ -8,11 +8,18 @@ const tasksReducer = (state = initialState, action) => {
         tasks: [...state.tasks, action.payload],
       };
 
-    // case "SET_TASK_ARCHIVED":
-    //   return {
-    //     ...state,
-    //     tasks: [...state.tasks, action.payload],
-    //   };
+    case "SET_TASK_ARCHIVED":
+      const index = action.payload;
+      const newArray = [...state.tasks];
+      if (newArray[index].archived) {
+        newArray[index].archived = false;
+      } else {
+        newArray[index].archived = true;
+      }
+      return {
+        ...state,
+        tasks: newArray,
+      };
 
     case "REMOVE_TASK":
       return {

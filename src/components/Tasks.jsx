@@ -10,8 +10,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  archiveTask: (index, taskToArchive) =>
-    dispatch(archiveTaskAction(taskToArchive)),
+  archiveTask: (taskToArchive) => dispatch(archiveTaskAction(taskToArchive)),
   removeTask: (index) => dispatch(removeTaskAction(index)),
 });
 
@@ -93,13 +92,10 @@ const Tasks = (props) => {
   //   },
   // ]);
 
-  const handleCheckInput = (e, i) => {
-    console.log(e.target.checked);
-    let taskArchive = {
-      archived: e.target.checked,
-    };
-
-    props.archiveTask(i, taskArchive);
+  const handleCheckInput = (e, id) => {
+    // console.log(e.target.checked);
+    // let isChecked = e.target.checked;
+    props.archiveTask(id);
   };
 
   const durationConvert = (duration) => {
@@ -159,15 +155,30 @@ const Tasks = (props) => {
                           />
                         </Col>
                         <Col className="px-0 mt-2" xs={10}>
-                          <s className="schedule_activeschedule_body_taskcontent_tasktext mb-0 d-block">
-                            {task.task}
-                          </s>
-                          <s className="schedule_activeschedule_body_taskcontent_tasktimetext mt-0 mb-0 d-block">
-                            {durationConvert(task.duration)}
-                          </s>
-                          <s className="schedule_activeschedule_body_taskcontent_dailybadge text-center mt-1 d-block">
-                            Daily
-                          </s>
+                          {/* DAILY TASKS*/}
+                          {task.daily ? (
+                            <>
+                              <s className="schedule_activeschedule_body_taskcontent_tasktext mb-0 d-block">
+                                {task.task}
+                              </s>
+                              <s className="schedule_activeschedule_body_taskcontent_tasktimetext mt-0 mb-0 d-block">
+                                {durationConvert(task.duration)}
+                              </s>
+                              <s className="schedule_activeschedule_body_taskcontent_dailybadge text-center mt-1 d-block">
+                                Daily
+                              </s>
+                            </>
+                          ) : (
+                            <>
+                              {/* NOT DAILY TASKS*/}
+                              <s className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-2 d-block">
+                                {task.task}
+                              </s>
+                              <s className="schedule_activeschedule_body_taskcontent_tasktimenodaily mt-2 mb-0 d-block">
+                                {durationConvert(task.duration)}
+                              </s>
+                            </>
+                          )}
                           <Dropdown className="schedule_activeschedule_body_taskcontent_edittask">
                             <Dropdown.Toggle
                               as={CustomToggle}
@@ -234,15 +245,30 @@ const Tasks = (props) => {
                             />
                           </Col>
                           <Col className="px-0 mt-2" xs={10}>
-                            <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0">
-                              {task.task}
-                            </p>
-                            <p className="schedule_activeschedule_body_taskcontent_tasktimetext mt-0 mb-0">
-                              {durationConvert(task.duration)}
-                            </p>
-                            <p className="schedule_activeschedule_body_taskcontent_dailybadge text-center mt-1">
-                              Daily
-                            </p>
+                            {/* DAILY TASKS*/}
+                            {task.daily ? (
+                              <>
+                                <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0">
+                                  {task.task}
+                                </p>
+                                <p className="schedule_activeschedule_body_taskcontent_tasktimetext mt-0 mb-0">
+                                  {durationConvert(task.duration)}
+                                </p>
+                                <p className="schedule_activeschedule_body_taskcontent_dailybadge text-center mt-1">
+                                  Daily
+                                </p>
+                              </>
+                            ) : (
+                              <>
+                                {/* NOT DAILY TASKS*/}
+                                <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-2">
+                                  {task.task}
+                                </p>
+                                <p className="schedule_activeschedule_body_taskcontent_tasktimenodaily mt-2 mb-0">
+                                  {durationConvert(task.duration)}
+                                </p>
+                              </>
+                            )}
                             <Dropdown className="schedule_activeschedule_body_taskcontent_edittask">
                               <Dropdown.Toggle
                                 as={CustomToggle}
