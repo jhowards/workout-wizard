@@ -4,9 +4,10 @@ import "../css/Schedule.css";
 import { Container, Button } from "react-bootstrap";
 import { useState } from "react";
 import ScheduleHeadings from "./ScheduleHeadings";
+import AddTaskModal from "./AddTaskModal";
 
 import { FaPlus } from "react-icons/fa";
-import { Tasks } from "./Tasks";
+import Tasks from "./Tasks";
 
 const Schedule = () => {
   const [activeDate, setactiveDate] = useState(new Date());
@@ -26,13 +27,14 @@ const Schedule = () => {
                 <span>Task</span>
               </div>
               <div>
-                <Button className="schedule_activeschedule_headings_autoschedule px-3 py-2 mb-1 mr-3">
+                <AddTaskModal />
+                {/* <Button className="schedule_activeschedule_headings_autoschedule px-3 py-2 mb-1 mr-3">
                   <FaPlus
                     size={20}
                     className="schedule_activeschedule_headings_addtask mr-2"
                   />
                   Add Task
-                </Button>
+                </Button> */}
                 <Button className="schedule_activeschedule_headings_autoschedule px-3 py-2 mr-5 mb-1">
                   Auto Schedule
                 </Button>

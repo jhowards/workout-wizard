@@ -1,0 +1,12 @@
+.addtaskmodal {
+  font-family: "Lexend", sans-serif;
+}
+
+.durationform {
+  width: 20%;
+}
+
+.addTaskButton {
+  background-color: rgba(0, 71, 255, 0.65);
+  font-weight: 600;
+}
