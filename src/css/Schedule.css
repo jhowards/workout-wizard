@@ -2,16 +2,15 @@
 
 .schedule_mainbody {
   font-family: "Lexend", sans-serif;
+  overflow-y: auto;
 }
 
 .schedule_container_large {
   background: #f5f5f5;
   box-shadow: 0px 1px 2px rgba(0, 14, 51, 0.25);
   border-radius: 10px;
-  height: 100%;
   width: 60%;
   padding: 0;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
 }

@@ -8,17 +8,18 @@ const tasksReducer = (state = initialState, action) => {
         tasks: [...state.tasks, action.payload],
       };
 
-    case "SET_TASK_ARCHIVED":
-      return {
-        ...state,
-        tasks: [...state.tasks, action.payload],
-      };
+    // case "SET_TASK_ARCHIVED":
+    //   return {
+    //     ...state,
+    //     tasks: [...state.tasks, action.payload],
+    //   };
 
     case "REMOVE_TASK":
       return {
         ...state,
-        task: state.task.filter((task, i) => i !== action.payload),
+        tasks: state.tasks.filter((task, i) => i !== action.payload),
       };
+
     default:
       return state;
   }

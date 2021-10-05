@@ -182,7 +182,10 @@ const Tasks = (props) => {
                               <Dropdown.Item eventKey="1">
                                 Edit Task
                               </Dropdown.Item>
-                              <Dropdown.Item eventKey="2">
+                              <Dropdown.Item
+                                onClick={() => props.removeTask(i)}
+                                eventKey="2"
+                              >
                                 Delete Task
                               </Dropdown.Item>
                             </Dropdown.Menu>
@@ -240,10 +243,28 @@ const Tasks = (props) => {
                             <p className="schedule_activeschedule_body_taskcontent_dailybadge text-center mt-1">
                               Daily
                             </p>
-                            <BsThreeDotsVertical
-                              size={26}
-                              className="schedule_activeschedule_body_taskcontent_edittask"
-                            />
+                            <Dropdown className="schedule_activeschedule_body_taskcontent_edittask">
+                              <Dropdown.Toggle
+                                as={CustomToggle}
+                                id="dropdown-custom-components"
+                              >
+                                <div className="">
+                                  <BsThreeDotsVertical size={26} />
+                                </div>
+                              </Dropdown.Toggle>
+
+                              <Dropdown.Menu as={CustomMenu} className="py-1">
+                                <Dropdown.Item eventKey="1">
+                                  Edit Task
+                                </Dropdown.Item>
+                                <Dropdown.Item
+                                  onClick={() => props.removeTask(i)}
+                                  eventKey="2"
+                                >
+                                  Delete Task
+                                </Dropdown.Item>
+                              </Dropdown.Menu>
+                            </Dropdown>
                           </Col>
                         </Row>
                       </div>
@@ -285,10 +306,28 @@ const Tasks = (props) => {
                                 </p>
                               </>
                             )}
-                            <BsThreeDotsVertical
-                              size={26}
-                              className="schedule_activeschedule_body_taskcontent_edittask"
-                            />
+                            <Dropdown className="schedule_activeschedule_body_taskcontent_edittask">
+                              <Dropdown.Toggle
+                                as={CustomToggle}
+                                id="dropdown-custom-components"
+                              >
+                                <div className="">
+                                  <BsThreeDotsVertical size={26} />
+                                </div>
+                              </Dropdown.Toggle>
+
+                              <Dropdown.Menu as={CustomMenu} className="py-1">
+                                <Dropdown.Item eventKey="1">
+                                  Edit Task
+                                </Dropdown.Item>
+                                <Dropdown.Item
+                                  onClick={() => props.removeTask(i)}
+                                  eventKey="2"
+                                >
+                                  Delete Task
+                                </Dropdown.Item>
+                              </Dropdown.Menu>
+                            </Dropdown>
                           </Col>
                         </Row>
                       </div>

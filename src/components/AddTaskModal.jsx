@@ -84,6 +84,7 @@ const AddTaskModal = (props) => {
           starttime: "6:30am",
           endtime: "7:00am",
           active: false,
+          date: taskToAdd.date,
         };
 
         console.log(taskToAddnew);
