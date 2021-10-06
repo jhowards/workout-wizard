@@ -41,19 +41,40 @@ const HomeSchedule = (props) => {
                   )}
                 </Col>
                 <Col xs={11}>
-                  <div className="home_schedule_tasks_maintext ml-2">
-                    {task.task}
-                    {task.daily ? (
-                      <span className="ml-4 home_schedule_tasks_dailybadge">
-                        Daily
-                      </span>
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                  <div className="home_schedule_tasks_timetext ml-2">
-                    7:20 AM
-                  </div>
+                  {/* IS TASK ARCHIVED? */}
+                  {task.archived ? (
+                    <>
+                      <s className="home_schedule_tasks_maintext ml-2 mb-0 d-block">
+                        {task.task}
+                        {task.daily ? (
+                          <span className="ml-4 home_schedule_tasks_dailybadge">
+                            Daily
+                          </span>
+                        ) : (
+                          ""
+                        )}
+                      </s>
+                      <s className="home_schedule_tasks_timetext ml-2 mb-0 d-block">
+                        7:20 AM
+                      </s>
+                    </>
+                  ) : (
+                    <>
+                      <p className="home_schedule_tasks_maintext ml-2 mb-0">
+                        {task.task}
+                        {task.daily ? (
+                          <span className="ml-4 home_schedule_tasks_dailybadge">
+                            Daily
+                          </span>
+                        ) : (
+                          ""
+                        )}
+                      </p>
+                      <p className="home_schedule_tasks_timetext ml-2 mb-0">
+                        7:20 AM
+                      </p>
+                    </>
+                  )}
                 </Col>
               </Row>
             ))

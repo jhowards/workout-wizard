@@ -1,7 +1,7 @@
 import React from "react";
 import SideBar from "./SideBar";
 import "../css/Home.css";
-import { Row, Col, Card, Button } from "react-bootstrap";
+import { Row, Col, Card } from "react-bootstrap";
 import profilephoto from "../images/placeholder.png";
 import Calendar from "react-calendar";
 import "../css/homecalendar.css";
@@ -10,8 +10,21 @@ import { IoIosArrowForward } from "react-icons/io";
 import Greeting from "./Greeting";
 import { Link } from "react-router-dom";
 import HomeSchedule from "./HomeSchedule";
+import { connect } from "react-redux";
+import format from "date-fns/format";
 
-const Home = () => {
+const mapStateToProps = (state) => ({
+  tasks: state.tasks,
+});
+
+const Home = (props) => {
+  const date = new Date();
+  let formatCurrentDate = format(date, "P");
+  let todaysDateArray = props.tasks.filter(
+    (el) => el.date === formatCurrentDate && el.archived === false
+  );
+  const arrlength = todaysDateArray.length;
+
   return (
     <div className="d-flex h-100">
       <SideBar />
@@ -35,7 +48,7 @@ const Home = () => {
                       <Greeting />
                     </Card.Title>
                     <Card.Text className="home_dailyheader_taskstext">
-                      You've got 7 tasks today.
+                      You've got {arrlength} remaining tasks today.
                     </Card.Text>
                   </Col>
                 </Row>
@@ -133,4 +146,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default connect(mapStateToProps)(Home);
