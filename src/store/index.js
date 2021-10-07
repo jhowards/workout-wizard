@@ -4,15 +4,6 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { encryptTransform } from "redux-persist-transform-encrypt";
 
-// export const initialState = {
-//   tasks: [
-//     {
-//       date: "",
-//       task: [{}],
-//     },
-//   ],
-// };
-
 export const initialState = {
   tasks: [],
 };

@@ -12,3 +12,8 @@ export const removeTaskAction = (id) => ({
   type: "REMOVE_TASK",
   payload: id,
 });
+
+export const editTaskAction = (taskToEdit) => ({
+  type: "EDIT_TASK",
+  payload: taskToEdit,
+});

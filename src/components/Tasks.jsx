@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { removeTaskAction, archiveTaskAction } from "../actions";
 import { format } from "date-fns";
 import { persistor } from "../store";
+import EditTaskModal from "./EditTaskModal";
 
 const mapStateToProps = (state) => ({
   tasks: state.tasks,
@@ -58,8 +59,6 @@ const Tasks = (props) => {
   );
 
   const handleCheckInput = (id) => {
-    // console.log(e.target.checked);
-    // let isChecked = e.target.checked;
     props.archiveTask(id);
   };
 
@@ -155,9 +154,7 @@ const Tasks = (props) => {
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu as={CustomMenu} className="py-1">
-                              <Dropdown.Item eventKey="1">
-                                Edit Task
-                              </Dropdown.Item>
+                              <EditTaskModal taskid={task.id} />
                               <Dropdown.Item
                                 onClick={() => props.removeTask(task.id)}
                                 eventKey="2"
@@ -245,9 +242,7 @@ const Tasks = (props) => {
                               </Dropdown.Toggle>
 
                               <Dropdown.Menu as={CustomMenu} className="py-1">
-                                <Dropdown.Item eventKey="1">
-                                  Edit Task
-                                </Dropdown.Item>
+                                <EditTaskModal taskid={task.id} />
                                 <Dropdown.Item
                                   onClick={() => props.removeTask(task.id)}
                                   eventKey="2"
@@ -308,9 +303,7 @@ const Tasks = (props) => {
                               </Dropdown.Toggle>
 
                               <Dropdown.Menu as={CustomMenu} className="py-1">
-                                <Dropdown.Item eventKey="1">
-                                  Edit Task
-                                </Dropdown.Item>
+                                <EditTaskModal taskid={task.id} />
                                 <Dropdown.Item
                                   onClick={() => props.removeTask(task.id)}
                                   eventKey="2"
