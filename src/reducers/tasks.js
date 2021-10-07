@@ -21,6 +21,12 @@ const tasksReducer = (state = initialState, action) => {
         tasks: newArrayEdit,
       };
 
+    case "REORDER_TASKS":
+      return {
+        ...state,
+        tasks: action.payload,
+      };
+
     case "SET_TASK_ARCHIVED":
       const index = state.tasks.findIndex((task) => task.id == action.payload);
       const newArray = [...state.tasks];

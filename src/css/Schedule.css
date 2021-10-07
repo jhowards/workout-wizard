@@ -230,3 +230,8 @@
   right: 0;
   text-align: center;
 }
+
+.schedule_activeschedule_body_taskcontent_dragging {
+  border: 3px solid blue;
+  border-radius: 16px;
+}

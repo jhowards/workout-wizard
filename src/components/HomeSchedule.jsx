@@ -29,54 +29,58 @@ const HomeSchedule = (props) => {
       </Card.Text>
       <div className="h-100 d-flex flex-column">
         {props.tasks
-          ? todaysDateArray.map((task, i) => (
-              <Row className="mx-0 rowborder mb-4" key={`${task.id}`}>
-                <Col xs={1}>
-                  <FaBell size={18} />
-                  {arrlength === i + 1 ? (
-                    ""
-                  ) : (
-                    <div className="home_schedule_divider mx-2"></div>
-                  )}
-                </Col>
-                <Col xs={11}>
-                  {/* IS TASK ARCHIVED? */}
-                  {task.archived ? (
-                    <>
-                      <s className="home_schedule_tasks_maintext ml-2 mb-0 d-block">
-                        {task.task}
-                        {task.daily ? (
-                          <span className="ml-4 home_schedule_tasks_dailybadge">
-                            Daily
-                          </span>
-                        ) : (
-                          ""
-                        )}
-                      </s>
-                      <s className="home_schedule_tasks_timetext ml-2 mb-0 d-block">
-                        7:20 AM
-                      </s>
-                    </>
-                  ) : (
-                    <>
-                      <p className="home_schedule_tasks_maintext ml-2 mb-0">
-                        {task.task}
-                        {task.daily ? (
-                          <span className="ml-4 home_schedule_tasks_dailybadge">
-                            Daily
-                          </span>
-                        ) : (
-                          ""
-                        )}
-                      </p>
-                      <p className="home_schedule_tasks_timetext ml-2 mb-0">
-                        7:20 AM
-                      </p>
-                    </>
-                  )}
-                </Col>
-              </Row>
-            ))
+          ? props.tasks.map((task, i) =>
+              task.date === formatCurrentDate ? (
+                <Row className="mx-0 rowborder mb-4" key={`${task.id}`}>
+                  <Col xs={1}>
+                    <FaBell size={18} />
+                    {arrlength === i + 1 ? (
+                      ""
+                    ) : (
+                      <div className="home_schedule_divider mx-2"></div>
+                    )}
+                  </Col>
+                  <Col xs={11}>
+                    {/* IS TASK ARCHIVED? */}
+                    {task.archived ? (
+                      <>
+                        <s className="home_schedule_tasks_maintext ml-2 mb-0 d-block">
+                          {task.task}
+                          {task.daily ? (
+                            <span className="ml-4 home_schedule_tasks_dailybadge">
+                              Daily
+                            </span>
+                          ) : (
+                            ""
+                          )}
+                        </s>
+                        <s className="home_schedule_tasks_timetext ml-2 mb-0 d-block">
+                          7:20 AM
+                        </s>
+                      </>
+                    ) : (
+                      <>
+                        <p className="home_schedule_tasks_maintext ml-2 mb-0">
+                          {task.task}
+                          {task.daily ? (
+                            <span className="ml-4 home_schedule_tasks_dailybadge">
+                              Daily
+                            </span>
+                          ) : (
+                            ""
+                          )}
+                        </p>
+                        <p className="home_schedule_tasks_timetext ml-2 mb-0">
+                          7:20 AM
+                        </p>
+                      </>
+                    )}
+                  </Col>
+                </Row>
+              ) : (
+                ""
+              )
+            )
           : ""}
       </div>
 

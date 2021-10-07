@@ -17,3 +17,8 @@ export const editTaskAction = (taskToEdit) => ({
   type: "EDIT_TASK",
   payload: taskToEdit,
 });
+
+export const reorderTaskAction = (taskToReorder) => ({
+  type: "REORDER_TASKS",
+  payload: taskToReorder,
+});
