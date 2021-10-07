@@ -232,6 +232,17 @@
 }
 
 .schedule_activeschedule_body_taskcontent_dragging {
-  border: 3px solid blue;
+  border: 2px solid transparent;
   border-radius: 16px;
+}
+
+.schedule_activeschedule_body_taskcontent_dragging:hover {
+  border: 2px solid #0048ff80;
+  border-radius: 16px;
+}
+
+.schedule_activeschedule_body_taskcontent_dragging:active {
+  border: 2px solid #0048ff80;
+  border-radius: 16px;
+  background-color: rgba(151, 251, 151, 0.418);
 }

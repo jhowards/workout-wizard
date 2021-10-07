@@ -139,7 +139,7 @@ const Tasks = (props) => {
                               {/* ACTIVE TASK*/}
                               {task.active ? (
                                 <div className="schedule_activeschedule_body_taskcontent_active mb-3">
-                                  <Row className="mx-0 h-100">
+                                  <Row className="mx-0 h-100 schedule_activeschedule_body_taskcontent_dragging">
                                     <Col className="position-relative" xs={2}>
                                       <Form.Check
                                         custom
@@ -208,7 +208,7 @@ const Tasks = (props) => {
                                 <>
                                   {task.archived ? (
                                     <div className="schedule_activeschedule_body_taskcontent mb-3">
-                                      <Row className="mx-0 h-100">
+                                      <Row className="mx-0 h-100 schedule_activeschedule_body_taskcontent_dragging">
                                         <Col
                                           className="position-relative"
                                           xs={2}
@@ -283,7 +283,7 @@ const Tasks = (props) => {
                                     <div className="schedule_activeschedule_body_taskcontent mb-3">
                                       {/* NOT ACTIVE OR ARCHIVED TASKS*/}
 
-                                      <Row className="mx-0 h-100">
+                                      <Row className="mx-0 h-100 schedule_activeschedule_body_taskcontent_dragging">
                                         <Col
                                           className="position-relative"
                                           xs={2}
