@@ -49,6 +49,21 @@ const tasksReducer = (state = initialState, action) => {
         tasks: filteredTasks,
       };
 
+    case "ADD_GOAL":
+      return {
+        ...state,
+        goals: [...state.goals, action.payload],
+      };
+
+    case "REMOVE_GOAL":
+      const filteredGoals = state.goals.filter(
+        (goal) => goal.id !== action.payload
+      );
+      return {
+        ...state,
+        goals: filteredGoals,
+      };
+
     default:
       return state;
   }

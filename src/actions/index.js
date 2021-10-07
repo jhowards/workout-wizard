@@ -22,3 +22,13 @@ export const reorderTaskAction = (taskToReorder) => ({
   type: "REORDER_TASKS",
   payload: taskToReorder,
 });
+
+export const addGoalAction = (goalToAdd) => ({
+  type: "ADD_GOAL",
+  payload: goalToAdd,
+});
+
+export const removeGoalAction = (id) => ({
+  type: "REMOVE_GOAL",
+  payload: id,
+});

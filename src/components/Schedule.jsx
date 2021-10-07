@@ -5,8 +5,6 @@ import { Container, Button } from "react-bootstrap";
 import { useState } from "react";
 import ScheduleHeadings from "./ScheduleHeadings";
 import AddTaskModal from "./AddTaskModal";
-import { format } from "date-fns";
-import { FaPlus } from "react-icons/fa";
 import Tasks from "./Tasks";
 
 const Schedule = () => {

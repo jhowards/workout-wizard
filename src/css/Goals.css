@@ -1,0 +1,40 @@
+.goals_goalcollapsed {
+  background-color: white;
+  border-radius: 10px;
+}
+
+.goals_accordion {
+  border-radius: 10px;
+  border: none;
+}
+
+.goals_accordion_toggle:hover {
+  text-decoration: none;
+  outline: 0 !important;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+}
+
+.goals_accordion_toggle:active {
+  text-decoration: none;
+  outline: 0 !important;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+}
+
+.goals_accordion_toggle:focus {
+  text-decoration: none;
+  outline: 0 !important;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+}
+
+.addtaskmodal {
+  font-family: "Lexend", sans-serif;
+}
+
+.durationform {
+  width: 50%;
+}
+
+.addTaskButton {
+  background-color: rgba(0, 71, 255, 0.65);
+  font-weight: 600;
+}

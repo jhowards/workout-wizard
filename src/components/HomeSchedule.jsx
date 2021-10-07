@@ -18,6 +18,7 @@ const HomeSchedule = (props) => {
     (el) => el.date === formatCurrentDate
   );
   const arrlength = todaysDateArray.length;
+  console.log(arrlength);
   return (
     <Card.Body className="h-100 ml-4">
       <Card.Title className="home_schedule_todaytext">
@@ -31,11 +32,11 @@ const HomeSchedule = (props) => {
         {props.tasks
           ? props.tasks.map((task, i) =>
               task.date === formatCurrentDate ? (
-                <Row className="mx-0 rowborder mb-4" key={`${task.id}`}>
+                <Row className="mx-0 rowborder mb-4" key={task.id}>
                   <Col xs={1}>
-                    <FaBell size={18} />
+                    <FaBell size={18} onClick={console.log(i)} />
                     {arrlength === i + 1 ? (
-                      ""
+                      <p>test</p>
                     ) : (
                       <div className="home_schedule_divider mx-2"></div>
                     )}
