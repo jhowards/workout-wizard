@@ -5,7 +5,7 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { removeTaskAction, archiveTaskAction } from "../actions";
 import { format } from "date-fns";
-import { persistor } from "../store";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import EditTaskModal from "./EditTaskModal";
 
 const mapStateToProps = (state) => ({
@@ -22,6 +22,15 @@ const Tasks = (props) => {
   let currentDateArray = props.tasks.filter(
     (el) => el.date === formatCurrentDate
   );
+
+  function handleOnDragEnd(result) {
+    console.log(result);
+    const items = Array.from(currentDateArray);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    currentDateArray = items;
+  }
 
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
@@ -79,250 +88,307 @@ const Tasks = (props) => {
   };
 
   return (
-    <div className="schedule_activeschedule_body mt-2" data-testid="tasks">
-      {props.tasks
-        ? currentDateArray.map((task, i) =>
-            task.archived === true ? (
-              <Row className="mx-0" key={`${task.id}`}>
-                {/* ----ARCHIVED TASKS-----*/}
-                <Col
-                  xs={2}
-                  className="schedule_activeschedule_body_times mt-3 pl-5 pr-0"
-                >
-                  <div className="d-flex flex-column schedule_activeschedule_body_times_margins">
-                    <div>
-                      <p className="mb-0 schedule_activeschedule_body_times_largetime">
-                        {task.starttime}
-                      </p>
-                      <p className="schedule_activeschedule_body_times_smalltime">
-                        {task.endtime}
-                      </p>
-                    </div>
-                  </div>
-                </Col>
-                <Col
-                  xs={10}
-                  className="schedule_activeschedule_body_tasks d-flex flex-row px-0"
-                >
-                  <div className="schedule_activeschedule_body_divider ml-5 mr-5"></div>
-                  <div className="d-flex flex-column w-100 mr-5">
-                    <div className="schedule_activeschedule_body_taskcontent mb-3">
-                      <Row className="mx-0 h-100">
-                        <Col className="position-relative" xs={2}>
-                          <Form.Check
-                            custom
-                            type="checkbox"
-                            id={task.id}
-                            className="testtt"
-                            defaultChecked={task.archived}
-                            onChange={() => handleCheckInput(task.id)}
-                          />
-                        </Col>
-                        <Col className="px-0 mt-2" xs={10}>
-                          {/* DAILY TASKS*/}
-                          {task.daily ? (
-                            <>
-                              <s className="schedule_activeschedule_body_taskcontent_tasktext mb-0 d-block">
-                                {task.task}
-                              </s>
-                              <s className="schedule_activeschedule_body_taskcontent_tasktimetext mt-0 mb-0 d-block">
-                                {durationConvert(task.duration)}
-                              </s>
-                              <s className="schedule_activeschedule_body_taskcontent_dailybadge text-center mt-1 d-block">
-                                Daily
-                              </s>
-                            </>
-                          ) : (
-                            <>
-                              {/* NOT DAILY TASKS*/}
-                              <s className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-2 d-block">
-                                {task.task}
-                              </s>
-                              <s className="schedule_activeschedule_body_taskcontent_tasktimenodaily mt-2 mb-0 d-block">
-                                {durationConvert(task.duration)}
-                              </s>
-                            </>
-                          )}
-                          <Dropdown className="schedule_activeschedule_body_taskcontent_edittask">
-                            <Dropdown.Toggle
-                              as={CustomToggle}
-                              id="dropdown-custom-components"
-                            >
-                              <div className="">
-                                <BsThreeDotsVertical size={26} />
+    <DragDropContext onDragEnd={handleOnDragEnd}>
+      <Droppable droppableId="tasks">
+        {(provided) => (
+          <div
+            className="schedule_activeschedule_body mt-2"
+            data-testid="tasks"
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+          >
+            {props.tasks
+              ? currentDateArray.map((task, i) =>
+                  task.archived === true ? (
+                    <Draggable
+                      key={task.id}
+                      draggableId={task.id.toString()}
+                      index={i}
+                    >
+                      {(provided) => (
+                        <Row
+                          className="mx-0"
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          ref={provided.innerRef}
+                        >
+                          {/* ----ARCHIVED TASKS-----*/}
+                          <Col
+                            xs={2}
+                            className="schedule_activeschedule_body_times mt-3 pl-5 pr-0"
+                          >
+                            <div className="d-flex flex-column schedule_activeschedule_body_times_margins">
+                              <div>
+                                <p className="mb-0 schedule_activeschedule_body_times_largetime">
+                                  {task.starttime}
+                                </p>
+                                <p className="schedule_activeschedule_body_times_smalltime">
+                                  {task.endtime}
+                                </p>
                               </div>
-                            </Dropdown.Toggle>
-
-                            <Dropdown.Menu as={CustomMenu} className="py-1">
-                              <EditTaskModal taskid={task.id} />
-                              <Dropdown.Item
-                                onClick={() => props.removeTask(task.id)}
-                                eventKey="2"
-                              >
-                                Delete Task
-                              </Dropdown.Item>
-                            </Dropdown.Menu>
-                          </Dropdown>
-                        </Col>
-                      </Row>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
-            ) : (
-              <Row className="mx-0" key={`${task.id}`}>
-                {/* NOT ARCHIVED TASKS*/}
-                <Col
-                  xs={2}
-                  className="schedule_activeschedule_body_times mt-3 pl-5 pr-0"
-                >
-                  <div className="schedule_activeschedule_body_times_margins">
-                    <div>
-                      <p className="mb-0 schedule_activeschedule_body_times_largetime">
-                        {task.starttime}
-                      </p>
-                      <p className="schedule_activeschedule_body_times_smalltime">
-                        {task.endtime}
-                      </p>
-                    </div>
-                  </div>
-                </Col>
-                <Col
-                  xs={10}
-                  className="schedule_activeschedule_body_tasks d-flex flex-row px-0"
-                >
-                  <div className="schedule_activeschedule_body_divider ml-5 mr-5"></div>
-                  <div className="d-flex flex-column w-100 mr-5">
-                    {/* ACTIVE TASK*/}
-                    {task.active ? (
-                      <div className="schedule_activeschedule_body_taskcontent_active mb-3">
-                        <Row className="mx-0 h-100">
-                          <Col className="position-relative" xs={2}>
-                            <Form.Check
-                              custom
-                              type="checkbox"
-                              id={task.id}
-                              className="testtt"
-                              onChange={() => handleCheckInput(task.id)}
-                            />
+                            </div>
                           </Col>
-                          <Col className="px-0 mt-2" xs={10}>
-                            {/* DAILY TASKS*/}
-                            {task.daily ? (
-                              <>
-                                <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0">
-                                  {task.task}
-                                </p>
-                                <p className="schedule_activeschedule_body_taskcontent_tasktimetext mt-0 mb-0">
-                                  {durationConvert(task.duration)}
-                                </p>
-                                <p className="schedule_activeschedule_body_taskcontent_dailybadge text-center mt-1">
-                                  Daily
-                                </p>
-                              </>
-                            ) : (
-                              <>
-                                {/* NOT DAILY TASKS*/}
-                                <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-2">
-                                  {task.task}
-                                </p>
-                                <p className="schedule_activeschedule_body_taskcontent_tasktimenodaily mt-2 mb-0">
-                                  {durationConvert(task.duration)}
-                                </p>
-                              </>
-                            )}
-                            <Dropdown className="schedule_activeschedule_body_taskcontent_edittask">
-                              <Dropdown.Toggle
-                                as={CustomToggle}
-                                id="dropdown-custom-components"
-                              >
-                                <div className="">
-                                  <BsThreeDotsVertical size={26} />
-                                </div>
-                              </Dropdown.Toggle>
+                          <Col
+                            xs={10}
+                            className="schedule_activeschedule_body_tasks d-flex flex-row px-0"
+                          >
+                            <div className="schedule_activeschedule_body_divider ml-5 mr-5"></div>
+                            <div className="d-flex flex-column w-100 mr-5">
+                              <div className="schedule_activeschedule_body_taskcontent mb-3">
+                                <Row className="mx-0 h-100">
+                                  <Col className="position-relative" xs={2}>
+                                    <Form.Check
+                                      custom
+                                      type="checkbox"
+                                      id={task.id}
+                                      className="testtt"
+                                      defaultChecked={task.archived}
+                                      onChange={() => handleCheckInput(task.id)}
+                                    />
+                                  </Col>
+                                  <Col className="px-0 mt-2" xs={10}>
+                                    {/* DAILY TASKS*/}
+                                    {task.daily ? (
+                                      <>
+                                        <s className="schedule_activeschedule_body_taskcontent_tasktext mb-0 d-block">
+                                          {task.task}
+                                        </s>
+                                        <s className="schedule_activeschedule_body_taskcontent_tasktimetext mt-0 mb-0 d-block">
+                                          {durationConvert(task.duration)}
+                                        </s>
+                                        <s className="schedule_activeschedule_body_taskcontent_dailybadge text-center mt-1 d-block">
+                                          Daily
+                                        </s>
+                                      </>
+                                    ) : (
+                                      <>
+                                        {/* NOT DAILY TASKS*/}
+                                        <s className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-2 d-block">
+                                          {task.task}
+                                        </s>
+                                        <s className="schedule_activeschedule_body_taskcontent_tasktimenodaily mt-2 mb-0 d-block">
+                                          {durationConvert(task.duration)}
+                                        </s>
+                                      </>
+                                    )}
+                                    <Dropdown className="schedule_activeschedule_body_taskcontent_edittask">
+                                      <Dropdown.Toggle
+                                        as={CustomToggle}
+                                        id="dropdown-custom-components"
+                                      >
+                                        <div className="">
+                                          <BsThreeDotsVertical size={26} />
+                                        </div>
+                                      </Dropdown.Toggle>
 
-                              <Dropdown.Menu as={CustomMenu} className="py-1">
-                                <EditTaskModal taskid={task.id} />
-                                <Dropdown.Item
-                                  onClick={() => props.removeTask(task.id)}
-                                  eventKey="2"
-                                >
-                                  Delete Task
-                                </Dropdown.Item>
-                              </Dropdown.Menu>
-                            </Dropdown>
+                                      <Dropdown.Menu
+                                        as={CustomMenu}
+                                        className="py-1"
+                                      >
+                                        <EditTaskModal taskid={task.id} />
+                                        <Dropdown.Item
+                                          onClick={() =>
+                                            props.removeTask(task.id)
+                                          }
+                                          eventKey="2"
+                                        >
+                                          Delete Task
+                                        </Dropdown.Item>
+                                      </Dropdown.Menu>
+                                    </Dropdown>
+                                  </Col>
+                                </Row>
+                              </div>
+                            </div>
                           </Col>
                         </Row>
-                      </div>
-                    ) : (
-                      <div className="schedule_activeschedule_body_taskcontent mb-3">
-                        {/* NOT ACTIVE TASKS*/}
-                        <Row className="mx-0 h-100">
-                          <Col className="position-relative" xs={2}>
-                            <Form.Check
-                              custom
-                              type="checkbox"
-                              id={task.id}
-                              className="testtt"
-                              onChange={() => handleCheckInput(task.id)}
-                            />
+                      )}
+                    </Draggable>
+                  ) : (
+                    <Draggable
+                      key={task.id}
+                      draggableId={task.id.toString()}
+                      index={i}
+                    >
+                      {(provided) => (
+                        <Row
+                          className="mx-0"
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          ref={provided.innerRef}
+                        >
+                          {/* NOT ARCHIVED TASKS*/}
+                          <Col
+                            xs={2}
+                            className="schedule_activeschedule_body_times mt-3 pl-5 pr-0"
+                          >
+                            <div className="schedule_activeschedule_body_times_margins">
+                              <div>
+                                <p className="mb-0 schedule_activeschedule_body_times_largetime">
+                                  {task.starttime}
+                                </p>
+                                <p className="schedule_activeschedule_body_times_smalltime">
+                                  {task.endtime}
+                                </p>
+                              </div>
+                            </div>
                           </Col>
-                          <Col className="px-0 mt-2" xs={10}>
-                            {/* DAILY TASKS*/}
-                            {task.daily ? (
-                              <>
-                                <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0">
-                                  {task.task}
-                                </p>
-                                <p className="schedule_activeschedule_body_taskcontent_tasktimetext mt-0 mb-0">
-                                  {durationConvert(task.duration)}
-                                </p>
-                                <p className="schedule_activeschedule_body_taskcontent_dailybadge text-center mt-1">
-                                  Daily
-                                </p>
-                              </>
-                            ) : (
-                              <>
-                                {/* NOT DAILY TASKS*/}
-                                <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-2">
-                                  {task.task}
-                                </p>
-                                <p className="schedule_activeschedule_body_taskcontent_tasktimenodaily mt-2 mb-0">
-                                  {durationConvert(task.duration)}
-                                </p>
-                              </>
-                            )}
-                            <Dropdown className="schedule_activeschedule_body_taskcontent_edittask">
-                              <Dropdown.Toggle
-                                as={CustomToggle}
-                                id="dropdown-custom-components"
-                              >
-                                <div className="">
-                                  <BsThreeDotsVertical size={26} />
-                                </div>
-                              </Dropdown.Toggle>
+                          <Col
+                            xs={10}
+                            className="schedule_activeschedule_body_tasks d-flex flex-row px-0"
+                          >
+                            <div className="schedule_activeschedule_body_divider ml-5 mr-5"></div>
+                            <div className="d-flex flex-column w-100 mr-5">
+                              {/* ACTIVE TASK*/}
+                              {task.active ? (
+                                <div className="schedule_activeschedule_body_taskcontent_active mb-3">
+                                  <Row className="mx-0 h-100">
+                                    <Col className="position-relative" xs={2}>
+                                      <Form.Check
+                                        custom
+                                        type="checkbox"
+                                        id={task.id}
+                                        className="testtt"
+                                        onChange={() =>
+                                          handleCheckInput(task.id)
+                                        }
+                                      />
+                                    </Col>
+                                    <Col className="px-0 mt-2" xs={10}>
+                                      {/* DAILY TASKS*/}
+                                      {task.daily ? (
+                                        <>
+                                          <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0">
+                                            {task.task}
+                                          </p>
+                                          <p className="schedule_activeschedule_body_taskcontent_tasktimetext mt-0 mb-0">
+                                            {durationConvert(task.duration)}
+                                          </p>
+                                          <p className="schedule_activeschedule_body_taskcontent_dailybadge text-center mt-1">
+                                            Daily
+                                          </p>
+                                        </>
+                                      ) : (
+                                        <>
+                                          {/* NOT DAILY TASKS*/}
+                                          <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-2">
+                                            {task.task}
+                                          </p>
+                                          <p className="schedule_activeschedule_body_taskcontent_tasktimenodaily mt-2 mb-0">
+                                            {durationConvert(task.duration)}
+                                          </p>
+                                        </>
+                                      )}
+                                      <Dropdown className="schedule_activeschedule_body_taskcontent_edittask">
+                                        <Dropdown.Toggle
+                                          as={CustomToggle}
+                                          id="dropdown-custom-components"
+                                        >
+                                          <div className="">
+                                            <BsThreeDotsVertical size={26} />
+                                          </div>
+                                        </Dropdown.Toggle>
 
-                              <Dropdown.Menu as={CustomMenu} className="py-1">
-                                <EditTaskModal taskid={task.id} />
-                                <Dropdown.Item
-                                  onClick={() => props.removeTask(task.id)}
-                                  eventKey="2"
-                                >
-                                  Delete Task
-                                </Dropdown.Item>
-                              </Dropdown.Menu>
-                            </Dropdown>
+                                        <Dropdown.Menu
+                                          as={CustomMenu}
+                                          className="py-1"
+                                        >
+                                          <EditTaskModal taskid={task.id} />
+                                          <Dropdown.Item
+                                            onClick={() =>
+                                              props.removeTask(task.id)
+                                            }
+                                            eventKey="2"
+                                          >
+                                            Delete Task
+                                          </Dropdown.Item>
+                                        </Dropdown.Menu>
+                                      </Dropdown>
+                                    </Col>
+                                  </Row>
+                                </div>
+                              ) : (
+                                <div className="schedule_activeschedule_body_taskcontent mb-3">
+                                  {/* NOT ACTIVE TASKS*/}
+                                  <Row className="mx-0 h-100">
+                                    <Col className="position-relative" xs={2}>
+                                      <Form.Check
+                                        custom
+                                        type="checkbox"
+                                        id={task.id}
+                                        className="testtt"
+                                        onChange={() =>
+                                          handleCheckInput(task.id)
+                                        }
+                                      />
+                                    </Col>
+                                    <Col className="px-0 mt-2" xs={10}>
+                                      {/* DAILY TASKS*/}
+                                      {task.daily ? (
+                                        <>
+                                          <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0">
+                                            {task.task}
+                                          </p>
+                                          <p className="schedule_activeschedule_body_taskcontent_tasktimetext mt-0 mb-0">
+                                            {durationConvert(task.duration)}
+                                          </p>
+                                          <p className="schedule_activeschedule_body_taskcontent_dailybadge text-center mt-1">
+                                            Daily
+                                          </p>
+                                        </>
+                                      ) : (
+                                        <>
+                                          {/* NOT DAILY TASKS*/}
+                                          <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-2">
+                                            {task.task}
+                                          </p>
+                                          <p className="schedule_activeschedule_body_taskcontent_tasktimenodaily mt-2 mb-0">
+                                            {durationConvert(task.duration)}
+                                          </p>
+                                        </>
+                                      )}
+                                      <Dropdown className="schedule_activeschedule_body_taskcontent_edittask">
+                                        <Dropdown.Toggle
+                                          as={CustomToggle}
+                                          id="dropdown-custom-components"
+                                        >
+                                          <div className="">
+                                            <BsThreeDotsVertical size={26} />
+                                          </div>
+                                        </Dropdown.Toggle>
+
+                                        <Dropdown.Menu
+                                          as={CustomMenu}
+                                          className="py-1"
+                                        >
+                                          <EditTaskModal taskid={task.id} />
+                                          <Dropdown.Item
+                                            onClick={() =>
+                                              props.removeTask(task.id)
+                                            }
+                                            eventKey="2"
+                                          >
+                                            Delete Task
+                                          </Dropdown.Item>
+                                        </Dropdown.Menu>
+                                      </Dropdown>
+                                    </Col>
+                                  </Row>
+                                </div>
+                              )}
+                            </div>
                           </Col>
                         </Row>
-                      </div>
-                    )}
-                  </div>
-                </Col>
-              </Row>
-            )
-          )
-        : ""}
-    </div>
+                      )}
+                    </Draggable>
+                  )
+                )
+              : ""}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
+    </DragDropContext>
   );
 };
 

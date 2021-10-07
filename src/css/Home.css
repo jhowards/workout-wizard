@@ -43,7 +43,7 @@
 }
 
 .home_dailyheader_taskstext {
-  font-size: 28px;
+  font-size: 26px;
 }
 
 .home_schedule {
@@ -53,11 +53,15 @@
   border: none;
 }
 
+.home_dailyheader_taskstextcolor {
+  color: #214bb6;
+}
+
 .home_schedule_todaytext {
   font-weight: bold;
   font-size: 18px;
   line-height: 140%;
-  color: #2d3748;
+  color: #214bb6;
 }
 
 .home_schedule_datetext {

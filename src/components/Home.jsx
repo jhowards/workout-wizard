@@ -48,7 +48,11 @@ const Home = (props) => {
                       <Greeting />
                     </Card.Title>
                     <Card.Text className="home_dailyheader_taskstext">
-                      You've got {arrlength} remaining tasks today.
+                      You've got{" "}
+                      <span className="home_dailyheader_taskstextcolor">
+                        {arrlength}
+                      </span>{" "}
+                      remaining tasks today.
                     </Card.Text>
                   </Col>
                 </Row>

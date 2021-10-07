@@ -20,11 +20,10 @@ const HomeSchedule = (props) => {
   const arrlength = todaysDateArray.length;
   return (
     <Card.Body className="h-100 ml-4">
-      <Link to="/schedule">
-        <Card.Title className="home_schedule_todaytext">
-          Today's Tasks
-        </Card.Title>
-      </Link>
+      <Card.Title className="home_schedule_todaytext">
+        <Link to="/schedule">Today's Tasks</Link>
+      </Card.Title>
+
       <Card.Text className="home_schedule_datetext mb-4">
         {formatDateText}
       </Card.Text>
