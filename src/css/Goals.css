@@ -38,3 +38,27 @@
   background-color: rgba(0, 71, 255, 0.65);
   font-weight: 600;
 }
+
+.goals_headings_completedtext {
+  font-size: 20px;
+}
+
+.bg-28a745 {
+  background-color: #28a745 !important;
+}
+
+.bg-ffc107 {
+  background-color: #ffc107 !important;
+}
+
+.bg-17a2b8 {
+  background-color: #17a2b8 !important;
+}
+
+.bg-dc3545 {
+  background-color: #dc3545 !important;
+}
+
+.bg-007bff {
+  background-color: #007bff !important;
+}

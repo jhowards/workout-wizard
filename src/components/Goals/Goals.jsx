@@ -22,6 +22,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const Goals = (props) => {
+  let completedGoalsArray = props.goals.filter((el) => el.completed === true);
+  const arrlength = completedGoalsArray.length;
   return (
     <div className="d-flex h-100">
       <SideBar />
@@ -31,8 +33,10 @@ const Goals = (props) => {
             <h1>Goals</h1>
             <hr className="linebreak mb-3" />
             <div className="goals_headings d-flex flex-row justify-content-between mx-5">
-              <div className="d-flex flex-row justify-content-between w-25 mx-1">
-                <span>Goals Completed: 3</span>
+              <div className="d-flex flex-row justify-content-between w-25 mx-1 ">
+                <span className="my-auto goals_headings_completedtext">
+                  Goals Completed: {arrlength}
+                </span>
               </div>
               <div>
                 <AddGoalModal />
@@ -59,7 +63,12 @@ const Goals = (props) => {
                           <p className="home_goals_goaltext mb-2">
                             {goal.goal}
                           </p>
-                          <ProgressBar striped variant="warning" now={70} />
+                          <ProgressBar
+                            striped
+                            variant={goal.colour}
+                            now={goal.percentage}
+                            label={`${goal.percentage}%`}
+                          />
                         </div>
                       </Accordion.Toggle>
                       <Accordion.Collapse eventKey="0">

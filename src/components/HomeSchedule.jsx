@@ -28,7 +28,7 @@ const HomeSchedule = (props) => {
       <Card.Text className="home_schedule_datetext mb-4">
         {formatDateText}
       </Card.Text>
-      <div className="h-100 d-flex flex-column">
+      <div className="d-flex flex-column">
         {props.tasks
           ? props.tasks.map((task, i) =>
               task.date === formatCurrentDate ? (
@@ -84,9 +84,6 @@ const HomeSchedule = (props) => {
             )
           : ""}
       </div>
-
-      <div>Test2</div>
-      <div>Test3</div>
     </Card.Body>
   );
 };

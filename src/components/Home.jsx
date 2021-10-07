@@ -12,9 +12,12 @@ import { Link } from "react-router-dom";
 import HomeSchedule from "./HomeSchedule";
 import { connect } from "react-redux";
 import format from "date-fns/format";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 const mapStateToProps = (state) => ({
   tasks: state.tasks,
+  goals: state.goals,
 });
 
 const Home = (props) => {
@@ -24,6 +27,13 @@ const Home = (props) => {
     (el) => el.date === formatCurrentDate && el.archived === false
   );
   const arrlength = todaysDateArray.length;
+
+  const dateFormat = (date) => {
+    console.log(date);
+    let convertedDate = new Date(date);
+    console.log(convertedDate);
+    return format(convertedDate, "MMMM");
+  };
 
   return (
     <div className="d-flex h-100">
@@ -70,7 +80,7 @@ const Home = (props) => {
               View Schedule
             </Button> */}
           </Col>
-          <Col className="px-4 d-flex flex-column h-100 justify-content-between">
+          <Col className="px-4 d-flex flex-column h-100">
             <Card
               className="mt-4 text-center home_calendar mb-4"
               style={{ width: "100%", height: "50%" }}
@@ -93,54 +103,48 @@ const Home = (props) => {
                 <h4>Goals</h4>
               </Link>
               <div className="d-flex flex-column">
-                <Card
-                  className="mt-0 home_goals"
-                  style={{ width: "100%", height: "90px" }}
-                >
-                  <Card.Body className="home_goals_goalbody d-flex">
-                    <div className="home_goals_cardcolor_1 my-auto mr-3"></div>
-                    <div>
-                      <Card.Text className="home_goals_goaltag mb-1">
-                        Reading
-                      </Card.Text>
-                      <Card.Title className="home_goals_goaltext mb-2">
-                        Finish Self Help Book
-                      </Card.Title>
-                      <Card.Text className="home_goals_goaldeadline">
-                        November Deadline
-                      </Card.Text>
-                    </div>
-                  </Card.Body>
-                </Card>
-                <Card
-                  className="mt-2 home_goals"
-                  style={{ width: "100%", height: "90px" }}
-                >
-                  <Card.Body className="home_goals_goalbody d-flex">
-                    <div className="home_goals_cardcolor_2 my-auto mr-3"></div>
-                    <div>
-                      <Card.Text className="home_goals_goaltag mb-1"></Card.Text>
-                      <Card.Title className="home_goals_goaltext mb-2"></Card.Title>
-                      <Card.Text className="home_goals_goaldeadline"></Card.Text>
-                    </div>
-                  </Card.Body>
-                </Card>
-                <Card
-                  className="mt-2 home_goals"
-                  style={{ width: "100%", height: "90px" }}
-                >
-                  <Card.Body className="home_goals_goalbody d-flex">
-                    <div className="home_goals_cardcolor_3 my-auto mr-3"></div>
-                    <div>
-                      <Card.Text className="home_goals_goaltag mb-1"></Card.Text>
-                      <Card.Title className="home_goals_goaltext mb-2"></Card.Title>
-                      <Card.Text className="home_goals_goaldeadline"></Card.Text>
-                    </div>
-                  </Card.Body>
-                </Card>
-                {/* <Button className="home_schedule_button mx-auto mt-3 mb-4">
-                  View Goals
-                </Button> */}
+                {props.goals
+                  ? props.goals.map((goal, i) =>
+                      i < 3 ? (
+                        <Card
+                          className="mt-0 home_goals mb-3"
+                          style={{ width: "100%", height: "100px" }}
+                        >
+                          <Card.Body className="home_goals_goalbody d-flex">
+                            <div
+                              style={{ backgroundColor: "#" + goal.colour }}
+                              className={"home_goals_cardcolor_1 my-auto mr-3"}
+                            ></div>
+                            <div>
+                              <Card.Text className="home_goals_goaltag mb-2">
+                                {goal.tag}
+                              </Card.Text>
+                              <Card.Title className="home_goals_goaltext mb-3">
+                                {goal.goal}
+                              </Card.Title>
+                              <Card.Text className="home_goals_goaldeadline">
+                                {dateFormat(goal.enddate) + " Deadline"}
+                              </Card.Text>
+                            </div>
+                            <div
+                              className="ml-auto mr-3"
+                              style={{ width: "80px", height: "80px" }}
+                            >
+                              <CircularProgressbar
+                                value={goal.percentage}
+                                text={`${goal.percentage}%`}
+                                styles={{
+                                  path: { stroke: "#" + goal.colour },
+                                }}
+                              />
+                            </div>
+                          </Card.Body>
+                        </Card>
+                      ) : (
+                        ""
+                      )
+                    )
+                  : ""}
               </div>
             </div>
           </Col>

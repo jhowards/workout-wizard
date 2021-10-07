@@ -8,6 +8,10 @@ import { format } from "date-fns";
 import { connect } from "react-redux";
 import { addGoalAction } from "../../actions";
 
+const mapStateToProps = (state) => ({
+  goals: state.goals,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   addGoal: (goalToAdd) => dispatch(addGoalAction(goalToAdd)),
 });
@@ -43,6 +47,17 @@ const AddGoalModal = (props) => {
     setformCount(formCount - 1);
   };
 
+  function getColour(num) {
+    var colours = {
+      0: "28a745",
+      1: "ffc107",
+      2: "17a2b8",
+      3: "dc3545",
+      default: "007bff",
+    };
+    return colours[num] || colours["default"];
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     let formatDate = format(startDate, "P");
@@ -54,10 +69,13 @@ const AddGoalModal = (props) => {
     //   id: id,
     // });
 
+    let chosenColor = getColour(props.goals.length);
     let goalToAddFinal = goalToAdd;
     goalToAddFinal.completed = false;
     goalToAddFinal.enddate = formatDate;
     goalToAddFinal.id = id;
+    goalToAddFinal.percentage = 30;
+    goalToAddFinal.colour = chosenColor;
     props.addGoal(goalToAddFinal);
     handleClose();
 
@@ -202,4 +220,4 @@ const AddGoalModal = (props) => {
   );
 };
 
-export default connect(mapDispatchToProps)(AddGoalModal);
+export default connect(mapStateToProps, mapDispatchToProps)(AddGoalModal);
