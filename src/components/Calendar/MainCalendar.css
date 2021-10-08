@@ -6,3 +6,8 @@
   height: 23px;
   width: 23px;
 }
+
+.dailyEventWrapper:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}

@@ -4,12 +4,25 @@ import SideBar from "../SideBar";
 import "../Calendar/MainCalendar.css";
 import { connect } from "react-redux";
 import randomColor from "randomcolor";
+import { setDateAction } from "../../actions";
 
 const mapStateToProps = (state) => ({
   tasks: state.tasks,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  setDate: (date) => dispatch(setDateAction(date)),
+});
+
 const MainCalendar = (props) => {
+  const moveToSchedule = (event) => {
+    let taskDate = props.tasks.filter((el) => el.id === event);
+    let dateToPass = new Date(taskDate[0].date);
+    console.log(dateToPass);
+    props.setDate(dateToPass);
+    props.history.push("/schedule");
+  };
+
   // const events = [
   //   {
   //     id: 1,
@@ -35,10 +48,14 @@ const MainCalendar = (props) => {
     <div className="d-flex h-100">
       <SideBar />
       <div className="h-100 w-100 schedule_mainbody py-lg-3 px-lg-5 bg-light">
-        <Calendar events={tasksArray} className="calendartest h-100 w-100" />
+        <Calendar
+          onClickEvent={(event) => moveToSchedule(event)}
+          events={tasksArray}
+          className="calendartest h-100 w-100"
+        />
       </div>
     </div>
   );
 };
 
-export default connect(mapStateToProps)(MainCalendar);
+export default connect(mapStateToProps, mapDispatchToProps)(MainCalendar);
