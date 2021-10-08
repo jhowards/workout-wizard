@@ -15,6 +15,7 @@ import format from "date-fns/format";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { setDateAction } from "../actions";
+import { isEqual } from "date-fns";
 
 const mapStateToProps = (state) => ({
   tasks: state.tasks,
@@ -34,10 +35,20 @@ const Home = (props) => {
   const arrlength = todaysDateArray.length;
 
   const dateFormat = (date) => {
-    console.log(date);
     let convertedDate = new Date(date);
-    console.log(convertedDate);
     return format(convertedDate, "MMMM");
+  };
+
+  const compareDates = (date, date2) => {
+    var d3 = new Date();
+    d3.setHours(0, 0, 0, 0);
+    if (isEqual(date2, d3)) {
+      return false;
+    } else {
+      let convertedDate = new Date(date);
+      let result = isEqual(convertedDate, date2);
+      return result;
+    }
   };
 
   const moveToSchedule = (value, event) => {
@@ -100,6 +111,14 @@ const Home = (props) => {
               <Card.Body>
                 <Calendar
                   onClickDay={(value, event) => moveToSchedule(value, event)}
+                  tileClassName="position-relative"
+                  tileContent={({ activeStartDate, date, view }) =>
+                    props.tasks.map((task, i) =>
+                      view === "month" && compareDates(task.date, date) ? (
+                        <span className="homecalendar_task_dot p-0 m-0"></span>
+                      ) : null
+                    )
+                  }
                   prev2Label={null}
                   next2Label={null}
                   nextLabel={<IoIosArrowForward size={22} />}
@@ -123,6 +142,7 @@ const Home = (props) => {
                         <Card
                           className="mt-0 home_goals mt-3"
                           style={{ width: "100%", height: "100px" }}
+                          key={goal.id}
                         >
                           <Card.Body className="home_goals_goalbody d-flex">
                             <div

@@ -18,7 +18,6 @@ const HomeSchedule = (props) => {
     (el) => el.date === formatCurrentDate
   );
   const arrlength = todaysDateArray.length;
-  console.log(arrlength);
   return (
     <Card.Body className="h-100 ml-4">
       <Card.Title className="home_schedule_todaytext">
@@ -34,7 +33,7 @@ const HomeSchedule = (props) => {
               task.date === formatCurrentDate ? (
                 <Row className="mx-0 rowborder mb-4" key={task.id}>
                   <Col xs={1}>
-                    <FaBell size={18} onClick={console.log(i)} />
+                    <FaBell size={18} />
                     {arrlength === i + 1 ? (
                       ""
                     ) : (

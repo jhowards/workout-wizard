@@ -163,3 +163,13 @@
   width: 1px;
   background-color: #e2e8f0;
 }
+
+.homecalendar_task_dot {
+  height: 6px;
+  width: 6px;
+  top: 65%;
+  left: 46%;
+  position: absolute;
+  background-color: blue;
+  border-radius: 50%;
+}
