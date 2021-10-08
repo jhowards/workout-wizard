@@ -36,7 +36,7 @@ const HomeSchedule = (props) => {
                   <Col xs={1}>
                     <FaBell size={18} onClick={console.log(i)} />
                     {arrlength === i + 1 ? (
-                      <p>test</p>
+                      ""
                     ) : (
                       <div className="home_schedule_divider mx-2"></div>
                     )}

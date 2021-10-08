@@ -100,6 +100,11 @@
   font-size: 24px;
 }
 
+.home_goals_goalsheadertext {
+  color: #214bb6;
+  margin-bottom: -8px;
+}
+
 .home_goals_goaldeadline {
   font-size: 12px;
   line-height: 10px;

@@ -38,8 +38,8 @@ const Home = (props) => {
   return (
     <div className="d-flex h-100">
       <SideBar />
-      <div className="h-100 w-100 home_mainbody py-lg-3 px-lg-5">
-        <Row xs={1} md={2} className="g-2 h-100">
+      <div className="h-100 w-100 home_mainbody py-md-3 px-md-5">
+        <Row xs={1} lg={2} className="g-2 h-100">
           <Col className="px-4 d-flex flex-column h-100">
             <Card
               className="home_dailyheader mb-3 mt-4"
@@ -57,12 +57,14 @@ const Home = (props) => {
                     <Card.Title className="home_dailyheader_morningtext mt-5">
                       <Greeting />
                     </Card.Title>
-                    <Card.Text className="home_dailyheader_taskstext">
+                    <Card.Text className="home_dailyheader_taskstext lead">
                       You've got{" "}
                       <span className="home_dailyheader_taskstextcolor">
                         {arrlength}
                       </span>{" "}
-                      remaining tasks today.
+                      {arrlength === 1
+                        ? "remaining task today."
+                        : "remaining tasks today."}
                     </Card.Text>
                   </Col>
                 </Row>
@@ -99,15 +101,16 @@ const Home = (props) => {
               View Calendar
             </Button> */}
             <div>
-              <Link to="/goals">
-                <h4>Goals</h4>
-              </Link>
+              <h4 className="home_goals_goalsheadertext">
+                <Link to="/goals">Goals</Link>
+              </h4>
+
               <div className="d-flex flex-column">
                 {props.goals
                   ? props.goals.map((goal, i) =>
                       i < 3 ? (
                         <Card
-                          className="mt-0 home_goals mb-3"
+                          className="mt-0 home_goals mt-3"
                           style={{ width: "100%", height: "100px" }}
                         >
                           <Card.Body className="home_goals_goalbody d-flex">
