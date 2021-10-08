@@ -16,6 +16,7 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { setDateAction } from "../actions";
 import { isEqual } from "date-fns";
+import randomColor from "randomcolor";
 
 const mapStateToProps = (state) => ({
   tasks: state.tasks,
@@ -115,7 +116,15 @@ const Home = (props) => {
                   tileContent={({ activeStartDate, date, view }) =>
                     props.tasks.map((task, i) =>
                       view === "month" && compareDates(task.date, date) ? (
-                        <span className="homecalendar_task_dot p-0 m-0"></span>
+                        <span
+                          style={{
+                            backgroundColor: randomColor({
+                              luminosity: "dark",
+                            }),
+                          }}
+                          className="homecalendar_task_dot p-0 m-0"
+                          key={task.id}
+                        ></span>
                       ) : null
                     )
                   }
