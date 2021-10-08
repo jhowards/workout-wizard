@@ -32,3 +32,13 @@ export const removeGoalAction = (id) => ({
   type: "REMOVE_GOAL",
   payload: id,
 });
+
+export const setDateAction = (date) => ({
+  type: "SET_DATE",
+  payload: date,
+});
+
+export const removeDateAction = (i) => ({
+  type: "REMOVE_DATE",
+  payload: i,
+});

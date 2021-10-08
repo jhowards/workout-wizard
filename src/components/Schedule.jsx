@@ -6,10 +6,29 @@ import { useState } from "react";
 import ScheduleHeadings from "./ScheduleHeadings";
 import AddTaskModal from "./AddTaskModal";
 import Tasks from "./Tasks";
+import { connect } from "react-redux";
+import { useEffect } from "react";
+import { removeDateAction } from "../actions";
 
-const Schedule = () => {
+const mapStateToProps = (state) => ({
+  date: state.homeCalendarDate,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  removeDate: (i) => dispatch(removeDateAction(i)),
+});
+
+const Schedule = (props) => {
   const [activeDate, setactiveDate] = useState(new Date());
   const [todaysDate, settodaysDate] = useState(new Date());
+
+  useEffect(() => {
+    if (props.date !== "") {
+      let formatDate = new Date(props.date);
+      setactiveDate(formatDate);
+      props.removeDate(1);
+    }
+  }, []);
 
   return (
     <div className="d-flex h-100">
@@ -44,4 +63,4 @@ const Schedule = () => {
   );
 };
 
-export default Schedule;
+export default connect(mapStateToProps, mapDispatchToProps)(Schedule);

@@ -14,10 +14,15 @@ import { connect } from "react-redux";
 import format from "date-fns/format";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import { setDateAction } from "../actions";
 
 const mapStateToProps = (state) => ({
   tasks: state.tasks,
   goals: state.goals,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setDate: (date) => dispatch(setDateAction(date)),
 });
 
 const Home = (props) => {
@@ -33,6 +38,11 @@ const Home = (props) => {
     let convertedDate = new Date(date);
     console.log(convertedDate);
     return format(convertedDate, "MMMM");
+  };
+
+  const moveToSchedule = (value, event) => {
+    props.setDate(value);
+    props.history.push("/schedule");
   };
 
   return (
@@ -89,6 +99,7 @@ const Home = (props) => {
             >
               <Card.Body>
                 <Calendar
+                  onClickDay={(value, event) => moveToSchedule(value, event)}
                   prev2Label={null}
                   next2Label={null}
                   nextLabel={<IoIosArrowForward size={22} />}
@@ -157,4 +168,4 @@ const Home = (props) => {
   );
 };
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

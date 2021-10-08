@@ -64,6 +64,18 @@ const tasksReducer = (state = initialState, action) => {
         goals: filteredGoals,
       };
 
+    case "SET_DATE":
+      return {
+        ...state,
+        homeCalendarDate: action.payload,
+      };
+
+    case "REMOVE_DATE":
+      return {
+        ...state,
+        homeCalendarDate: "",
+      };
+
     default:
       return state;
   }
