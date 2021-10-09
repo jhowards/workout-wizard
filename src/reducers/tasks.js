@@ -76,6 +76,29 @@ const tasksReducer = (state = initialState, action) => {
         homeCalendarDate: "",
       };
 
+    case "GOAL_COMPLETION":
+      const editgoalindex = state.goals.findIndex(
+        (goal) => goal.id == action.payload.id
+      );
+      const subtasksamount = Object.keys(
+        state.goals[editgoalindex].subtasks
+      ).length;
+      let percent = 100 / subtasksamount;
+      const newArrayGoalEdit = [...state.goals];
+
+      for (let i = -1; i < subtasksamount; i++) {
+        if (action.payload.count === i) {
+          let percentToSet = percent * (i + 1);
+          newArrayGoalEdit[editgoalindex].percentage = percentToSet;
+        }
+      }
+      newArrayGoalEdit[editgoalindex].count = action.payload.count;
+
+      return {
+        ...state,
+        goals: newArrayGoalEdit,
+      };
+
     default:
       return state;
   }

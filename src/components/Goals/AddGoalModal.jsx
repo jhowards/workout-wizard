@@ -18,6 +18,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const AddGoalModal = (props) => {
   const [goalToAdd, setgoalToAdd] = useState({});
+  const [subTasksToAdd, setsubTasksToAdd] = useState({});
 
   const [show, setShow] = useState(false);
   const [formCount, setformCount] = useState(0);
@@ -25,6 +26,7 @@ const AddGoalModal = (props) => {
   const handleClose = () => {
     setShow(false);
     setgoalToAdd({});
+    setsubTasksToAdd({});
     setformCount(0);
   };
   const handleShow = () => {
@@ -35,6 +37,13 @@ const AddGoalModal = (props) => {
   const handleInput = (e, propertyName) => {
     setgoalToAdd({
       ...goalToAdd,
+      [propertyName]: propertyName === "" ? "" : e.target.value,
+    });
+  };
+
+  const handleSubInput = (e, propertyName) => {
+    setsubTasksToAdd({
+      ...subTasksToAdd,
       [propertyName]: propertyName === "" ? "" : e.target.value,
     });
   };
@@ -74,8 +83,10 @@ const AddGoalModal = (props) => {
     goalToAddFinal.completed = false;
     goalToAddFinal.enddate = formatDate;
     goalToAddFinal.id = id;
-    goalToAddFinal.percentage = 30;
+    goalToAddFinal.percentage = 0;
     goalToAddFinal.colour = chosenColor;
+    goalToAddFinal.subtasks = subTasksToAdd;
+    goalToAddFinal.count = -1;
     props.addGoal(goalToAddFinal);
     handleClose();
 
@@ -120,7 +131,7 @@ const AddGoalModal = (props) => {
         Add a Goal
       </Button>
 
-      <Modal show={show} onHide={handleClose} className="addtaskmodal">
+      <Modal show={show} onHide={handleClose} className="addtaskmodal" centered>
         <Modal.Header closeButton>
           <Modal.Title>Add Goal</Modal.Title>
         </Modal.Header>
@@ -179,7 +190,7 @@ const AddGoalModal = (props) => {
                   type="text"
                   min="0"
                   placeholder="Ex. Chapter 1"
-                  onChange={(e) => handleInput(e, "subtask1")}
+                  onChange={(e) => handleSubInput(e, "subtask1")}
                 />
                 <div type="button" onClick={(e) => formAdd()}>
                   <FaPlus size={22} className="mt-1 mr-3" />
@@ -200,7 +211,7 @@ const AddGoalModal = (props) => {
                     type="text"
                     min="0"
                     placeholder={"Ex. Chapter " + (i + 2)}
-                    onChange={(e) => handleInput(e, "subtask" + (i + 2))}
+                    onChange={(e) => handleSubInput(e, "subtask" + (i + 2))}
                   />
                 </div>
               ))}

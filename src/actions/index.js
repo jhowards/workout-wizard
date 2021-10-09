@@ -42,3 +42,8 @@ export const removeDateAction = (i) => ({
   type: "REMOVE_DATE",
   payload: i,
 });
+
+export const goalCompletionAction = (goal) => ({
+  type: "GOAL_COMPLETION",
+  payload: goal,
+});

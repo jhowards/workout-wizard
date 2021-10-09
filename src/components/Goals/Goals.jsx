@@ -11,7 +11,11 @@ import {
 } from "react-bootstrap";
 import { connect } from "react-redux";
 import AddGoalModal from "./AddGoalModal";
-import { removeGoalAction } from "../../actions";
+import { removeGoalAction, goalCompletionAction } from "../../actions";
+import "antd/dist/antd.css";
+import { Steps } from "antd";
+import { useState } from "react";
+import EditGoalModal from "./EditGoalModal";
 
 const mapStateToProps = (state) => ({
   goals: state.goals,
@@ -19,9 +23,27 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   removeGoal: (id) => dispatch(removeGoalAction(id)),
+  setGoalCompletion: (goal) => dispatch(goalCompletionAction(goal)),
 });
 
 const Goals = (props) => {
+  let selected = false;
+
+  const setCurrentSub = (i, goal) => {
+    if (i === 0) {
+      if (selected === true) {
+        props.setGoalCompletion({ id: goal.id, count: -1 });
+        selected = false;
+      } else {
+        props.setGoalCompletion({ id: goal.id, count: i });
+      }
+      selected = true;
+    } else {
+      props.setGoalCompletion({ id: goal.id, count: i });
+    }
+  };
+
+  const { Step } = Steps;
   let completedGoalsArray = props.goals.filter((el) => el.completed === true);
   const arrlength = completedGoalsArray.length;
   return (
@@ -30,7 +52,7 @@ const Goals = (props) => {
       <div className="h-100 w-100 schedule_mainbody py-lg-3 px-lg-5">
         <Container className="schedule_container_large">
           <div className="goals_header text-center mb-3">
-            <h1>Goals</h1>
+            <h1 className="mb-2">Goals</h1>
             <hr className="linebreak mb-3" />
             <div className="goals_headings d-flex flex-row justify-content-between mx-5">
               <div className="d-flex flex-row justify-content-between w-25 mx-1 ">
@@ -74,11 +96,35 @@ const Goals = (props) => {
                       <Accordion.Collapse eventKey="0">
                         <Card.Body>
                           {" "}
-                          <Button className="schedule_activeschedule_headings_autoschedule px-3 py-2 mb-1 mr-3">
+                          <Button className="schedule_activeschedule_headings_autoschedule px-3 py-2 mb-3 mr-3">
                             Add Subtask
                           </Button>
-                          <Button className="schedule_activeschedule_headings_autoschedule px-3 py-2 mb-1 mr-3">
-                            Edit Goal
+                          <Steps
+                            direction="vertical"
+                            current={goal.count}
+                            status="finish"
+                          >
+                            {Object.entries(goal.subtasks).map(
+                              ([key, value], i) => (
+                                <Step
+                                  key={i}
+                                  title={value}
+                                  value={key}
+                                  className="mb-3"
+                                  description="{}"
+                                  className="goals_goal_steps_step"
+                                  onClick={() => setCurrentSub(i, goal)}
+                                />
+                              )
+                            )}
+                          </Steps>
+                          <EditGoalModal />
+                          <Button
+                            variant="danger"
+                            className=" px-3 py-2 mb-1 mr-3"
+                            onClick={() => setCurrentSub(-1, goal)}
+                          >
+                            Reset Subtasks
                           </Button>
                           <Button
                             variant="danger"

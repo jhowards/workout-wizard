@@ -50,13 +50,13 @@
 }
 
 a {
-  text-decoration: inherit;
-  color: inherit;
+  text-decoration: inherit !important;
+  color: inherit !important;
 }
 
 a:hover {
-  text-decoration: inherit;
-  color: inherit;
+  text-decoration: inherit !important;
+  color: inherit !important;
 }
 
 .sidebar_bottomrow {

@@ -63,3 +63,18 @@
 .bg-007bff {
   background-color: #007bff !important;
 }
+
+.anticon svg {
+  vertical-align: unset;
+}
+
+.ant-steps-item-wait {
+  user-select: none;
+  cursor: pointer;
+}
+.ant-steps-item-icon {
+  cursor: pointer;
+}
+.ant-steps-item-description {
+  visibility: hidden;
+}
