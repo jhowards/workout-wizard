@@ -48,30 +48,30 @@ const NavBar = (props) => {
       <Navbar variant="dark" className="login_navbar pl-0" expand="lg">
         <Navbar.Toggle aria-controls="basic-navbar-nav mr-5" />
         <Navbar.Brand className="mr-0 navbar_logo ml-lg-4" href="/home">
-          <div className="navbar_logowrapper text-lg-center d-inline ml-lg-5">
-            Task Manager
+          <div className="navbar_logowrapper text-lg-center d-inline ml-lg-3">
+            Personal Daily Planner
           </div>
         </Navbar.Brand>
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto mt-2 ml-3">
-            <Nav.Link className="d-block d-md-none text-white" href="#home">
+            <Nav.Link className="d-block d-md-none text-white" href="/home">
               Home
             </Nav.Link>
-            <Nav.Link className="d-block d-md-none text-white" href="#">
+            <Nav.Link className="d-block d-md-none text-white" href="/schedule">
               Schedule
             </Nav.Link>
-            <Nav.Link className="d-block d-md-none text-white" href="#">
+            <Nav.Link className="d-block d-md-none text-white" href="/calendar">
               Calendar
             </Nav.Link>
-            <Nav.Link className="d-block d-md-none text-white" href="#">
+            <Nav.Link className="d-block d-md-none text-white" href="/dailies">
               Dailies
             </Nav.Link>
-            <Nav.Link className="d-block d-md-none text-white" href="#">
+            <Nav.Link className="d-block d-md-none text-white" href="/goals">
               Goals
             </Nav.Link>
             <hr className="linebreak my-2" />
-            <Nav.Link className="d-block d-md-none text-white" href="#">
+            <Nav.Link className="d-block d-md-none text-white" href="/settings">
               Settings
             </Nav.Link>
             <Nav.Link className="d-block d-md-none text-white" href="#">
