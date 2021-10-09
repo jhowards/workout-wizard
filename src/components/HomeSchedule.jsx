@@ -17,7 +17,11 @@ const HomeSchedule = (props) => {
   let todaysDateArray = props.tasks.filter(
     (el) => el.date === formatCurrentDate
   );
-  const arrlength = todaysDateArray.length;
+  // let sortedArray = todaysDateArray.sort((a, b) => {
+  //   return b.archived - a.archived;
+  // });
+  let removeArchived = props.tasks.filter((el) => el.archived === false);
+  const arrlength = removeArchived.length;
   return (
     <Card.Body className="h-100 ml-4">
       <Card.Title className="home_schedule_todaytext">
@@ -29,7 +33,7 @@ const HomeSchedule = (props) => {
       </Card.Text>
       <div className="d-flex flex-column">
         {props.tasks
-          ? props.tasks.map((task, i) =>
+          ? removeArchived.map((task, i) =>
               task.date === formatCurrentDate ? (
                 <Row className="mx-0 rowborder mb-4" key={task.id}>
                   <Col xs={1}>
@@ -55,7 +59,7 @@ const HomeSchedule = (props) => {
                           )}
                         </s>
                         <s className="home_schedule_tasks_timetext ml-2 mb-0 d-block">
-                          7:20 AM
+                          {task.starttime} {"->"} {task.endtime}
                         </s>
                       </>
                     ) : (
@@ -71,7 +75,7 @@ const HomeSchedule = (props) => {
                           )}
                         </p>
                         <p className="home_schedule_tasks_timetext ml-2 mb-0">
-                          7:20 AM
+                          {task.starttime} {"->"} {task.endtime}
                         </p>
                       </>
                     )}
