@@ -57,7 +57,7 @@ const SideBar = () => {
             </li>
             <li className="mt-3">
               <NavLink
-                to="/dailies"
+                to="/routines"
                 className="sidebar_navlink"
                 activeClassName="sidebar_navlink_active"
               >
@@ -65,7 +65,7 @@ const SideBar = () => {
                   size={32}
                   className="sidebar_navlink_icon mr-3 text-white"
                 />
-                <span className="sidebar_navlink_textalign">Dailies</span>
+                <span className="sidebar_navlink_textalign">Routines</span>
               </NavLink>
             </li>
             <li className="mt-3">

@@ -64,8 +64,8 @@ const NavBar = (props) => {
             <Nav.Link className="d-block d-md-none text-white" href="/calendar">
               Calendar
             </Nav.Link>
-            <Nav.Link className="d-block d-md-none text-white" href="/dailies">
-              Dailies
+            <Nav.Link className="d-block d-md-none text-white" href="/routines">
+              Routines
             </Nav.Link>
             <Nav.Link className="d-block d-md-none text-white" href="/goals">
               Goals
