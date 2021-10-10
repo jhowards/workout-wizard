@@ -47,3 +47,8 @@ export const goalCompletionAction = (goal) => ({
   type: "GOAL_COMPLETION",
   payload: goal,
 });
+
+export const editGoalAction = (goalToEdit) => ({
+  type: "EDIT_GOAL",
+  payload: goalToEdit,
+});

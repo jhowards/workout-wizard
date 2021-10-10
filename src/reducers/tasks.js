@@ -77,26 +77,63 @@ const tasksReducer = (state = initialState, action) => {
       };
 
     case "GOAL_COMPLETION":
-      const editgoalindex = state.goals.findIndex(
+      const goalcompleteindex = state.goals.findIndex(
         (goal) => goal.id == action.payload.id
       );
       const subtasksamount = Object.keys(
-        state.goals[editgoalindex].subtasks
+        state.goals[goalcompleteindex].subtasks
       ).length;
       let percent = 100 / subtasksamount;
-      const newArrayGoalEdit = [...state.goals];
+      const completeGoalArray = [...state.goals];
 
       for (let i = -1; i < subtasksamount; i++) {
         if (action.payload.count === i) {
           let percentToSet = percent * (i + 1);
-          newArrayGoalEdit[editgoalindex].percentage = percentToSet;
+          completeGoalArray[goalcompleteindex].percentage = percentToSet;
+          if (percentToSet === 100) {
+            completeGoalArray[goalcompleteindex].completed = true;
+          } else {
+            completeGoalArray[goalcompleteindex].completed = false;
+          }
         }
       }
-      newArrayGoalEdit[editgoalindex].count = action.payload.count;
+      completeGoalArray[goalcompleteindex].count = action.payload.count;
 
       return {
         ...state,
-        goals: newArrayGoalEdit,
+        goals: completeGoalArray,
+      };
+
+    case "EDIT_GOAL":
+      const editgoalindex = state.goals.findIndex(
+        (goal) => goal.id == action.payload.id
+      );
+      const goalArrayEdit = [...state.goals];
+      goalArrayEdit[editgoalindex].goal = action.payload.goal;
+      goalArrayEdit[editgoalindex].tag = action.payload.tag;
+      goalArrayEdit[editgoalindex].enddate = action.payload.enddate;
+      goalArrayEdit[editgoalindex].subtasks = action.payload.subtasks;
+      const subtasksamountedit = Object.keys(
+        goalArrayEdit[editgoalindex].subtasks
+      ).length;
+      let editpercent = 100 / subtasksamountedit;
+
+      for (let i = -1; i < subtasksamountedit; i++) {
+        if (goalArrayEdit[editgoalindex].count === i) {
+          let editpercentToSet = editpercent * (i + 1);
+          console.log(editpercentToSet);
+          goalArrayEdit[editgoalindex].percentage = editpercentToSet;
+          if (editpercentToSet === 100) {
+            goalArrayEdit[editgoalindex].completed = true;
+          } else {
+            goalArrayEdit[editgoalindex].completed = false;
+          }
+        }
+      }
+
+      return {
+        ...state,
+        goals: goalArrayEdit,
       };
 
     default:

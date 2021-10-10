@@ -78,3 +78,7 @@
 .ant-steps-item-description {
   visibility: hidden;
 }
+.goalcompleted {
+  border: 2px solid rgba(0, 255, 98, 0.89);
+  border-radius: 10px;
+}

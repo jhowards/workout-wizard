@@ -10,3 +10,9 @@
   background-color: rgba(0, 71, 255, 0.65);
   font-weight: 600;
 }
+
+.scheduleButton {
+  background-color: rgba(0, 71, 255, 0.65);
+  font-weight: 600;
+  width: 200px;
+}

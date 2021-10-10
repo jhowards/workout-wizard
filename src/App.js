@@ -12,7 +12,6 @@ import { useState } from "react";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 function App() {
   const [loggedin, setloggedin] = useState(true);
-
   return (
     <Router>
       <div className="App">
