@@ -88,9 +88,9 @@ const NavBar = (props) => {
           </Nav>
         </Navbar.Collapse>
         {/* <AiOutlineSearch /> */}
-        <Form inline className="mr-5 d-none d-md-block">
+        {/* <Form inline className="mr-5 d-none d-md-block">
           <FormControl type="text" placeholder={"Search"} className="mr-sm-2" />
-        </Form>
+        </Form> */}
         <IoMdNotificationsOutline
           size={28}
           className="mr-4 d-none d-md-block"
@@ -108,7 +108,9 @@ const NavBar = (props) => {
           </Dropdown.Toggle>
 
           <Dropdown.Menu as={CustomMenu} className="mt-1 pb-0">
-            <Dropdown.Item eventKey="1">Settings</Dropdown.Item>
+            <Dropdown.Item href="/settings" eventKey="1">
+              Settings
+            </Dropdown.Item>
             <Dropdown.Item onClick={() => props.sendLogout()} eventKey="2">
               Sign Out
             </Dropdown.Item>
