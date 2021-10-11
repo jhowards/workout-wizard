@@ -60,12 +60,10 @@ a:hover {
 }
 
 .sidebar_bottomrow {
-  position: relative;
-}
-
-.sidebar_leftarrow {
   position: absolute;
-  right: 5px;
+  bottom: 2%;
+  left: 1%;
+  width: 250px;
 }
 
 .sidebar_navlink_active {

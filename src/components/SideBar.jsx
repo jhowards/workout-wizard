@@ -83,7 +83,7 @@ const SideBar = () => {
             </li>
           </ul>
         </nav>
-        <span className="sidebar_bottomrow">
+        <span className="sidebar_bottomrow d-flex flex-row justify-content-between">
           <Link to="/settings">
             <IoSettingsSharp size={38} className="text-white ml-4 mb-4" />
           </Link>
