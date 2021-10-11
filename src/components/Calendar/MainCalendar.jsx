@@ -45,14 +45,16 @@ const MainCalendar = (props) => {
   console.log(tasksArray);
 
   return (
-    <div className="d-flex h-100">
+    <div className="d-flex h-100 mainwrapper">
       <SideBar />
-      <div className="h-100 w-100 schedule_mainbody py-lg-3 px-lg-5 bg-light">
-        <Calendar
-          onClickEvent={(event) => moveToSchedule(event)}
-          events={tasksArray}
-          className="calendartest h-100 w-100"
-        />
+      <div className="h-100 w-100 schedule_mainbody py-lg-3 bg-light">
+        <div className="mx-lg-5">
+          <Calendar
+            onClickEvent={(event) => moveToSchedule(event)}
+            events={tasksArray}
+            className="calendartest h-100 w-100 "
+          />
+        </div>
       </div>
     </div>
   );

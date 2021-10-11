@@ -10,15 +10,8 @@ html {
 
 body {
   height: 100%;
-  overflow: hidden;
+  overflow: auto;
 }
-/* 
-@media only screen and (max-width: 600px) {
-  body {
-    background-color: red;
-    overflow: auto;
-  }
-} */
 
 div#root {
   height: 100%;
@@ -27,6 +20,7 @@ div#root {
 .App {
   display: flex;
   flex-direction: column;
+  height: 100vh !important;
 }
 
 .navbar-toggler {
@@ -35,6 +29,10 @@ div#root {
 
 .navbar {
   font-family: "Lexend", sans-serif;
+  position: fixed !important;
+  width: 100%;
+  height: 57px;
+  z-index: 10;
 }
 
 .navbar_logowrapper {
@@ -61,4 +59,8 @@ div#root {
 .navbar_profilesection:hover {
   background-color: rgba(47, 70, 119, 0.513);
   cursor: pointer;
+}
+
+.mainwrapper {
+  padding-top: 57px;
 }

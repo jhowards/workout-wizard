@@ -1,7 +1,12 @@
 .home_mainbody {
   font-family: "Lexend", sans-serif;
   /* padding: 20px 50px 20px 50px; */
-  overflow: auto;
+}
+
+@media only screen and (min-width: 992px) {
+  .home_mainbody {
+    padding-left: 300px !important;
+  }
 }
 
 .home_dailyheader {
@@ -94,6 +99,10 @@
   font-size: 12px;
   line-height: 10px;
   color: #000000;
+}
+
+.homeschedule_card_overflow {
+  overflow: auto;
 }
 
 .home_goals_goaltext {

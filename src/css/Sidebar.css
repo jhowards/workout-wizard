@@ -3,6 +3,9 @@
   width: 300px;
   padding-top: 0px !important;
   background-color: #17325d;
+  position: fixed;
+  overflow: auto;
+  overflow-x: hidden;
 }
 
 .linebreak {
@@ -42,7 +45,7 @@
 
 .sidebar_navlink:hover {
   background-color: #304c79;
-  color: white;
+  color: white !important;
 }
 
 .sidebar_navlink_textalign {
@@ -61,12 +64,12 @@ a:hover {
 
 .sidebar_bottomrow {
   position: absolute;
-  bottom: 2%;
-  left: 1%;
+  bottom: 60px;
+  left: 8%;
   width: 250px;
 }
 
 .sidebar_navlink_active {
   background-color: #275092;
-  color: white;
+  color: white !important;
 }

@@ -47,9 +47,9 @@ const Goals = (props) => {
   let completedGoalsArray = props.goals.filter((el) => el.completed === true);
   const arrlength = completedGoalsArray.length;
   return (
-    <div className="d-flex h-100">
+    <div className="d-flex h-100 mainwrapper">
       <SideBar />
-      <div className="h-100 w-100 schedule_mainbody py-lg-3 px-lg-5">
+      <div className="h-100 w-100 schedule_mainbody py-lg-3">
         <Container className="schedule_container_large">
           <div className="goals_header text-center mb-3">
             <h1 className="mb-2">Goals</h1>
@@ -93,7 +93,7 @@ const Goals = (props) => {
                                 striped
                                 variant={goal.colour}
                                 now={goal.percentage}
-                                label={`${goal.percentage}%`}
+                                label={`${Math.round(goal.percentage)}%`}
                               />
                             </div>
                           </Accordion.Toggle>
@@ -167,7 +167,7 @@ const Goals = (props) => {
                                 striped
                                 variant={goal.colour}
                                 now={goal.percentage}
-                                label={`${goal.percentage}%`}
+                                label={`${Math.round(goal.percentage)}%`}
                               />
                             </div>
                           </Accordion.Toggle>

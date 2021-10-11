@@ -58,13 +58,13 @@ const Home = (props) => {
   };
 
   return (
-    <div className="d-flex h-100">
+    <div className="d-flex h-100 mainwrapper">
       <SideBar />
       <div className="h-100 w-100 home_mainbody py-md-3 px-md-5">
-        <Row xs={1} lg={2} className="g-2 h-100">
+        <Row xs={1} lg={2} className="g-2 h-100 pl-lg-5">
           <Col className="px-4 d-flex flex-column h-100">
             <Card
-              className="home_dailyheader mb-3 mt-4"
+              className="home_dailyheader mb-3 mt-2"
               style={{ width: "100%" }}
             >
               <Card.Body>
@@ -97,7 +97,10 @@ const Home = (props) => {
               <span className="mr-2 home_timeperiod_text">Weekly</span>
               <span className="home_timeperiod_text">Monthly</span>
             </div> */}
-            <Card className="h-100 home_schedule" style={{ width: "100%" }}>
+            <Card
+              className=" h-100 home_schedule homeschedule_card_overflow"
+              style={{ width: "100%" }}
+            >
               <HomeSchedule />
             </Card>
             {/* <Button className="home_schedule_button mx-auto mt-3 mb-4">
@@ -106,7 +109,7 @@ const Home = (props) => {
           </Col>
           <Col className="px-4 d-flex flex-column h-100">
             <Card
-              className="mt-4 text-center home_calendar mb-4"
+              className="mt-2 text-center home_calendar mb-4"
               style={{ width: "100%", height: "50%" }}
             >
               <Card.Body>
@@ -175,7 +178,7 @@ const Home = (props) => {
                             >
                               <CircularProgressbar
                                 value={goal.percentage}
-                                text={`${goal.percentage}%`}
+                                text={`${Math.round(goal.percentage)}%`}
                                 styles={{
                                   path: { stroke: "#" + goal.colour },
                                 }}

@@ -11,9 +11,9 @@ const mapDispatchToProps = (dispatch) => ({});
 
 const Routines = () => {
   return (
-    <div className="d-flex h-100">
+    <div className="d-flex h-100 mainwrapper">
       <SideBar />
-      <div className="h-100 w-100 schedule_mainbody py-lg-3 px-lg-5">
+      <div className="h-100 w-100 schedule_mainbody py-lg-3 ">
         <Container className="schedule_container_large">
           <div className="goals_header text-center mb-3">
             <h1 className="mb-2">Routines</h1>
