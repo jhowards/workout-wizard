@@ -50,7 +50,7 @@ const Schedule = (props) => {
               </div>
               <div>
                 <AddTaskModal activeDate={activeDate} />
-                <AutoSchedule />
+                <AutoSchedule activeDate={activeDate} />
               </div>
             </div>
 

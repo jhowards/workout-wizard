@@ -10,7 +10,7 @@ const tasksReducer = (state = initialState, action) => {
 
     case "EDIT_TASK":
       const editindex = state.tasks.findIndex(
-        (task) => task.id == action.payload.id
+        (task) => task.id === action.payload.id
       );
       const newArrayEdit = [...state.tasks];
       newArrayEdit[editindex].task = action.payload.task;
@@ -28,7 +28,7 @@ const tasksReducer = (state = initialState, action) => {
       };
 
     case "SET_TASK_ARCHIVED":
-      const index = state.tasks.findIndex((task) => task.id == action.payload);
+      const index = state.tasks.findIndex((task) => task.id === action.payload);
       const newArray = [...state.tasks];
       if (newArray[index].archived) {
         newArray[index].archived = false;
@@ -78,7 +78,7 @@ const tasksReducer = (state = initialState, action) => {
 
     case "GOAL_COMPLETION":
       const goalcompleteindex = state.goals.findIndex(
-        (goal) => goal.id == action.payload.id
+        (goal) => goal.id === action.payload.id
       );
       const subtasksamount = Object.keys(
         state.goals[goalcompleteindex].subtasks
@@ -106,7 +106,7 @@ const tasksReducer = (state = initialState, action) => {
 
     case "EDIT_GOAL":
       const editgoalindex = state.goals.findIndex(
-        (goal) => goal.id == action.payload.id
+        (goal) => goal.id === action.payload.id
       );
       const goalArrayEdit = [...state.goals];
       goalArrayEdit[editgoalindex].goal = action.payload.goal;

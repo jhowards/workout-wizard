@@ -32,6 +32,8 @@ const Tasks = (props) => {
     if (!result.destination) return;
     const items = Array.from(props.tasks);
     const [reorderedItem] = items.splice(result.source.index, 1);
+    reorderedItem.starttime = "----";
+    reorderedItem.endtime = "";
     items.splice(result.destination.index, 0, reorderedItem);
     props.reorderTasks(items);
   }

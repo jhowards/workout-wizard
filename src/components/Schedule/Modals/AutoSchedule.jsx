@@ -13,8 +13,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({});
 
 const AutoSchedule = (props) => {
-  const [value, onChange] = useState("10:00");
-
+  const [startTime, setstartTime] = useState(new Date());
+  const [endTime, setendTime] = useState(new Date());
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -24,11 +24,18 @@ const AutoSchedule = (props) => {
     setShow(true);
   };
 
-  const handleInput = (value) => {
-    console.log(value);
+  const handleStartInput = (value) => {
+    setstartTime(value._d);
   };
 
-  const handleSubmit = async () => {};
+  const handleEndInput = (value) => {
+    setendTime(value._d);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   const timeformat = "HH:mm";
   return (
     <>
@@ -45,7 +52,7 @@ const AutoSchedule = (props) => {
         </Modal.Header>
         <Modal.Body>
           <Form
-            id="addTaskForm"
+            id="autoScheduleForm"
             onSubmit={handleSubmit}
             className="text-center"
           >
@@ -58,6 +65,7 @@ const AutoSchedule = (props) => {
                 format={timeformat}
                 allowClear={false}
                 className="w-25"
+                onChange={(time) => handleStartInput(time)}
               />
             </Form.Group>
             <Form.Group className="mb-2">
@@ -69,6 +77,7 @@ const AutoSchedule = (props) => {
                 format={timeformat}
                 allowClear={false}
                 className="w-25"
+                onChange={(time) => handleEndInput(time)}
               />
             </Form.Group>
           </Form>
@@ -77,7 +86,7 @@ const AutoSchedule = (props) => {
           <Button
             className="scheduleButton mx-auto"
             type="submit"
-            form="addTaskForm"
+            form="autoScheduleForm"
           >
             Schedule
           </Button>

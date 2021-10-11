@@ -66,7 +66,7 @@ const EditTaskModal = (props) => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     let hourstomins = null;
     let minutes = null;
