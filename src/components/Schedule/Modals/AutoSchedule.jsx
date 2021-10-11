@@ -19,15 +19,24 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const AutoSchedule = (props) => {
+  const currenttime = new Date();
   let defaultEnd = new Date();
   defaultEnd.setHours(23);
   defaultEnd.setMinutes(59);
   defaultEnd.setSeconds(0);
+  let startDatecheck = new Date();
+  if (currenttime.toDateString() === props.activeDate.toDateString()) {
+    startDatecheck = new Date();
+  } else {
+    startDatecheck = new Date();
+    startDatecheck.setHours(9);
+    startDatecheck.setMinutes(0);
+    startDatecheck.setSeconds(0);
+  }
 
-  const currenttime = new Date();
   const formatcurrenttime = format(currenttime, "HH:mm");
 
-  const [startTime, setstartTime] = useState(new Date());
+  const [startTime, setstartTime] = useState(startDatecheck);
   const [endTime, setendTime] = useState(defaultEnd);
   const [show, setShow] = useState(false);
 
@@ -36,6 +45,7 @@ const AutoSchedule = (props) => {
   };
   const handleShow = () => {
     setShow(true);
+    setstartTime(startDatecheck);
   };
 
   const handleStartInput = (value) => {
@@ -48,9 +58,12 @@ const AutoSchedule = (props) => {
 
   const disabledHoursSelect = () => {
     var hours = [];
-    for (var i = 0; i < moment().hour(); i++) {
-      hours.push(i);
+    if (currenttime.toDateString() === props.activeDate.toDateString()) {
+      for (var i = 0; i < moment().hour(); i++) {
+        hours.push(i);
+      }
     }
+
     return hours;
   };
 
@@ -123,7 +136,7 @@ const AutoSchedule = (props) => {
                 <small className="auto_timepicker_label">Start Time:</small>
               </Form.Label>
               <TimePicker
-                defaultValue={moment(new Date(), timeformat)}
+                defaultValue={moment(startDatecheck, timeformat)}
                 format={timeformat}
                 allowClear={false}
                 className="w-25"

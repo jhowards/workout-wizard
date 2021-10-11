@@ -95,6 +95,7 @@ const AddTaskModal = (props) => {
           duration: fullduration,
           starttime: "",
           endtime: "",
+          staticTime: false,
           active: false,
           date: formatDate,
         };
