@@ -24,6 +24,9 @@ const AutoSchedule = (props) => {
   defaultEnd.setMinutes(59);
   defaultEnd.setSeconds(0);
 
+  const currenttime = new Date();
+  const formatcurrenttime = format(currenttime, "HH:mm");
+
   const [startTime, setstartTime] = useState(new Date());
   const [endTime, setendTime] = useState(defaultEnd);
   const [show, setShow] = useState(false);
@@ -43,6 +46,24 @@ const AutoSchedule = (props) => {
     setendTime(value._d);
   };
 
+  const disabledHoursSelect = () => {
+    var hours = [];
+    for (var i = 0; i < moment().hour(); i++) {
+      hours.push(i);
+    }
+    return hours;
+  };
+
+  const disabledMinutesSelect = (selectedHour) => {
+    var minutes = [];
+    if (selectedHour === moment().hour()) {
+      for (var i = 0; i < moment().minute(); i++) {
+        minutes.push(i);
+      }
+    }
+    return minutes;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let formatCurrentDate = format(props.activeDate, "P");
@@ -55,17 +76,21 @@ const AutoSchedule = (props) => {
     let count = 0;
     for (let i = 0; i < items.length; i++) {
       if (items[i].date === formatCurrentDate) {
-        if (count === 0) {
-          // if(items[i].starttime === "----")
-          items[i].starttime = formatstarttime;
-          newTime = addMinutes(newTime, items[i].duration);
-          items[i].endtime = format(newTime, "HH:mm");
-          items[i].active = true;
-          count++;
-        } else {
-          items[i].starttime = format(newTime, "HH:mm");
-          newTime = addMinutes(newTime, items[i].duration);
-          items[i].endtime = format(newTime, "HH:mm");
+        // -- ONLY SELECTED DATE --
+        if (items[i].archived === false) {
+          // -- ONLY TASKS THAT AREN'T ARCHIVED --
+          if (count === 0) {
+            // if(items[i].starttime === "----")
+            items[i].starttime = formatstarttime;
+            newTime = addMinutes(newTime, items[i].duration);
+            items[i].endtime = format(newTime, "HH:mm");
+            items[i].active = true;
+            count++;
+          } else {
+            items[i].starttime = format(newTime, "HH:mm");
+            newTime = addMinutes(newTime, items[i].duration);
+            items[i].endtime = format(newTime, "HH:mm");
+          }
         }
       }
     }
@@ -102,7 +127,12 @@ const AutoSchedule = (props) => {
                 format={timeformat}
                 allowClear={false}
                 className="w-25"
+                disabledHours={() => disabledHoursSelect()}
+                disabledMinutes={(selectedHour) => (
+                  selectedHour - 1, disabledMinutesSelect(selectedHour)
+                )}
                 onChange={(time) => handleStartInput(time)}
+                hideDisabledOptions={true}
               />
             </Form.Group>
             <Form.Group className="mb-2">
