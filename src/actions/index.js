@@ -23,6 +23,11 @@ export const reorderTaskAction = (taskToReorder) => ({
   payload: taskToReorder,
 });
 
+export const autoScheduleAction = (tasksToSchedule) => ({
+  type: "AUTO_SCHEDULE",
+  payload: tasksToSchedule,
+});
+
 export const addGoalAction = (goalToAdd) => ({
   type: "ADD_GOAL",
   payload: goalToAdd,

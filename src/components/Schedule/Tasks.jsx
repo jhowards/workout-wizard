@@ -24,15 +24,16 @@ const mapDispatchToProps = (dispatch) => ({
 
 const Tasks = (props) => {
   let formatCurrentDate = format(props.date, "P");
-  let currentDateArray = props.tasks.filter(
-    (el) => el.date === formatCurrentDate
-  );
+  // let currentDateArray = props.tasks.filter(
+  //   (el) => el.date === formatCurrentDate
+  // );
 
   function handleOnDragEnd(result) {
     if (!result.destination) return;
+    if (result.destination.index === result.source.index) return;
     const items = Array.from(props.tasks);
     const [reorderedItem] = items.splice(result.source.index, 1);
-    reorderedItem.starttime = "----";
+    reorderedItem.starttime = "";
     reorderedItem.endtime = "";
     items.splice(result.destination.index, 0, reorderedItem);
     props.reorderTasks(items);
@@ -123,14 +124,20 @@ const Tasks = (props) => {
                             className="schedule_activeschedule_body_times mt-3 pl-5 pr-0"
                           >
                             <div className="schedule_activeschedule_body_times_margins">
-                              <div>
-                                <p className="mb-0 schedule_activeschedule_body_times_largetime">
-                                  {task.starttime}
-                                </p>
-                                <p className="schedule_activeschedule_body_times_smalltime">
-                                  {task.endtime}
-                                </p>
-                              </div>
+                              {task.starttime === "" ? (
+                                <div className="schedule_activeschedule_nostart_box d-flex">
+                                  <div className="schedule_activeschedule_nostart_line my-auto"></div>
+                                </div>
+                              ) : (
+                                <div>
+                                  <p className="mb-0 schedule_activeschedule_body_times_largetime">
+                                    {task.starttime}
+                                  </p>
+                                  <p className="schedule_activeschedule_body_times_smalltime">
+                                    {task.endtime}
+                                  </p>
+                                </div>
+                              )}
                             </div>
                           </Col>
                           <Col
@@ -171,7 +178,7 @@ const Tasks = (props) => {
                                       ) : (
                                         <>
                                           {/* NOT DAILY TASKS*/}
-                                          <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-2">
+                                          <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-1">
                                             {task.task}
                                           </p>
                                           <p className="schedule_activeschedule_body_taskcontent_tasktimenodaily mt-2 mb-0">

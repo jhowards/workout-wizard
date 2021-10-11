@@ -12,6 +12,7 @@
   width: 60%;
   padding: 0;
   display: flex;
+  margin-bottom: 50px;
   flex-direction: column;
 }
 
@@ -116,6 +117,16 @@
   font-weight: 600;
   font-size: 14px;
   border: none;
+}
+
+.schedule_activeschedule_nostart_box {
+  height: 58px;
+}
+.schedule_activeschedule_nostart_line {
+  height: 4px;
+  width: 45px;
+  background-color: rgb(56, 56, 56);
+  border-radius: 15px;
 }
 
 .schedule_activeschedule_body {

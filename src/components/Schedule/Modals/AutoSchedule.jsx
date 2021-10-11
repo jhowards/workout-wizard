@@ -5,16 +5,27 @@ import "../../../css/Modals.css";
 import { connect } from "react-redux";
 import moment from "moment";
 import { TimePicker } from "antd";
+import format from "date-fns/format";
+import addMinutes from "date-fns/addMinutes";
+import { autoScheduleAction } from "../../../actions";
 
 const mapStateToProps = (state) => ({
   tasks: state.tasks,
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  autoScheduleTasks: (tasksToSchedule) =>
+    dispatch(autoScheduleAction(tasksToSchedule)),
+});
 
 const AutoSchedule = (props) => {
+  let defaultEnd = new Date();
+  defaultEnd.setHours(23);
+  defaultEnd.setMinutes(59);
+  defaultEnd.setSeconds(0);
+
   const [startTime, setstartTime] = useState(new Date());
-  const [endTime, setendTime] = useState(new Date());
+  const [endTime, setendTime] = useState(defaultEnd);
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -34,6 +45,32 @@ const AutoSchedule = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let formatCurrentDate = format(props.activeDate, "P");
+
+    let items = Array.from(props.tasks);
+
+    const formatstarttime = format(startTime, "HH:mm");
+
+    let newTime = startTime;
+    let count = 0;
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].date === formatCurrentDate) {
+        if (count === 0) {
+          // if(items[i].starttime === "----")
+          items[i].starttime = formatstarttime;
+          newTime = addMinutes(newTime, items[i].duration);
+          items[i].endtime = format(newTime, "HH:mm");
+          items[i].active = true;
+          count++;
+        } else {
+          items[i].starttime = format(newTime, "HH:mm");
+          newTime = addMinutes(newTime, items[i].duration);
+          items[i].endtime = format(newTime, "HH:mm");
+        }
+      }
+    }
+    props.autoScheduleTasks(items);
+    handleClose();
   };
 
   const timeformat = "HH:mm";
@@ -61,7 +98,7 @@ const AutoSchedule = (props) => {
                 <small className="auto_timepicker_label">Start Time:</small>
               </Form.Label>
               <TimePicker
-                defaultValue={moment("09:00", timeformat)}
+                defaultValue={moment(new Date(), timeformat)}
                 format={timeformat}
                 allowClear={false}
                 className="w-25"
@@ -73,7 +110,7 @@ const AutoSchedule = (props) => {
                 <small className="auto_timepicker_label">End Time:</small>
               </Form.Label>
               <TimePicker
-                defaultValue={moment("17:00", timeformat)}
+                defaultValue={moment("23:59", timeformat)}
                 format={timeformat}
                 allowClear={false}
                 className="w-25"

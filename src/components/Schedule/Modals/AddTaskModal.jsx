@@ -93,7 +93,7 @@ const AddTaskModal = (props) => {
           daily: false,
           task: taskToAdd.task,
           duration: fullduration,
-          starttime: "----",
+          starttime: "",
           endtime: "",
           active: false,
           date: formatDate,
