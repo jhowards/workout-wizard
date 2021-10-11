@@ -131,12 +131,25 @@ const Tasks = (props) => {
                                 </div>
                               ) : (
                                 <div>
-                                  <p className="mb-0 schedule_activeschedule_body_times_largetime">
-                                    {task.starttime}
-                                  </p>
-                                  <p className="schedule_activeschedule_body_times_smalltime">
-                                    {task.endtime}
-                                  </p>
+                                  {task.archived ? (
+                                    <>
+                                      <s className="mb-0 schedule_activeschedule_body_times_largetime d-block">
+                                        {task.starttime}
+                                      </s>
+                                      <s className="schedule_activeschedule_body_times_smalltime d-block">
+                                        {task.endtime}
+                                      </s>
+                                    </>
+                                  ) : (
+                                    <>
+                                      <p className="mb-0 schedule_activeschedule_body_times_largetime">
+                                        {task.starttime}
+                                      </p>
+                                      <p className="schedule_activeschedule_body_times_smalltime">
+                                        {task.endtime}
+                                      </p>
+                                    </>
+                                  )}
                                 </div>
                               )}
                             </div>

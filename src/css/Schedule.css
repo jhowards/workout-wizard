@@ -41,7 +41,7 @@
   position: absolute;
   right: 12%;
   top: 25%;
-  background: rgba(0, 71, 255, 0.65);
+  background: #17325d;
   border-radius: 12px;
   color: white;
   font-weight: 600;
@@ -163,7 +163,7 @@
 .schedule_activeschedule_body_taskcontent {
   width: 100%;
   height: 90px;
-  background: rgba(179, 179, 179, 0.26);
+  background: rgba(179, 179, 179, 0.5);
   border-radius: 16px;
 }
 
@@ -245,6 +245,10 @@
   left: 0;
   right: 0;
   text-align: center;
+}
+
+.schedule_activeschedule_body_taskcontent_normal {
+  background-color: white;
 }
 
 .schedule_activeschedule_body_taskcontent_dragging {
