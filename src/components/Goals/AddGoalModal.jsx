@@ -126,7 +126,7 @@ const AddGoalModal = (props) => {
     <>
       <Button
         onClick={handleShow}
-        className="schedule_activeschedule_headings_autoschedule px-3 py-2 mb-1 mr-3"
+        className="goals_addeditgoalbutton px-3 py-2 mb-1 mr-3"
       >
         <FaPlus
           size={20}

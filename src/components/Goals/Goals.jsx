@@ -127,14 +127,14 @@ const Goals = (props) => {
                               <EditGoalModal goalid={goal.id} />
                               <Button
                                 variant="danger"
-                                className=" px-3 py-2 mb-1 mr-3 w-25 mx-auto"
+                                className="goals_resetdeletegoalbutton px-3 py-2 mb-1 mr-3 w-25 mx-auto"
                                 onClick={() => setCurrentSub(-1, goal)}
                               >
                                 Reset Subtasks
                               </Button>
                               <Button
                                 variant="danger"
-                                className=" px-3 py-2 mb-1 mr-3 w-25 mx-auto"
+                                className="goals_resetdeletegoalbutton px-3 py-2 mb-1 mr-3 w-25 mx-auto"
                                 onClick={() => props.removeGoal(goal.id)}
                               >
                                 Delete Goal
@@ -200,15 +200,13 @@ const Goals = (props) => {
                               </div>
                               <EditGoalModal goalid={goal.id} />
                               <Button
-                                variant="danger"
-                                className=" px-3 py-2 mb-1 mr-3 w-25 mx-auto"
+                                className="px-3 py-2 mb-1 mr-3 w-25 mx-auto goals_resetdeletegoalbutton"
                                 onClick={() => setCurrentSub(-1, goal)}
                               >
                                 Reset Subtasks
                               </Button>
                               <Button
-                                variant="danger"
-                                className=" px-3 py-2 mb-1 mr-3 w-25 mx-auto"
+                                className="goals_resetdeletegoalbutton px-3 py-2 mb-1 mr-3 w-25 mx-auto"
                                 onClick={() => props.removeGoal(goal.id)}
                               >
                                 Delete Goal

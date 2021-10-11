@@ -4,11 +4,11 @@ import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "../css/Modals.css";
+import "../../../css/Modals.css";
 import { format } from "date-fns";
 
 import { connect } from "react-redux";
-import { addTaskAction } from "../actions";
+import { addTaskAction } from "../../../actions";
 
 const mapStateToProps = (state) => ({
   tasks: state.tasks,

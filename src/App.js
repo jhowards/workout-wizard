@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/NavBar";
 import Login from "./components/Login";
 import Home from "./components/Home";
-import Schedule from "./components/Schedule";
+import Schedule from "./components/Schedule/Schedule";
 import Routines from "./components/Routines/Routines";
 import Goals from "./components/Goals/Goals";
 import MainCalendar from "./components/Calendar/MainCalendar";

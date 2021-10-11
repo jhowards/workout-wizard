@@ -7,10 +7,10 @@ import {
   removeTaskAction,
   archiveTaskAction,
   reorderTaskAction,
-} from "../actions";
+} from "../../actions";
 import { format } from "date-fns";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import EditTaskModal from "./EditTaskModal";
+import EditTaskModal from "./Modals/EditTaskModal";
 
 const mapStateToProps = (state) => ({
   tasks: state.tasks,
@@ -316,7 +316,7 @@ const Tasks = (props) => {
                                           ) : (
                                             <>
                                               {/* NOT DAILY TASKS*/}
-                                              <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-2">
+                                              <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-1">
                                                 {task.task}
                                               </p>
                                               <p className="schedule_activeschedule_body_taskcontent_tasktimenodaily mt-2 mb-0">

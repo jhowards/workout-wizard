@@ -105,7 +105,7 @@ const EditGoalModal = (props) => {
     <>
       <Button
         onClick={handleShow}
-        className="schedule_activeschedule_headings_autoschedule px-3 py-2 mb-1 mr-3 w-25 mx-auto"
+        className="goals_addeditgoalbutton px-3 py-2 mb-1 mr-3 w-25 mx-auto"
       >
         Edit Goal
       </Button>

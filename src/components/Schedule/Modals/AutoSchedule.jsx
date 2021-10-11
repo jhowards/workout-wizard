@@ -1,9 +1,8 @@
 import React from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { useState } from "react";
-import "../../css/Modals.css";
+import "../../../css/Modals.css";
 import { connect } from "react-redux";
-import { addTaskAction } from "../../actions";
 import moment from "moment";
 import { TimePicker } from "antd";
 
@@ -11,9 +10,7 @@ const mapStateToProps = (state) => ({
   tasks: state.tasks,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  addTask: (taskToAdd) => dispatch(addTaskAction(taskToAdd)),
-});
+const mapDispatchToProps = (dispatch) => ({});
 
 const AutoSchedule = (props) => {
   const [value, onChange] = useState("10:00");

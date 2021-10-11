@@ -1,15 +1,15 @@
 import React from "react";
-import SideBar from "./SideBar";
-import "../css/Schedule.css";
-import { Container, Button } from "react-bootstrap";
+import SideBar from "../../components/SideBar";
+import "../../css/Schedule.css";
+import { Container } from "react-bootstrap";
 import { useState } from "react";
 import ScheduleHeadings from "./ScheduleHeadings";
-import AddTaskModal from "./AddTaskModal";
+import AddTaskModal from "./Modals/AddTaskModal";
 import Tasks from "./Tasks";
 import { connect } from "react-redux";
 import { useEffect } from "react";
-import { removeDateAction } from "../actions";
-import AutoSchedule from "./Schedule/AutoSchedule";
+import { removeDateAction } from "../../actions";
+import AutoSchedule from "./Modals/AutoSchedule";
 
 const mapStateToProps = (state) => ({
   date: state.homeCalendarDate,
