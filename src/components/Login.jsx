@@ -3,8 +3,18 @@ import { Form, Button } from "react-bootstrap";
 import "../css/Login.css";
 import googlelogo from "../images/googleicon.svg";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { loginAction } from "../actions";
 
-const Login = () => {
+const mapStateToProps = (state) => ({
+  loggedin: state.loggedIn,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  sendLogin: () => dispatch(loginAction()),
+});
+
+const Login = (props) => {
   return (
     <div className="login_window m-auto">
       <p className="mb-0">Welcome Back</p>
@@ -39,6 +49,7 @@ const Login = () => {
             className="w-100 mb-3 login_window_loginbtn"
             variant="success"
             type="submit"
+            onClick={() => props.sendLogin()}
           >
             Login now
           </Button>
@@ -63,4 +74,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

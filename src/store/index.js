@@ -8,6 +8,7 @@ export const initialState = {
   tasks: [],
   goals: [],
   homeCalendarDate: "",
+  loggedIn: false,
 };
 
 const persistConfig = {

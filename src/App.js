@@ -8,19 +8,30 @@ import Schedule from "./components/Schedule/Schedule";
 import Routines from "./components/Routines/Routines";
 import Goals from "./components/Goals/Goals";
 import MainCalendar from "./components/Calendar/MainCalendar";
-import { useState } from "react";
-
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-function App() {
-  const [loggedin, setloggedin] = useState(true);
+import { connect } from "react-redux";
+
+const mapStateToProps = (state) => ({
+  loggedin: state.loggedIn,
+});
+
+function App(props) {
   return (
     <Router>
       <div className="App">
-        <NavBar loggedin={true} />
-        <Route exact path="/">
-          // if loggedin true redirect to home
-          {<Redirect to="/login" />}
-        </Route>
+        <NavBar loggedin={props.loggedin} />
+        {props.loggedin ? (
+          <Route exact path="/">
+            // if loggedin true redirect to home
+            <Redirect to="/home" />
+          </Route>
+        ) : (
+          <Route exact path="*">
+            // if NOT loggedin true redirect to login
+            <Redirect to="/login" />
+          </Route>
+        )}
+
         <Route path="/login" component={Login} />
         <Route path="/home" component={Home} />
         <Route path="/schedule" component={Schedule} />
@@ -32,4 +43,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect(mapStateToProps)(App);

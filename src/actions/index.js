@@ -3,6 +3,14 @@ export const addTaskAction = (taskToAdd) => ({
   payload: taskToAdd,
 });
 
+export const loginAction = () => ({
+  type: "LOG_IN",
+});
+
+export const logoutAction = () => ({
+  type: "LOG_OUT",
+});
+
 export const archiveTaskAction = (taskToArchive) => ({
   type: "SET_TASK_ARCHIVED",
   payload: taskToArchive,
