@@ -9,6 +9,7 @@ import Tasks from "./Tasks";
 import { connect } from "react-redux";
 import { useEffect } from "react";
 import { removeDateAction } from "../actions";
+import AutoSchedule from "./Schedule/AutoSchedule";
 
 const mapStateToProps = (state) => ({
   date: state.homeCalendarDate,
@@ -49,9 +50,7 @@ const Schedule = (props) => {
               </div>
               <div>
                 <AddTaskModal activeDate={activeDate} />
-                <Button className="schedule_activeschedule_headings_autoschedule px-3 py-2 mr-5 mb-1">
-                  Auto Schedule
-                </Button>
+                <AutoSchedule />
               </div>
             </div>
 

@@ -10,6 +10,7 @@
     "bootstrap": "^4.6.0",
     "date-fns": "^2.24.0",
     "randomcolor": "^0.6.2",
+    "rc-time-picker-date-fns": "^3.2.8",
     "react": "^17.0.2",
     "react-awesome-calendar": "^1.0.14",
     "react-beautiful-dnd": "^13.1.0",

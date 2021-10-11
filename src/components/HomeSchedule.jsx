@@ -20,7 +20,8 @@ const HomeSchedule = (props) => {
   // let sortedArray = todaysDateArray.sort((a, b) => {
   //   return b.archived - a.archived;
   // });
-  let removeArchived = props.tasks.filter((el) => el.archived === false);
+  let removeArchived = todaysDateArray.filter((el) => el.archived === false);
+  console.log(removeArchived);
   const arrlength = removeArchived.length;
   return (
     <Card.Body className="h-100 ml-4">
