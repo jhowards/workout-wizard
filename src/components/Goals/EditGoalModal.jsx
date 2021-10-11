@@ -91,7 +91,7 @@ const EditGoalModal = (props) => {
     let goalToEditFinal = {
       id: goalDetails.id,
       goal: goalDetails.goal,
-      tag: goalDetails.goal,
+      tag: goalDetails.tag,
       enddate: formatDate,
       subtasks: selectedSubtasks,
     };
