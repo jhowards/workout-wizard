@@ -35,6 +35,7 @@ const Tasks = (props) => {
     const [reorderedItem] = items.splice(result.source.index, 1);
     reorderedItem.starttime = "";
     reorderedItem.endtime = "";
+    reorderedItem.active = false;
     items.splice(result.destination.index, 0, reorderedItem);
     props.reorderTasks(items);
   }
@@ -170,6 +171,9 @@ const Tasks = (props) => {
                                           </p>
                                           <p className="schedule_activeschedule_body_taskcontent_tasktimetext mt-0 mb-0">
                                             {durationConvert(task.duration)}
+                                            {task.endtime !== ""
+                                              ? " ->  " + task.endtime
+                                              : ""}
                                           </p>
                                           <p className="schedule_activeschedule_body_taskcontent_dailybadge text-center mt-1">
                                             Daily
@@ -183,6 +187,9 @@ const Tasks = (props) => {
                                           </p>
                                           <p className="schedule_activeschedule_body_taskcontent_tasktimenodaily mt-2 mb-0">
                                             {durationConvert(task.duration)}
+                                            {task.endtime !== ""
+                                              ? " ->  " + task.endtime
+                                              : ""}
                                           </p>
                                         </>
                                       )}
@@ -243,6 +250,9 @@ const Tasks = (props) => {
                                               </s>
                                               <s className="schedule_activeschedule_body_taskcontent_tasktimetext mt-0 mb-0 d-block">
                                                 {durationConvert(task.duration)}
+                                                {task.endtime !== ""
+                                                  ? " ->  " + task.endtime
+                                                  : ""}
                                               </s>
                                               <s className="schedule_activeschedule_body_taskcontent_dailybadge text-center mt-1 d-block">
                                                 Daily
@@ -251,11 +261,14 @@ const Tasks = (props) => {
                                           ) : (
                                             <>
                                               {/* NOT DAILY TASKS*/}
-                                              <s className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-2 d-block">
+                                              <s className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-1 d-block">
                                                 {task.task}
                                               </s>
                                               <s className="schedule_activeschedule_body_taskcontent_tasktimenodaily mt-2 mb-0 d-block">
                                                 {durationConvert(task.duration)}
+                                                {task.endtime !== ""
+                                                  ? " ->  " + task.endtime
+                                                  : ""}
                                               </s>
                                             </>
                                           )}
@@ -293,7 +306,7 @@ const Tasks = (props) => {
                                     <div className="schedule_activeschedule_body_taskcontent mb-3">
                                       {/* NOT ACTIVE OR ARCHIVED TASKS*/}
 
-                                      <Row className="mx-0 h-100 schedule_activeschedule_body_taskcontent_dragging">
+                                      <Row className="mx-0 h-100 schedule_activeschedule_body_taskcontent_dragging schedule_activeschedule_body_taskcontent_normal">
                                         <Col
                                           className="position-relative"
                                           xs={2}
@@ -317,6 +330,9 @@ const Tasks = (props) => {
                                               </p>
                                               <p className="schedule_activeschedule_body_taskcontent_tasktimetext mt-0 mb-0">
                                                 {durationConvert(task.duration)}
+                                                {task.endtime !== ""
+                                                  ? " ->  " + task.endtime
+                                                  : ""}
                                               </p>
                                               <p className="schedule_activeschedule_body_taskcontent_dailybadge text-center mt-1">
                                                 Daily
@@ -330,6 +346,9 @@ const Tasks = (props) => {
                                               </p>
                                               <p className="schedule_activeschedule_body_taskcontent_tasktimenodaily mt-2 mb-0">
                                                 {durationConvert(task.duration)}
+                                                {task.endtime !== ""
+                                                  ? " ->  " + task.endtime
+                                                  : ""}
                                               </p>
                                             </>
                                           )}

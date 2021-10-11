@@ -35,7 +35,7 @@ const Schedule = (props) => {
     <div className="d-flex h-100 mainwrapper">
       <SideBar />
       <div className="h-100 w-100 schedule_mainbody py-lg-3 ">
-        <Container className="schedule_container_large px-3 h-100">
+        <Container className="schedule_container_large px-3">
           <ScheduleHeadings
             activeDate={activeDate}
             setactiveDate={setactiveDate}

@@ -17,7 +17,7 @@ const ScheduleHeadings = ({ todaysDate, activeDate, setactiveDate }) => {
     <>
       <div className="schedule_heading text-center mt-3 mb-2">
         <p className="schedule_weekday mb-0">{format(activeDate, "EEEE")}</p>
-        <p className="schedule_headingdate">
+        <p className="schedule_headingdate mb-1">
           {format(activeDate, "do LLLL yyyy")}
         </p>
         {todaysDate.toDateString() === activeDate.toDateString() ? (
