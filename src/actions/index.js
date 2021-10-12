@@ -65,3 +65,8 @@ export const editGoalAction = (goalToEdit) => ({
   type: "EDIT_GOAL",
   payload: goalToEdit,
 });
+
+export const addRoutineAction = (routineToAdd) => ({
+  type: "ADD_ROUTINE",
+  payload: routineToAdd,
+});

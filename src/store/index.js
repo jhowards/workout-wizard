@@ -7,6 +7,7 @@ import { encryptTransform } from "redux-persist-transform-encrypt";
 export const initialState = {
   tasks: [],
   goals: [],
+  routines: [],
   homeCalendarDate: "",
   loggedIn: false,
 };

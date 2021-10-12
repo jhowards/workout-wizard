@@ -188,8 +188,8 @@ const Tasks = (props) => {
                                               ? " ->  " + task.endtime
                                               : ""}
                                           </p>
-                                          <p className="schedule_activeschedule_body_taskcontent_dailybadge text-center mt-1">
-                                            Daily
+                                          <p className="schedule_activeschedule_body_taskcontent_routinebadge text-center mt-1">
+                                            Routine
                                           </p>
                                         </>
                                       ) : (
@@ -267,8 +267,8 @@ const Tasks = (props) => {
                                                   ? " ->  " + task.endtime
                                                   : ""}
                                               </s>
-                                              <s className="schedule_activeschedule_body_taskcontent_dailybadge text-center mt-1 d-block">
-                                                Daily
+                                              <s className="schedule_activeschedule_body_taskcontent_routinebadge text-center mt-1 d-block">
+                                                Routine
                                               </s>
                                             </>
                                           ) : (
@@ -347,8 +347,8 @@ const Tasks = (props) => {
                                                   ? " ->  " + task.endtime
                                                   : ""}
                                               </p>
-                                              <p className="schedule_activeschedule_body_taskcontent_dailybadge text-center mt-1">
-                                                Daily
+                                              <p className="schedule_activeschedule_body_taskcontent_routinebadge text-center mt-1">
+                                                Routine
                                               </p>
                                             </>
                                           ) : (

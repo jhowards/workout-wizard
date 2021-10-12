@@ -190,8 +190,17 @@
   font-size: 15px;
 }
 
-.schedule_activeschedule_body_taskcontent_dailybadge {
+.schedule_activeschedule_body_taskcontent_routinebadge {
   background: rgba(0, 71, 255, 0.65);
+  border-radius: 12px;
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  width: 60px;
+}
+
+.schedule_activeschedule_body_taskcontent_dailybadge {
+  background: rgba(255, 0, 234, 0.65);
   border-radius: 12px;
   color: white;
   font-weight: 600;

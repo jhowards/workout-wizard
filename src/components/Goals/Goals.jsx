@@ -14,7 +14,6 @@ import AddGoalModal from "./AddGoalModal";
 import { removeGoalAction, goalCompletionAction } from "../../actions";
 import "antd/dist/antd.css";
 import { Steps } from "antd";
-import { useState } from "react";
 import EditGoalModal from "./EditGoalModal";
 
 const mapStateToProps = (state) => ({
@@ -44,7 +43,7 @@ const Goals = (props) => {
   };
 
   const { Step } = Steps;
-  let completedGoalsArray = props.goals.filter((el) => el.completed === true);
+  const completedGoalsArray = props.goals.filter((el) => el.completed === true);
   const arrlength = completedGoalsArray.length;
   return (
     <div className="d-flex h-100 mainwrapper">

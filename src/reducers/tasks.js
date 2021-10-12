@@ -154,6 +154,12 @@ const tasksReducer = (state = initialState, action) => {
         goals: goalArrayEdit,
       };
 
+    case "ADD_ROUTINE":
+      return {
+        ...state,
+        routines: [...state.routines, action.payload],
+      };
+
     default:
       return state;
   }
