@@ -64,3 +64,9 @@ div#root {
 .mainwrapper {
   padding-top: 57px;
 }
+
+.about_profilephoto {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}

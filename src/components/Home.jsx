@@ -80,7 +80,7 @@ const Home = (props) => {
                       <Greeting />
                     </Card.Title>
                     <Card.Text className="home_dailyheader_taskstext lead">
-                      You've got{" "}
+                      You have{" "}
                       <span className="home_dailyheader_taskstextcolor">
                         {arrlength}
                       </span>{" "}

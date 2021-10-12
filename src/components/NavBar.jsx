@@ -111,7 +111,10 @@ const NavBar = (props) => {
             <Dropdown.Item href="/settings" eventKey="1">
               Settings
             </Dropdown.Item>
-            <Dropdown.Item onClick={() => props.sendLogout()} eventKey="2">
+            <Dropdown.Item href="/about" eventKey="2">
+              About
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => props.sendLogout()} eventKey="3">
               Sign Out
             </Dropdown.Item>
           </Dropdown.Menu>

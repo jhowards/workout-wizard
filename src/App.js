@@ -10,6 +10,8 @@ import Goals from "./components/Goals/Goals";
 import MainCalendar from "./components/Calendar/MainCalendar";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import About from "./components/About";
+import Intro from "./components/Intro";
 
 const mapStateToProps = (state) => ({
   loggedin: state.loggedIn,
@@ -37,7 +39,9 @@ function App(props) {
         <Route path="/schedule" component={Schedule} />
         <Route path="/calendar" component={MainCalendar} />
         <Route path="/routines" component={Routines} />
+        <Route path="/about" component={About} />
         <Route path="/goals" component={Goals} />
+        <Route path="/intro" component={Intro} />
       </div>
     </Router>
   );
