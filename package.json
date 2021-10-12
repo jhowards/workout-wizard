@@ -8,7 +8,7 @@
     "@testing-library/user-event": "^12.8.3",
     "antd": "^4.16.13",
     "bootstrap": "^4.6.0",
-    "date-fns": "^2.24.0",
+    "date-fns": "^2.25.0",
     "randomcolor": "^0.6.2",
     "rc-time-picker-date-fns": "^3.2.8",
     "react": "^17.0.2",

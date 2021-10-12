@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import About from "./components/About";
 import Intro from "./components/Intro";
+import Settings from "./components/Settings";
 
 const mapStateToProps = (state) => ({
   loggedin: state.loggedIn,
@@ -42,6 +43,7 @@ function App(props) {
         <Route path="/about" component={About} />
         <Route path="/goals" component={Goals} />
         <Route path="/intro" component={Intro} />
+        <Route path="/settings" component={Settings} />
       </div>
     </Router>
   );
