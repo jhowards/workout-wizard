@@ -1,7 +1,7 @@
 import React from "react";
 import SideBar from "../SideBar";
 import { connect } from "react-redux";
-import { Container, Col, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import "../../css/Schedule.css";
 import "../../components/Routines/Routines.css";
 import AddRoutineModal from "../Routines/AddRoutineModal";

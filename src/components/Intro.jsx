@@ -2,7 +2,6 @@ import React from "react";
 import SideBar from "./SideBar";
 import "../css/Schedule.css";
 import { Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 const Intro = () => {
   return (

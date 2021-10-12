@@ -34,10 +34,9 @@ const AutoSchedule = (props) => {
     startDatecheck.setSeconds(0);
   }
 
-  const formatcurrenttime = format(currenttime, "HH:mm");
-
   const [startTime, setstartTime] = useState(startDatecheck);
-  const [endTime, setendTime] = useState(defaultEnd);
+  // const formatcurrenttime = format(currenttime, "HH:mm");
+  // const [endTime, setendTime] = useState(defaultEnd);
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -53,7 +52,8 @@ const AutoSchedule = (props) => {
   };
 
   const handleEndInput = (value) => {
-    setendTime(value._d);
+    // setendTime(value._d);
+    return;
   };
 
   const disabledHoursSelect = () => {
@@ -141,9 +141,9 @@ const AutoSchedule = (props) => {
                 allowClear={false}
                 className="w-25"
                 disabledHours={() => disabledHoursSelect()}
-                disabledMinutes={(selectedHour) => (
-                  selectedHour - 1, disabledMinutesSelect(selectedHour)
-                )}
+                disabledMinutes={(selectedHour) =>
+                  disabledMinutesSelect(selectedHour)
+                }
                 onChange={(time) => handleStartInput(time)}
                 hideDisabledOptions={true}
               />

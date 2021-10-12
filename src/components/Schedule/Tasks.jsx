@@ -1,7 +1,6 @@
 import React from "react";
 import { Row, Col, Form, Dropdown } from "react-bootstrap";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { useState } from "react";
 import { connect } from "react-redux";
 import {
   removeTaskAction,
@@ -41,7 +40,7 @@ const Tasks = (props) => {
   }
 
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-    <a
+    <button
       href=""
       ref={ref}
       onClick={(e) => {
@@ -50,12 +49,12 @@ const Tasks = (props) => {
       }}
     >
       {children}
-    </a>
+    </button>
   ));
 
   const CustomMenu = React.forwardRef(
     ({ children, style, className, "aria-labelledby": labeledBy }, ref) => {
-      const [value, setValue] = useState("");
+      const value = "";
 
       return (
         <div

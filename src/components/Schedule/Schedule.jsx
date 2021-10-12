@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const Schedule = (props) => {
   const [activeDate, setactiveDate] = useState(new Date());
-  const [todaysDate, settodaysDate] = useState(new Date());
+  const todaysDate = new Date();
 
   useEffect(() => {
     if (props.date !== "") {
@@ -29,7 +29,7 @@ const Schedule = (props) => {
       setactiveDate(formatDate);
       props.removeDate(1);
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="d-flex h-100 mainwrapper">

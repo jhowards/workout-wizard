@@ -114,9 +114,8 @@ const Goals = (props) => {
                                         key={i}
                                         title={value}
                                         value={key}
-                                        className="mb-3"
-                                        description="{}"
                                         className="goals_goal_steps_step"
+                                        description="{}"
                                         onClick={() => setCurrentSub(i, goal)}
                                       />
                                     )
@@ -188,7 +187,6 @@ const Goals = (props) => {
                                         key={i}
                                         title={value}
                                         value={key}
-                                        className="mb-3"
                                         description="{}"
                                         className="goals_goal_steps_step"
                                         onClick={() => setCurrentSub(i, goal)}

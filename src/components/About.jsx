@@ -2,7 +2,6 @@ import React from "react";
 import SideBar from "./SideBar";
 import "../css/Schedule.css";
 import { Container } from "react-bootstrap";
-import { NavLink, Link } from "react-router-dom";
 
 const About = () => {
   return (
@@ -15,7 +14,7 @@ const About = () => {
           <img
             className="mx-auto mt-4 mb-3 about_profilephoto"
             src="https://i.imgur.com/XAoodKj.jpg"
-            alt="About me photo"
+            alt="Profile"
           />
 
           <h2 className="text-center ">James Sutcliffe</h2>

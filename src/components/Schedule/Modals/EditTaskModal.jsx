@@ -34,7 +34,7 @@ const EditTaskModal = (props) => {
     setShow(false);
   };
   const handleShow = () => {
-    const index = props.tasks.findIndex((task) => task.id == props.taskid);
+    const index = props.tasks.findIndex((task) => task.id === props.taskid);
     setselectedTask(props.tasks[index].task);
     durationConvert(props.tasks[index].duration, index);
     let convertedDate = new Date(props.tasks[index].date);

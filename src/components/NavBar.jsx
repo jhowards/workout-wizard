@@ -1,9 +1,7 @@
 import React from "react";
-import { Navbar, Nav, Form, FormControl, Dropdown } from "react-bootstrap";
+import { Navbar, Nav, Dropdown } from "react-bootstrap";
 import profilephoto from "../images/placeholder.png";
-import { AiOutlineSearch } from "react-icons/ai";
 import { IoMdNotificationsOutline } from "react-icons/io";
-import { useState } from "react";
 import { connect } from "react-redux";
 import { logoutAction } from "../actions";
 
@@ -17,8 +15,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const NavBar = (props) => {
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-    <a
-      href=""
+    <button
       ref={ref}
       onClick={(e) => {
         e.preventDefault();
@@ -26,13 +23,12 @@ const NavBar = (props) => {
       }}
     >
       {children}
-    </a>
+    </button>
   ));
 
   const CustomMenu = React.forwardRef(
     ({ children, style, className, "aria-labelledby": labeledBy }, ref) => {
-      const [value, setValue] = useState("");
-
+      const value = "";
       return (
         <div
           ref={ref}

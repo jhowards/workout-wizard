@@ -8,6 +8,7 @@ export const initialState = {
   tasks: [],
   goals: [],
   routines: [],
+  user: [],
   homeCalendarDate: "",
   loggedIn: false,
 };

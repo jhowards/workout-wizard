@@ -15,6 +15,12 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const Login = (props) => {
+  const loginInput = (e) => {
+    e.preventDefault();
+    props.sendLogin();
+    props.history.push("/home");
+    return;
+  };
   return (
     <div className="login_window m-auto">
       <p className="mb-0">Welcome Back</p>
@@ -49,12 +55,16 @@ const Login = (props) => {
             className="w-100 mb-3 login_window_loginbtn"
             variant="success"
             type="submit"
-            onClick={() => props.sendLogin()}
+            onClick={(e) => loginInput(e)}
           >
             Login now
           </Button>
         </Link>
-        <Button className="w-100 login_window_googleloginbtn" type="submit">
+        <Button
+          className="w-100 login_window_googleloginbtn"
+          onClick={(e) => loginInput(e)}
+          type="submit"
+        >
           <span>
             {" "}
             <img
@@ -68,7 +78,7 @@ const Login = (props) => {
       </Form>
 
       <span className="text-center login_jointext">
-        Don't have an account?<a href=""> Join free today</a>
+        Don't have an account? Join free today
       </span>
     </div>
   );

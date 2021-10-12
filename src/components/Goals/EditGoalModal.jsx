@@ -31,7 +31,7 @@ const EditGoalModal = (props) => {
     setsubtasksAmount(0);
   };
   const handleShow = () => {
-    const index = props.goals.findIndex((goal) => goal.id == props.goalid);
+    const index = props.goals.findIndex((goal) => goal.id === props.goalid);
     let convertedDate = new Date(props.goals[index].enddate);
     setselectedSubtasks(props.goals[index].subtasks);
     setselectedDate(convertedDate);
@@ -73,16 +73,16 @@ const EditGoalModal = (props) => {
     setselectedSubtasks(removesubtask);
   };
 
-  function getColour(num) {
-    var colours = {
-      0: "28a745",
-      1: "ffc107",
-      2: "17a2b8",
-      3: "dc3545",
-      default: "007bff",
-    };
-    return colours[num] || colours["default"];
-  }
+  // function getColour(num) {
+  //   var colours = {
+  //     0: "28a745",
+  //     1: "ffc107",
+  //     2: "17a2b8",
+  //     3: "dc3545",
+  //     default: "007bff",
+  //   };
+  //   return colours[num] || colours["default"];
+  // }
 
   const handleSubmit = async (e) => {
     e.preventDefault();

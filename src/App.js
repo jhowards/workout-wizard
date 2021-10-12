@@ -25,12 +25,12 @@ function App(props) {
         <NavBar loggedin={props.loggedin} />
         {props.loggedin ? (
           <Route exact path="/">
-            // if loggedin true redirect to home
+            {/* // if loggedin TRUE redirect to home */}
             <Redirect to="/home" />
           </Route>
         ) : (
           <Route exact path="*">
-            // if NOT loggedin true redirect to login
+            {/* // if loggedin FALSE redirect to login */}
             <Redirect to="/login" />
           </Route>
         )}

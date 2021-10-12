@@ -5,7 +5,6 @@ import "../Calendar/MainCalendar.css";
 import { connect } from "react-redux";
 import randomColor from "randomcolor";
 import { setDateAction } from "../../actions";
-import { formatISO } from "date-fns";
 
 const mapStateToProps = (state) => ({
   tasks: state.tasks,
