@@ -3,7 +3,6 @@ import { Modal, Button, Form } from "react-bootstrap";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { TimePicker, DatePicker, Select } from "antd";
-import "react-datepicker/dist/react-datepicker.css";
 import "../../css/Modals.css";
 import { format } from "date-fns";
 import { connect } from "react-redux";

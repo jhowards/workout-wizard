@@ -2,11 +2,11 @@ import React from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { useState } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { DatePicker } from "antd";
 import { format } from "date-fns";
 import { connect } from "react-redux";
 import { editGoalAction } from "../../actions";
+import moment from "moment";
 
 const mapStateToProps = (state) => ({
   goals: state.goals,
@@ -23,6 +23,14 @@ const EditGoalModal = (props) => {
   const [subtasksAmount, setsubtasksAmount] = useState(0);
 
   const [show, setShow] = useState(false);
+
+  function dateChange(date) {
+    if (date !== null) {
+      setselectedDate(date._d);
+    } else {
+      setselectedDate("");
+    }
+  }
 
   const handleClose = () => {
     setShow(false);
@@ -147,15 +155,14 @@ const EditGoalModal = (props) => {
             </Form.Group>
 
             <Form.Group className="mb-2">
-              <Form.Label className="mb-0">
+              <Form.Label className="mb-0 d-block">
                 <small>Due Date</small>
               </Form.Label>
               <DatePicker
-                dateFormat="dd/MM/yyyy"
-                locale="en-GB"
-                selected={selectedDate}
-                onChange={(date) => setselectedDate(date)}
-                todayButton="Today"
+                defaultValue={moment(selectedDate, "DD/MM/YYYY")}
+                format={"DD/MM/YYYY"}
+                onChange={dateChange}
+                className="border border-dark"
               />
             </Form.Group>
 

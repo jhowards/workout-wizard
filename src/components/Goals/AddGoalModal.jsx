@@ -2,11 +2,11 @@ import React from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { useState } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment";
 import { format } from "date-fns";
 import { connect } from "react-redux";
 import { addGoalAction } from "../../actions";
+import { DatePicker } from "antd";
 
 const mapStateToProps = (state) => ({
   goals: state.goals,
@@ -33,6 +33,14 @@ const AddGoalModal = (props) => {
     setShow(true);
     setStartDate(new Date());
   };
+
+  function dateChange(date) {
+    if (date !== null) {
+      setStartDate(date._d);
+    } else {
+      setStartDate("");
+    }
+  }
 
   const handleInput = (e, propertyName) => {
     setgoalToAdd({
@@ -171,15 +179,14 @@ const AddGoalModal = (props) => {
             </Form.Group>
 
             <Form.Group className="mb-2">
-              <Form.Label className="mb-0">
+              <Form.Label className="mb-0 d-block">
                 <small>Due Date</small>
               </Form.Label>
               <DatePicker
-                dateFormat="dd/MM/yyyy"
-                locale="en-GB"
-                selected={startDate}
-                onChange={(date) => setStartDate(date)}
-                todayButton="Today"
+                defaultValue={moment(startDate, "DD/MM/YYYY")}
+                format={"DD/MM/YYYY"}
+                onChange={dateChange}
+                className="border border-dark"
               />
             </Form.Group>
 
