@@ -1,6 +1,7 @@
 import { initialState } from "../store";
+import format from "date-fns/format";
 
-const tasksReducer = (state = initialState, action) => {
+const mainReducer = (state = initialState, action) => {
   switch (action.type) {
     case "LOG_IN":
       return {
@@ -48,10 +49,50 @@ const tasksReducer = (state = initialState, action) => {
     case "SET_TASK_ARCHIVED":
       const index = state.tasks.findIndex((task) => task.id === action.payload);
       const newArray = [...state.tasks];
+
       if (newArray[index].archived) {
         newArray[index].archived = false;
       } else {
         newArray[index].archived = true;
+        if (newArray[index].active === true) {
+          newArray[index].active = false;
+
+          let grabDate = new Date(newArray[index].date);
+          let formatCurrentDate = format(grabDate, "P");
+          let filteredDateArray = state.tasks.filter(
+            (el) => el.date === formatCurrentDate
+          );
+          const newindex = filteredDateArray.findIndex(
+            (task) => task.id === action.payload
+          );
+          if (filteredDateArray[newindex + 1]) {
+            let nextID = filteredDateArray[newindex + 1].id;
+            const nextIDindex = state.tasks.findIndex(
+              (task) => task.id === nextID
+            );
+            if (filteredDateArray[newindex + 1].archived !== true) {
+              newArray[nextIDindex].active = true;
+            } else {
+              if (newArray[nextIDindex + 1]) {
+                if (newArray[nextIDindex + 1].archived !== true) {
+                  newArray[nextIDindex + 1].active = true;
+                } else {
+                  if (newArray[nextIDindex + 2]) {
+                    if (newArray[nextIDindex + 2].archived !== true) {
+                      newArray[nextIDindex + 2].active = true;
+                    } else {
+                      if (newArray[nextIDindex + 3]) {
+                        if (newArray[nextIDindex + 3].archived !== true) {
+                          newArray[nextIDindex + 3].active = true;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
       return {
         ...state,
@@ -182,4 +223,4 @@ const tasksReducer = (state = initialState, action) => {
   }
 };
 
-export default tasksReducer;
+export default mainReducer;

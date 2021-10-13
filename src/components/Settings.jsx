@@ -18,6 +18,7 @@ const Settings = (props) => {
           <h2>Settings</h2>
           <p>Profile Picture</p>
           <p>Profile Name</p>
+          <p>24hr / 12hr</p>
           <p>Locale?</p>
           <Button
             onClick={() => {

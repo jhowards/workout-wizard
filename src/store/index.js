@@ -1,5 +1,5 @@
 import { createStore } from "redux";
-import tasksReducer from "../reducers/tasks";
+import mainReducer from "../reducers";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { encryptTransform } from "redux-persist-transform-encrypt";
@@ -23,7 +23,7 @@ const persistConfig = {
   ],
 };
 
-const persistedReducer = persistReducer(persistConfig, tasksReducer);
+const persistedReducer = persistReducer(persistConfig, mainReducer);
 
 export const configureStore = createStore(
   persistedReducer,
