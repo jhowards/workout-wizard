@@ -88,6 +88,15 @@ const AutoSchedule = (props) => {
     let newTime = startTime;
     let count = 0;
     for (let i = 0; i < items.length; i++) {
+      if (items[i].archived === true) {
+        items[i].starttime = "";
+        items[i].endtime = "";
+        items.push(items.splice(items.indexOf(items[i]), 1)[0]);
+        console.log(items);
+      }
+    }
+
+    for (let i = 0; i < items.length; i++) {
       if (items[i].date === formatCurrentDate) {
         // -- ONLY SELECTED DATE --
         if (items[i].archived === false) {
@@ -103,10 +112,12 @@ const AutoSchedule = (props) => {
             items[i].starttime = format(newTime, "HH:mm");
             newTime = addMinutes(newTime, items[i].duration);
             items[i].endtime = format(newTime, "HH:mm");
+            items[i].active = false;
           }
         }
       }
     }
+
     props.autoScheduleTasks(items);
     handleClose();
   };
