@@ -8,6 +8,7 @@ import { TimePicker } from "antd";
 import format from "date-fns/format";
 import addMinutes from "date-fns/addMinutes";
 import { autoScheduleAction } from "../../../actions";
+import isAfter from "date-fns/isAfter";
 
 const mapStateToProps = (state) => ({
   tasks: state.tasks,
@@ -36,7 +37,7 @@ const AutoSchedule = (props) => {
 
   const [startTime, setstartTime] = useState(startDatecheck);
   // const formatcurrenttime = format(currenttime, "HH:mm");
-  // const [endTime, setendTime] = useState(defaultEnd);
+  const [endTime, setendTime] = useState(defaultEnd);
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -52,8 +53,7 @@ const AutoSchedule = (props) => {
   };
 
   const handleEndInput = (value) => {
-    // setendTime(value._d);
-    return;
+    setendTime(value._d);
   };
 
   const disabledHoursSelect = () => {
@@ -109,15 +109,24 @@ const AutoSchedule = (props) => {
         if (items[i].archived === false) {
           // -- ONLY TASKS THAT AREN'T ARCHIVED --
           if (count === 0) {
-            // if(items[i].starttime === "----")
+            // if(items[i].starttime === "")
             items[i].starttime = formatstarttime;
             newTime = addMinutes(newTime, items[i].duration);
-            items[i].endtime = format(newTime, "HH:mm");
+            const formatEndTime = format(newTime, "HH:mm");
+            if (isAfter(newTime, endTime)) {
+              alert("Error! Schedule is set to end before End Time!");
+              return;
+            }
+            items[i].endtime = formatEndTime;
             items[i].active = true;
             count++;
           } else {
             items[i].starttime = format(newTime, "HH:mm");
             newTime = addMinutes(newTime, items[i].duration);
+            if (isAfter(newTime, endTime)) {
+              alert("Error! Schedule is set to end before End Time!");
+              return;
+            }
             items[i].endtime = format(newTime, "HH:mm");
             items[i].active = false;
           }
