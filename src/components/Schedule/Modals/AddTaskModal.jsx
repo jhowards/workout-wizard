@@ -2,10 +2,10 @@ import React from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { DatePicker } from "antd";
 import "../../../css/Modals.css";
 import { format } from "date-fns";
+import moment from "moment";
 
 import { connect } from "react-redux";
 import { addTaskAction } from "../../../actions";
@@ -43,8 +43,12 @@ const AddTaskModal = (props) => {
     setselectedDate(props.activeDate);
   };
 
-  function dateChange(selectedDate) {
-    setselectedDate(selectedDate);
+  function dateChange(date) {
+    if (date !== null) {
+      setselectedDate(date._d);
+    } else {
+      setselectedDate("");
+    }
   }
 
   const handleInput = (e, propertyName) => {
@@ -124,7 +128,7 @@ const AddTaskModal = (props) => {
         Add Task
       </Button>
 
-      <Modal show={show} onHide={handleClose} className="addtaskmodal">
+      <Modal show={show} onHide={handleClose} centered className="addtaskmodal">
         <Modal.Header closeButton>
           <Modal.Title>Add Task</Modal.Title>
         </Modal.Header>
@@ -144,15 +148,14 @@ const AddTaskModal = (props) => {
             </Form.Group>
 
             <Form.Group className="mb-2">
-              <Form.Label className="mb-0">
+              <Form.Label className="mb-0 d-block">
                 <small>Date</small>
               </Form.Label>
               <DatePicker
-                dateFormat="dd/MM/yyyy"
-                locale="en-GB"
-                selected={selectedDate}
+                defaultValue={moment(selectedDate, "DD/MM/YYYY")}
+                format={"DD/MM/YYYY"}
                 onChange={dateChange}
-                todayButton="Today"
+                className="border border-dark"
               />
             </Form.Group>
 

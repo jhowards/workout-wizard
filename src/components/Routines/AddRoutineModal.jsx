@@ -49,8 +49,12 @@ const AddRoutineModal = (props) => {
     setselectedDate(new Date());
   };
 
-  function dateChange(date, dateString) {
-    setselectedDate(date._d);
+  function dateChange(date) {
+    if (date !== null) {
+      setselectedDate(date._d);
+    } else {
+      setselectedDate("");
+    }
   }
 
   const handleInput = (e, propertyName) => {

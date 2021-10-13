@@ -1,12 +1,12 @@
 import React from "react";
 import { Modal, Button, Form, Dropdown } from "react-bootstrap";
 import { useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment";
 import "../../../css/Modals.css";
 import { format } from "date-fns";
 import { connect } from "react-redux";
 import { editTaskAction } from "../../../actions";
+import { DatePicker } from "antd";
 
 const mapStateToProps = (state) => ({
   tasks: state.tasks,
@@ -55,8 +55,12 @@ const EditTaskModal = (props) => {
     });
   };
 
-  function dateChange(selectedDate) {
-    setselectedDate(selectedDate);
+  function dateChange(date) {
+    if (date !== null) {
+      setselectedDate(date._d);
+    } else {
+      setselectedDate("");
+    }
   }
 
   const handleInput = (e, propertyName) => {
@@ -121,7 +125,7 @@ const EditTaskModal = (props) => {
         <span>Edit Task</span>
       </Dropdown.Item>
 
-      <Modal show={show} onHide={handleClose} className="addtaskmodal">
+      <Modal show={show} onHide={handleClose} centered className="addtaskmodal">
         <Modal.Header closeButton>
           <Modal.Title>Edit Task</Modal.Title>
         </Modal.Header>
@@ -142,15 +146,14 @@ const EditTaskModal = (props) => {
             </Form.Group>
 
             <Form.Group className="mb-2">
-              <Form.Label className="mb-0">
+              <Form.Label className="mb-0 d-block">
                 <small>Date</small>
               </Form.Label>
               <DatePicker
-                dateFormat="dd/MM/yyyy"
-                locale="en-GB"
-                selected={selectedDate}
+                defaultValue={moment(selectedDate, "DD/MM/YYYY")}
+                format={"DD/MM/YYYY"}
                 onChange={dateChange}
-                todayButton="Today"
+                className="border border-dark"
               />
             </Form.Group>
 
