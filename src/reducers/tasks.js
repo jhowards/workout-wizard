@@ -58,6 +58,20 @@ const tasksReducer = (state = initialState, action) => {
         tasks: newArray,
       };
 
+    case "CLEAR_TASKS":
+      const clearTasksArray = [];
+      return {
+        ...state,
+        tasks: clearTasksArray,
+      };
+
+    case "CLEAR_GOALS":
+      const clearGoalsArray = [];
+      return {
+        ...state,
+        goals: clearGoalsArray,
+      };
+
     case "REMOVE_TASK":
       const filteredTasks = state.tasks.filter(
         (task) => task.id !== action.payload

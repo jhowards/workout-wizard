@@ -70,3 +70,11 @@ export const addRoutineAction = (routineToAdd) => ({
   type: "ADD_ROUTINE",
   payload: routineToAdd,
 });
+
+export const clearTasksAction = () => ({
+  type: "CLEAR_TASKS",
+});
+
+export const clearGoalsAction = () => ({
+  type: "CLEAR_GOALS",
+});
