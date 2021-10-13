@@ -126,6 +126,9 @@ const tasksReducer = (state = initialState, action) => {
             completeGoalArray[goalcompleteindex].completed = true;
           } else {
             completeGoalArray[goalcompleteindex].completed = false;
+            completeGoalArray.sort(function (a, b) {
+              return a.completed - b.completed;
+            });
           }
         }
       }
