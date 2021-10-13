@@ -92,7 +92,14 @@ const AutoSchedule = (props) => {
         items[i].starttime = "";
         items[i].endtime = "";
         items.push(items.splice(items.indexOf(items[i]), 1)[0]);
-        console.log(items);
+      }
+    }
+
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].archived === true) {
+        items[i].starttime = "";
+        items[i].endtime = "";
+        items.push(items.splice(items.indexOf(items[i]), 1)[0]);
       }
     }
 
