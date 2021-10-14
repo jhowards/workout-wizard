@@ -70,3 +70,7 @@ div#root {
   height: 150px;
   width: 150px;
 }
+
+.rfip {
+  margin: 0px !important;
+}

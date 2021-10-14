@@ -29,6 +29,7 @@ const mainReducer = (state = initialState, action) => {
       newArrayEdit[editindex].task = action.payload.task;
       newArrayEdit[editindex].duration = action.payload.duration;
       newArrayEdit[editindex].date = action.payload.date;
+      newArrayEdit[editindex].icon = action.payload.icon;
       return {
         ...state,
         tasks: newArrayEdit,

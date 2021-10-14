@@ -6,6 +6,7 @@ import { DatePicker } from "antd";
 import "../../../css/Modals.css";
 import { format } from "date-fns";
 import moment from "moment";
+import IconPicker from "./IconPicker";
 
 import { connect } from "react-redux";
 import { addTaskAction } from "../../../actions";
@@ -27,6 +28,7 @@ const AddTaskModal = (props) => {
 
   const [show, setShow] = useState(false);
   const [selectedDate, setselectedDate] = useState(props.activeDate);
+  const [selectedIcon, setselectedIcon] = useState("");
   const handleClose = () => {
     settaskToAdd((prevState) => {
       return {
@@ -90,6 +92,14 @@ const AddTaskModal = (props) => {
         // }
 
         let formatDate = format(selectedDate, "P");
+        let icon = "";
+        if (selectedIcon === "") {
+          alert("Please select an icon!");
+          return;
+        } else {
+          icon = selectedIcon;
+        }
+        console.log(icon);
 
         let taskToAddnew = {
           id: id,
@@ -102,6 +112,7 @@ const AddTaskModal = (props) => {
           staticTime: false,
           active: false,
           date: formatDate,
+          icon: icon,
         };
 
         console.log(taskToAddnew);
@@ -182,6 +193,10 @@ const AddTaskModal = (props) => {
                 />
               </div>
             </Form.Group>
+            <Form.Label className="mb-0 d-block">
+              <small>Icon</small>
+            </Form.Label>
+            <IconPicker setselectedIcon={setselectedIcon} />
           </Form>
         </Modal.Body>
         <Modal.Footer className="d-flex justify-content-between">

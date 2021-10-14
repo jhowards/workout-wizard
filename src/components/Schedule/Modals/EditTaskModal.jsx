@@ -7,6 +7,7 @@ import { format } from "date-fns";
 import { connect } from "react-redux";
 import { editTaskAction } from "../../../actions";
 import { DatePicker } from "antd";
+import IconPicker from "./IconPicker";
 
 const mapStateToProps = (state) => ({
   tasks: state.tasks,
@@ -27,6 +28,7 @@ const EditTaskModal = (props) => {
   const [selectedDurationhr, setselectedDurationhr] = useState(null);
   const [selectedDurationmin, setselectedDurationmin] = useState(null);
   const [selectedDate, setselectedDate] = useState(new Date());
+  const [selectedIcon, setselectedIcon] = useState("");
   const [taskDetails, settaskDetails] = useState({});
   const [show, setShow] = useState(false);
 
@@ -36,6 +38,7 @@ const EditTaskModal = (props) => {
   const handleShow = () => {
     const index = props.tasks.findIndex((task) => task.id === props.taskid);
     setselectedTask(props.tasks[index].task);
+    setselectedIcon(props.tasks[index].icon);
     durationConvert(props.tasks[index].duration, index);
     let convertedDate = new Date(props.tasks[index].date);
     setselectedDate(convertedDate);
@@ -107,8 +110,8 @@ const EditTaskModal = (props) => {
           task: taskToAdd.task,
           duration: fullduration,
           date: formatDate,
+          icon: selectedIcon,
         };
-        console.log(fullTaskToEdit);
         if (fullduration === 0) {
           alert("Please add a duration!");
         } else {
@@ -182,6 +185,15 @@ const EditTaskModal = (props) => {
                 />
               </div>
             </Form.Group>
+
+            <Form.Label className="mb-0 d-block">
+              <small>Icon</small>
+            </Form.Label>
+            <IconPicker
+              setselectedIcon={setselectedIcon}
+              selectedIcon={selectedIcon}
+              edit={true}
+            />
           </Form>
         </Modal.Body>
         <Modal.Footer className="d-flex justify-content-between">

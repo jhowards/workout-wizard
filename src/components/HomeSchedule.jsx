@@ -1,5 +1,4 @@
 import React from "react";
-import { FaBell } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Card, Row, Col } from "react-bootstrap";
 import format from "date-fns/format";
@@ -37,12 +36,12 @@ const HomeSchedule = (props) => {
           ? removeArchived.map((task, i) =>
               task.date === formatCurrentDate ? (
                 <Row className="mx-0 rowborder mb-4" key={task.id}>
-                  <Col xs={1}>
-                    <FaBell size={18} />
+                  <Col xs={1} className="mt-2">
+                    <i className={task.icon}></i>
                     {arrlength === i + 1 ? (
                       ""
                     ) : (
-                      <div className="home_schedule_divider mx-2"></div>
+                      <div className="home_schedule_divider"></div>
                     )}
                   </Col>
                   <Col xs={11}>
