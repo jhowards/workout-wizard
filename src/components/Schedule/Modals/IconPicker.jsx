@@ -43,6 +43,7 @@ class IconPicker extends Component {
         "fas fa-paw fa-lg",
         "fas fa-tv fa-lg",
         "fas fa-book fa-lg",
+        "fas fa-code fa-lg",
       ],
       theme: "bluegrey",
       renderUsing: "class",

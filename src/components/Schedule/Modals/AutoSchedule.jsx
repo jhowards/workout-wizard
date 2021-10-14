@@ -9,6 +9,7 @@ import format from "date-fns/format";
 import addMinutes from "date-fns/addMinutes";
 import { autoScheduleAction } from "../../../actions";
 import isAfter from "date-fns/isAfter";
+import { roundToNearestMinutes } from "date-fns";
 
 const mapStateToProps = (state) => ({
   tasks: state.tasks,
@@ -27,7 +28,7 @@ const AutoSchedule = (props) => {
   defaultEnd.setSeconds(0);
   let startDatecheck = new Date();
   if (currenttime.toDateString() === props.activeDate.toDateString()) {
-    startDatecheck = new Date();
+    startDatecheck = roundToNearestMinutes(new Date(), { nearestTo: 5 });
   } else {
     startDatecheck = new Date();
     startDatecheck.setHours(9);
@@ -167,6 +168,7 @@ const AutoSchedule = (props) => {
                 format={timeformat}
                 allowClear={false}
                 className="w-25"
+                minuteStep={5}
                 disabledHours={() => disabledHoursSelect()}
                 disabledMinutes={(selectedHour) =>
                   disabledMinutesSelect(selectedHour)
@@ -184,6 +186,7 @@ const AutoSchedule = (props) => {
                 format={timeformat}
                 allowClear={false}
                 className="w-25"
+                minuteStep={5}
                 onChange={(time) => handleEndInput(time)}
               />
             </Form.Group>

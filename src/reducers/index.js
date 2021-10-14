@@ -27,7 +27,11 @@ const mainReducer = (state = initialState, action) => {
       );
       const newArrayEdit = [...state.tasks];
       newArrayEdit[editindex].task = action.payload.task;
-      newArrayEdit[editindex].duration = action.payload.duration;
+      if (newArrayEdit[editindex].duration !== action.payload.duration) {
+        newArrayEdit[editindex].duration = action.payload.duration;
+        newArrayEdit[editindex].starttime = "";
+        newArrayEdit[editindex].endtime = "";
+      }
       newArrayEdit[editindex].date = action.payload.date;
       newArrayEdit[editindex].icon = action.payload.icon;
       return {
