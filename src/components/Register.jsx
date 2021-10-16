@@ -62,10 +62,10 @@ const Register = (props) => {
       alert("Please set a password!");
       return;
     }
-    // if (props.registered) {
-    //   alert("Only 1 registered account per user is allowed.");
-    //   return;
-    // }
+    if (props.registered) {
+      alert("Only 1 registered account per user is allowed.");
+      return;
+    }
 
     let profileImageToSet = null;
     if (imageUploaded) {
