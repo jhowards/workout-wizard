@@ -82,7 +82,11 @@ const Routines = (props) => {
                 <AddRoutineModal />
               </div>
             </div>
-            {isAnyDaily ? <h3 className="mb-3 text-center">Daily</h3> : ""}
+            {isAnyDaily.length > 0 ? (
+              <h3 className="mb-3 text-center">Daily</h3>
+            ) : (
+              ""
+            )}
             <div className="w-100 d-flex flex-column">
               {props.routines
                 ? props.routines.map((routine, i) =>
@@ -121,7 +125,11 @@ const Routines = (props) => {
                   )
                 : ""}
             </div>
-            {isAnyWeekly ? <h3 className="mb-3 text-center">Weekly</h3> : ""}
+            {isAnyWeekly.length > 0 ? (
+              <h3 className="mb-3 text-center">Weekly</h3>
+            ) : (
+              ""
+            )}
             <div className="w-100 d-flex flex-column">
               {props.routines
                 ? props.routines.map((routine, i) =>
@@ -161,7 +169,11 @@ const Routines = (props) => {
                 : ""}
             </div>
 
-            {isAnyMonthly ? <h3 className="mb-3 text-center">Monthly</h3> : ""}
+            {isAnyMonthly.length > 0 ? (
+              <h3 className="mb-3 text-center">Monthly</h3>
+            ) : (
+              ""
+            )}
             <div className="w-100 d-flex flex-column">
               {props.routines
                 ? props.routines.map((routine, i) =>
