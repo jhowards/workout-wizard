@@ -52,7 +52,7 @@ const HomeSchedule = (props) => {
                           {task.task}
                           {task.daily ? (
                             <span className="ml-4 home_schedule_tasks_dailybadge">
-                              Daily
+                              Routine
                             </span>
                           ) : (
                             ""
@@ -68,7 +68,7 @@ const HomeSchedule = (props) => {
                           {task.task}
                           {task.daily ? (
                             <span className="ml-4 home_schedule_tasks_dailybadge">
-                              Daily
+                              Routine
                             </span>
                           ) : (
                             ""
