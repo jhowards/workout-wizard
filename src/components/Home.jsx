@@ -1,8 +1,7 @@
 import React from "react";
 import SideBar from "./SideBar";
 import "../css/Home.css";
-import { Row, Col, Card } from "react-bootstrap";
-import profilephoto from "../images/placeholder.png";
+import { Row, Col, Card, Button } from "react-bootstrap";
 import Calendar from "react-calendar";
 import "../css/homecalendar.css";
 import { IoIosArrowBack } from "react-icons/io";
@@ -192,6 +191,15 @@ const Home = (props) => {
                       )
                     )
                   : ""}
+                {props.goals.length === 0 ? (
+                  <Link to="/goals" className="mt-5 mx-auto">
+                    <Button variant="primary" className="add_goal_button">
+                      Add a Goal
+                    </Button>
+                  </Link>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </Col>

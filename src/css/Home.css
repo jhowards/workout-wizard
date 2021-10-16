@@ -188,3 +188,8 @@
   width: 18px;
   height: 18px;
 }
+
+.add_goal_button {
+  width: 175px;
+  margin-top: 50%;
+}
