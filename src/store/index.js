@@ -11,6 +11,7 @@ export const initialState = {
   user: [],
   homeCalendarDate: "",
   loggedIn: false,
+  registered: false,
 };
 
 const persistConfig = {

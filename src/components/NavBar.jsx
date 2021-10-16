@@ -7,6 +7,7 @@ import { logoutAction } from "../actions";
 
 const mapStateToProps = (state) => ({
   loggedin: state.loggedIn,
+  user: state.user,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -94,10 +95,12 @@ const NavBar = (props) => {
         <Dropdown className="d-none d-md-block">
           <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
             <div className="mr-5 d-none d-md-block navbar_profilesection px-2">
-              <span className="mr-2 navbar_profilename">James</span>
+              <span className="mr-2 navbar_profilename">
+                {props.user.firstname}
+              </span>
               <img
-                className="navbar_profilephoto ml-2"
-                src={profilephoto}
+                className="navbar_profilephoto ml-2 rounded-circle"
+                src={props.user.profileimage}
                 alt=""
               />
             </div>

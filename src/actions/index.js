@@ -93,3 +93,12 @@ export const removeRoutineTasksAction = (id) => ({
   type: "REMOVE_ROUTINE_TASKS",
   payload: id,
 });
+
+export const setRegisterAction = () => ({
+  type: "SET_REGISTERED",
+});
+
+export const registerUserAction = (userToRegister) => ({
+  type: "REGISTER_USER",
+  payload: userToRegister,
+});

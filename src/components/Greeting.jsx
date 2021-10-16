@@ -1,8 +1,13 @@
 import React from "react";
+import { connect } from "react-redux";
+
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
 class Greeting extends React.Component {
   state = {
     hour: null,
-    username: "James",
   };
 
   componentDidMount() {
@@ -18,12 +23,15 @@ class Greeting extends React.Component {
   };
 
   render() {
-    const { hour, username } = this.state;
+    const { hour } = this.state;
     return (
       <h2>
-        {hour < 12 ? `Good Morning ${username}` : `Good Evening ${username}`}
+        {hour < 12
+          ? `Good Morning ${this.props.user.firstname}`
+          : `Good Evening ${this.props.user.firstname}`}
       </h2>
     );
   }
 }
-export default Greeting;
+
+export default connect(mapStateToProps)(Greeting);

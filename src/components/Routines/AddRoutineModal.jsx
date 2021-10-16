@@ -292,7 +292,7 @@ const AddRoutineModal = (props) => {
             >
               <Form.Check
                 type="checkbox"
-                label="Set a time?"
+                label={<s>Set a time?</s>}
                 className="mt-1 mr-3"
                 size="lg"
                 onChange={(e) => handleCheckInput(e)}
@@ -303,7 +303,8 @@ const AddRoutineModal = (props) => {
                 format={timeformat}
                 allowClear={false}
                 className="w-25"
-                disabled={!timeToSet}
+                // disabled={!timeToSet}
+                disabled={true}
                 onChange={(time) => handleTimeInput(time)}
               />
             </Form.Group>

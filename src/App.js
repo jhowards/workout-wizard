@@ -13,6 +13,7 @@ import { connect } from "react-redux";
 import About from "./components/About";
 import Intro from "./components/Intro";
 import Settings from "./components/Settings";
+import Register from "./components/Register";
 
 const mapStateToProps = (state) => ({
   loggedin: state.loggedIn,
@@ -36,6 +37,7 @@ function App(props) {
         )}
 
         <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
         <Route path="/home" component={Home} />
         <Route path="/schedule" component={Schedule} />
         <Route path="/calendar" component={MainCalendar} />

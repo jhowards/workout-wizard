@@ -247,6 +247,18 @@ const mainReducer = (state = initialState, action) => {
         tasks: filteredRoutineTasks,
       };
 
+    case "SET_REGISTERED":
+      return {
+        ...state,
+        registered: true,
+      };
+
+    case "REGISTER_USER":
+      return {
+        ...state,
+        user: action.payload,
+      };
+
     default:
       return state;
   }

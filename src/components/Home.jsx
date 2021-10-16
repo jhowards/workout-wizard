@@ -21,6 +21,7 @@ import randomColor from "randomcolor";
 const mapStateToProps = (state) => ({
   tasks: state.tasks,
   goals: state.goals,
+  user: state.user,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -71,8 +72,8 @@ const Home = (props) => {
                 <Row>
                   <Col xs={12} lg={4} className="px-3 d-flex">
                     <Card.Img
-                      className="home_dailyheader_image mx-auto"
-                      src={profilephoto}
+                      className="home_dailyheader_image mx-auto rounded-circle"
+                      src={props.user.profileimage}
                     />
                   </Col>
                   <Col xs={12} lg={8} className="text-center">
