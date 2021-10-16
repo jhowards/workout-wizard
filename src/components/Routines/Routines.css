@@ -3,5 +3,12 @@
   height: 90px;
   border-radius: 10px;
   background-color: white;
+  position: relative;
   border: 2px solid black;
+}
+
+.routines_routinedropdown {
+  position: absolute;
+  right: 5%;
+  top: 15%;
 }

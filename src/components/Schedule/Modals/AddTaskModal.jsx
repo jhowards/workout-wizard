@@ -113,6 +113,7 @@ const AddTaskModal = (props) => {
           active: false,
           date: formatDate,
           icon: icon,
+          routineid: "",
         };
 
         console.log(taskToAddnew);

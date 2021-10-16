@@ -6,15 +6,19 @@ import { TimePicker, DatePicker, Select } from "antd";
 import "../../css/Modals.css";
 import { format } from "date-fns";
 import { connect } from "react-redux";
-import { addRoutineAction, addTaskAction } from "../../actions";
+import { addRoutineAction, addRoutineTasksAction } from "../../actions";
 import moment from "moment";
+import IconPicker from "../Schedule/Modals/IconPicker";
+import addDays from "date-fns/addDays";
+import addWeeks from "date-fns/addWeeks";
+import addMonths from "date-fns/addMonths";
 
 const mapStateToProps = (state) => ({
   tasks: state.tasks,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addTask: (taskToAdd) => dispatch(addTaskAction(taskToAdd)),
+  addRoutineTasks: (taskToAdd) => dispatch(addRoutineTasksAction(taskToAdd)),
   addRoutine: (routineToAdd) => dispatch(addRoutineAction(routineToAdd)),
 });
 
@@ -29,7 +33,7 @@ const AddRoutineModal = (props) => {
   const [timeToSet, settimeToSet] = useState(false);
   const [timeSelected, settimeSelected] = useState("");
   const [routineType, setroutineType] = useState("Daily");
-
+  const [selectedIcon, setselectedIcon] = useState("");
   const [show, setShow] = useState(false);
   const [selectedDate, setselectedDate] = useState(new Date());
   const handleClose = () => {
@@ -42,6 +46,8 @@ const AddRoutineModal = (props) => {
       };
     });
     setShow(false);
+    settimeToSet(false);
+    setroutineType("Daily");
   };
   const handleShow = () => {
     setShow(true);
@@ -74,6 +80,66 @@ const AddRoutineModal = (props) => {
     settimeSelected(value._d);
   };
 
+  const RoutineTasksAdd = (taskToAdd) => {
+    let addRoutinesNewArray = [...props.tasks];
+    const newRoutineID = Date.now();
+
+    if (taskToAdd.repetition === "Daily") {
+      let routineObjectToAdd = { ...taskToAdd };
+
+      for (let i = 0; i < 365; i++) {
+        if (i > 0) {
+          let newRoutineObject = { ...routineObjectToAdd };
+          let newdate = addDays(routineObjectToAdd.date, i);
+          newRoutineObject.date = format(newdate, "P");
+          newRoutineObject.id = newRoutineID + (i + 1);
+          addRoutinesNewArray.push(newRoutineObject);
+        } else {
+          let newRoutineFirstObject = { ...routineObjectToAdd };
+          newRoutineFirstObject.date = format(newRoutineFirstObject.date, "P");
+          addRoutinesNewArray.push(newRoutineFirstObject);
+        }
+      }
+    }
+
+    if (taskToAdd.repetition === "Weekly") {
+      let routineObjectToAdd = { ...taskToAdd };
+
+      for (let i = 0; i < 52; i++) {
+        if (i > 0) {
+          let newRoutineObject = { ...routineObjectToAdd };
+          let newdate = addWeeks(routineObjectToAdd.date, i);
+          newRoutineObject.date = format(newdate, "P");
+          newRoutineObject.id = newRoutineID + (i + 1);
+          addRoutinesNewArray.push(newRoutineObject);
+        } else {
+          let newRoutineFirstObject = { ...routineObjectToAdd };
+          newRoutineFirstObject.date = format(newRoutineFirstObject.date, "P");
+          addRoutinesNewArray.push(newRoutineFirstObject);
+        }
+      }
+    }
+
+    if (taskToAdd.repetition === "Monthly") {
+      let routineObjectToAdd = { ...taskToAdd };
+
+      for (let i = 0; i < 12; i++) {
+        if (i > 0) {
+          let newRoutineObject = { ...routineObjectToAdd };
+          let newdate = addMonths(routineObjectToAdd.date, i);
+          newRoutineObject.date = format(newdate, "P");
+          newRoutineObject.id = newRoutineID + (i + 1);
+          addRoutinesNewArray.push(newRoutineObject);
+        } else {
+          let newRoutineFirstObject = { ...routineObjectToAdd };
+          newRoutineFirstObject.date = format(newRoutineFirstObject.date, "P");
+          addRoutinesNewArray.push(newRoutineFirstObject);
+        }
+      }
+    }
+    return addRoutinesNewArray;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let hourstomins = null;
@@ -96,33 +162,44 @@ const AddRoutineModal = (props) => {
           minutes = parseInt(taskToAdd.durationmin);
         }
 
+        let icon = "";
+        if (selectedIcon === "") {
+          alert("Please select an icon!");
+          return;
+        } else {
+          icon = selectedIcon;
+        }
+
         let fullduration = hourstomins + minutes;
-        let id = Date.now();
-
-        // if (props.tasks) {
-        //   id = props.tasks.length + 2;
-        // } else {
-        //   id = 1;
-        // }
-
+        let routineid = Date.now();
         let formatDate = format(selectedDate, "P");
+        let staticTimeToAdd = "";
+        if (timeToSet) {
+          if (timeSelected === "") {
+            staticTimeToAdd = "12:00";
+          } else {
+            staticTimeToAdd = format(timeSelected, "HH:mm");
+          }
+        }
 
-        // let taskToAddnew = {
-        //   id: id,
-        //   archived: false,
-        //   daily: false,
-        //   task: taskToAdd.task,
-        //   duration: fullduration,
-        //   starttime: "",
-        //   endtime: "",
-        //   staticTime: timeToSet,
-        //   active: false,
-        //   date: formatDate,
-        //    routineid:
-        // };
-
+        let taskToAddnew = {
+          id: routineid,
+          archived: false,
+          task: taskToAdd.task,
+          duration: fullduration,
+          starttime: staticTimeToAdd,
+          endtime: "",
+          staticTime: timeToSet,
+          active: false,
+          date: selectedDate,
+          routineid: routineid,
+          repetition: routineType,
+          icon: icon,
+          daily: "true",
+        };
+        let generateTasks = RoutineTasksAdd(taskToAddnew);
         let routineToAddNew = {
-          id: "r" + id,
+          id: routineid,
           repetition: routineType,
           task: taskToAdd.task,
           duration: fullduration,
@@ -134,6 +211,7 @@ const AddRoutineModal = (props) => {
         if (fullduration === 0) {
           alert("Please add a duration!");
         } else {
+          props.addRoutineTasks(generateTasks);
           props.addRoutine(routineToAddNew);
           handleClose();
         }
@@ -244,6 +322,10 @@ const AddRoutineModal = (props) => {
                 <Option value="Monthly">Monthly</Option>
               </Select>
             </Form.Group>
+            <Form.Label className="mb-0 d-block">
+              <small>Icon</small>
+            </Form.Label>
+            <IconPicker setselectedIcon={setselectedIcon} />
           </Form>
         </Modal.Body>
         <Modal.Footer className="d-flex justify-content-between">

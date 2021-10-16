@@ -66,15 +66,30 @@ export const editGoalAction = (goalToEdit) => ({
   payload: goalToEdit,
 });
 
-export const addRoutineAction = (routineToAdd) => ({
-  type: "ADD_ROUTINE",
-  payload: routineToAdd,
-});
-
 export const clearTasksAction = () => ({
   type: "CLEAR_TASKS",
 });
 
 export const clearGoalsAction = () => ({
   type: "CLEAR_GOALS",
+});
+
+export const addRoutineAction = (routineToAdd) => ({
+  type: "ADD_ROUTINE",
+  payload: routineToAdd,
+});
+
+export const removeRoutineAction = (id) => ({
+  type: "REMOVE_ROUTINE",
+  payload: id,
+});
+
+export const addRoutineTasksAction = (taskToAdd) => ({
+  type: "ADD_ROUTINE_TASKS",
+  payload: taskToAdd,
+});
+
+export const removeRoutineTasksAction = (id) => ({
+  type: "REMOVE_ROUTINE_TASKS",
+  payload: id,
 });

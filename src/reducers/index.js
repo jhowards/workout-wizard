@@ -223,6 +223,30 @@ const mainReducer = (state = initialState, action) => {
         routines: [...state.routines, action.payload],
       };
 
+    case "REMOVE_ROUTINE":
+      const filteredRoutines = state.routines.filter(
+        (routine) => routine.id !== action.payload
+      );
+      return {
+        ...state,
+        routines: filteredRoutines,
+      };
+
+    case "ADD_ROUTINE_TASKS":
+      return {
+        ...state,
+        tasks: action.payload,
+      };
+
+    case "REMOVE_ROUTINE_TASKS":
+      const filteredRoutineTasks = state.tasks.filter(
+        (task) => task.routineid !== action.payload
+      );
+      return {
+        ...state,
+        tasks: filteredRoutineTasks,
+      };
+
     default:
       return state;
   }
