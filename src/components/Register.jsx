@@ -62,10 +62,20 @@ const Register = (props) => {
       alert("Please set a password!");
       return;
     }
-    if (props.registered) {
-      alert("Only 1 registered account per user is allowed.");
+
+    let pattern = new RegExp(
+      /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
+    );
+
+    if (!pattern.test(userToAdd.email)) {
+      alert("Please enter a valid email!");
       return;
     }
+
+    // if (props.registered) {
+    //   alert("Only 1 registered account per user is allowed.");
+    //   return;
+    // }
 
     let profileImageToSet = null;
     if (imageUploaded) {
@@ -94,7 +104,7 @@ const Register = (props) => {
       {/* <SideBar /> */}
       <div className="h-100 w-100 py-lg-3 ">
         <Container className="schedule_container_large">
-          <h2 className="text-center mt-5">Register</h2>
+          <h2 className="text-center mt-4">Register</h2>
           <p className="text-center text-danger">
             All data is stored locally. None of your data can be accessed.
           </p>
@@ -106,7 +116,10 @@ const Register = (props) => {
                 <Form.Control
                   className="border border-dark"
                   type="text"
+                  maxlength="12"
+                  minlength="2"
                   placeholder="Ex: John"
+                  required
                   onChange={(e) => handleInput(e, "firstname")}
                 />
               </Form.Group>
@@ -115,7 +128,10 @@ const Register = (props) => {
                 <Form.Control
                   className="border border-dark ml-4"
                   type="text"
+                  maxlength="14"
+                  minlength="2"
                   placeholder="Ex: Doe"
+                  required
                   onChange={(e) => handleInput(e, "surname")}
                 />
               </Form.Group>
@@ -125,6 +141,9 @@ const Register = (props) => {
               <Form.Control
                 className="border border-dark"
                 type="email"
+                minlength="6"
+                maxlength="35"
+                required
                 placeholder="Ex: john@gmail.com"
                 onChange={(e) => handleInput(e, "email")}
               />
@@ -134,7 +153,10 @@ const Register = (props) => {
               <Form.Control
                 className="border border-dark"
                 type="password"
+                minlength="6"
+                maxlength="26"
                 placeholder="*********"
+                required
                 onChange={(e) => handleInput(e, "password")}
               />
             </Form.Group>

@@ -154,6 +154,8 @@ const AddTaskModal = (props) => {
                 className="border border-dark"
                 size="sm"
                 type="text"
+                maxlength="40"
+                minlength="2"
                 placeholder="Ex: Walk the dog"
                 onChange={(e) => handleInput(e, "task")}
               />
