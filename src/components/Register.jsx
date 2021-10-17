@@ -25,6 +25,7 @@ const Register = (props) => {
     email: "",
     password: "",
   });
+  const [baseImage, setBaseImage] = useState("");
 
   const handleInput = (e, propertyName) => {
     setuserToAdd({
@@ -33,15 +34,33 @@ const Register = (props) => {
     });
   };
 
-  const imageUpload = (e) => {
+  const imageUpload = async (e) => {
     if (e.target.files.length === 0) {
       console.log("No image selected!");
     } else {
-      let imagepreview = URL.createObjectURL(e.target.files[0]);
-      setimagePreview(imagepreview);
+      let imageupload = URL.createObjectURL(e.target.files[0]);
+      setimagePreview(imageupload);
+      const file = e.target.files[0];
+      const base64 = await convertBase64(file);
+      setBaseImage(base64);
       setimageUploaded(true);
     }
     return;
+  };
+
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
   };
 
   const handleSubmit = (e) => {
@@ -67,19 +86,19 @@ const Register = (props) => {
       /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
     );
 
-    if (!pattern.test(userToAdd.email)) {
-      alert("Please enter a valid email!");
-      return;
-    }
+    // if (!pattern.test(userToAdd.email)) {
+    //   alert("Please enter a valid email!");
+    //   return;
+    // }
 
-    if (props.registered) {
-      alert("Only 1 registered account per user is allowed.");
-      return;
-    }
+    // if (props.registered) {
+    //   alert("Only 1 registered account per user is allowed.");
+    //   return;
+    // }
 
     let profileImageToSet = null;
     if (imageUploaded) {
-      profileImageToSet = imagePreview;
+      profileImageToSet = baseImage;
     } else {
       profileImageToSet = profilephoto;
     }
@@ -162,7 +181,11 @@ const Register = (props) => {
             </Form.Group>
             <Form.Group controlId="formFile" className="mb-3 mt-3 mx-auto">
               <Form.Label>Change Profile Photo:</Form.Label>
-              <Form.Control type="file" onChange={(e) => imageUpload(e)} />
+              <Form.Control
+                type="file"
+                accept=".jpeg, .png, .jpg"
+                onChange={(e) => imageUpload(e)}
+              />
             </Form.Group>
 
             <Image
