@@ -144,7 +144,7 @@ const Goals = (props) => {
                     ) : (
                       <Accordion
                         defaultActiveKey="1"
-                        className="mb-3 mx-5"
+                        className="mb-3 mx-5 goalnotcompleted"
                         key={goal.id}
                       >
                         <Card className="goals_accordion py-2">
