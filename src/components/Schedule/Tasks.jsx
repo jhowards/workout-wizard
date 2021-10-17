@@ -168,42 +168,56 @@ const Tasks = (props) => {
                                         custom
                                         type="checkbox"
                                         id={task.id}
-                                        className="testtt"
+                                        className="schedule_task_checkbox"
                                         onChange={() =>
                                           handleCheckInput(task.id)
                                         }
                                       />
                                     </Col>
-                                    <Col className="px-0 mt-2" xs={10}>
+                                    <Col className="px-0" xs={10}>
                                       {/* DAILY TASKS*/}
                                       {task.daily ? (
-                                        <>
-                                          <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0">
-                                            {task.task}
-                                          </p>
-                                          <p className="schedule_activeschedule_body_taskcontent_tasktimetext mt-0 mb-0">
-                                            {durationConvert(task.duration)}
-                                            {task.endtime !== ""
-                                              ? " ->  " + task.endtime
-                                              : ""}
-                                          </p>
-                                          <p className="schedule_activeschedule_body_taskcontent_routinebadge text-center mt-1">
-                                            Routine
-                                          </p>
-                                        </>
+                                        <div className="d-flex flex-row h-100">
+                                          <i
+                                            className={
+                                              task.icon + " my-auto mr-4"
+                                            }
+                                          ></i>
+                                          <div>
+                                            <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-2">
+                                              {task.task}
+                                            </p>
+                                            <p className="schedule_activeschedule_body_taskcontent_tasktimetext mt-0 mb-0">
+                                              {durationConvert(task.duration)}
+                                              {task.endtime !== ""
+                                                ? " ->  " + task.endtime
+                                                : ""}
+                                            </p>
+                                            <p className="schedule_activeschedule_body_taskcontent_routinebadge text-center mt-1">
+                                              Routine
+                                            </p>
+                                          </div>
+                                        </div>
                                       ) : (
-                                        <>
+                                        <div className="d-flex flex-row h-100">
                                           {/* NOT DAILY TASKS*/}
-                                          <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-1">
-                                            {task.task}
-                                          </p>
-                                          <p className="schedule_activeschedule_body_taskcontent_tasktimenodaily mt-2 mb-0">
-                                            {durationConvert(task.duration)}
-                                            {task.endtime !== ""
-                                              ? " ->  " + task.endtime
-                                              : ""}
-                                          </p>
-                                        </>
+                                          <i
+                                            className={
+                                              task.icon + " my-auto mr-4"
+                                            }
+                                          ></i>
+                                          <div>
+                                            <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-2 pt-1">
+                                              {task.task}
+                                            </p>
+                                            <p className="schedule_activeschedule_body_taskcontent_tasktimenodaily mt-2 mb-0">
+                                              {durationConvert(task.duration)}
+                                              {task.endtime !== ""
+                                                ? " ->  " + task.endtime
+                                                : ""}
+                                            </p>
+                                          </div>
+                                        </div>
                                       )}
                                       <Dropdown className="schedule_activeschedule_body_taskcontent_edittask">
                                         <Dropdown.Toggle
@@ -246,43 +260,62 @@ const Tasks = (props) => {
                                             custom
                                             type="checkbox"
                                             id={task.id}
-                                            className="testtt"
+                                            className="schedule_task_checkbox"
                                             defaultChecked={task.archived}
                                             onChange={() =>
                                               handleCheckInput(task.id)
                                             }
                                           />
                                         </Col>
-                                        <Col className="px-0 mt-2" xs={10}>
+                                        <Col className="px-0" xs={10}>
                                           {/* DAILY TASKS*/}
                                           {task.daily ? (
-                                            <>
-                                              <s className="schedule_activeschedule_body_taskcontent_tasktext mb-0 d-block">
-                                                {task.task}
-                                              </s>
-                                              <s className="schedule_activeschedule_body_taskcontent_tasktimetext mt-0 mb-0 d-block">
-                                                {durationConvert(task.duration)}
-                                                {task.endtime !== ""
-                                                  ? " ->  " + task.endtime
-                                                  : ""}
-                                              </s>
-                                              <s className="schedule_activeschedule_body_taskcontent_routinebadge text-center mt-1 d-block">
-                                                Routine
-                                              </s>
-                                            </>
+                                            <div className="d-flex flex-row h-100">
+                                              <i
+                                                className={
+                                                  task.icon +
+                                                  " my-auto mr-4 iconfix"
+                                                }
+                                              ></i>
+                                              <div>
+                                                <s className="schedule_activeschedule_body_taskcontent_tasktext d-block mb-0 mt-2">
+                                                  {task.task}
+                                                </s>
+                                                <s className="schedule_activeschedule_body_taskcontent_tasktimetext mt-0 mb-0 d-block">
+                                                  {durationConvert(
+                                                    task.duration
+                                                  )}
+                                                  {task.endtime !== ""
+                                                    ? " ->  " + task.endtime
+                                                    : ""}
+                                                </s>
+                                                <s className="schedule_activeschedule_body_taskcontent_routinebadge text-center mt-1 d-block">
+                                                  Routine
+                                                </s>
+                                              </div>
+                                            </div>
                                           ) : (
-                                            <>
+                                            <div className="d-flex flex-row h-100">
                                               {/* NOT DAILY TASKS*/}
-                                              <s className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-1 d-block">
-                                                {task.task}
-                                              </s>
-                                              <s className="schedule_activeschedule_body_taskcontent_tasktimenodaily mt-2 mb-0 d-block">
-                                                {durationConvert(task.duration)}
-                                                {task.endtime !== ""
-                                                  ? " ->  " + task.endtime
-                                                  : ""}
-                                              </s>
-                                            </>
+                                              <i
+                                                className={
+                                                  task.icon + " my-auto mr-4"
+                                                }
+                                              ></i>
+                                              <div>
+                                                <s className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-2 pt-1 d-block">
+                                                  {task.task}
+                                                </s>
+                                                <s className="schedule_activeschedule_body_taskcontent_tasktimenodaily mt-2 mb-0 d-block">
+                                                  {durationConvert(
+                                                    task.duration
+                                                  )}
+                                                  {task.endtime !== ""
+                                                    ? " ->  " + task.endtime
+                                                    : ""}
+                                                </s>
+                                              </div>
+                                            </div>
                                           )}
                                           <Dropdown className="schedule_activeschedule_body_taskcontent_edittask">
                                             <Dropdown.Toggle
@@ -327,42 +360,60 @@ const Tasks = (props) => {
                                             custom
                                             type="checkbox"
                                             id={task.id}
-                                            className="testtt"
+                                            className="schedule_task_checkbox"
                                             onChange={() =>
                                               handleCheckInput(task.id)
                                             }
                                           />
                                         </Col>
-                                        <Col className="px-0 mt-2" xs={10}>
+                                        <Col className="px-0" xs={10}>
                                           {/* DAILY TASKS*/}
                                           {task.daily ? (
-                                            <>
-                                              <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0">
-                                                {task.task}
-                                              </p>
-                                              <p className="schedule_activeschedule_body_taskcontent_tasktimetext mt-0 mb-0">
-                                                {durationConvert(task.duration)}
-                                                {task.endtime !== ""
-                                                  ? " ->  " + task.endtime
-                                                  : ""}
-                                              </p>
-                                              <p className="schedule_activeschedule_body_taskcontent_routinebadge text-center mt-1">
-                                                Routine
-                                              </p>
-                                            </>
+                                            <div className="d-flex flex-row h-100">
+                                              <i
+                                                className={
+                                                  task.icon + " my-auto mr-4"
+                                                }
+                                              ></i>
+                                              <div>
+                                                <p className="schedule_activeschedule_body_taskcontent_tasktext d-block mb-0 mt-2">
+                                                  {task.task}
+                                                </p>
+                                                <p className="schedule_activeschedule_body_taskcontent_tasktimetext mt-0 mb-0 d-block">
+                                                  {durationConvert(
+                                                    task.duration
+                                                  )}
+                                                  {task.endtime !== ""
+                                                    ? " ->  " + task.endtime
+                                                    : ""}
+                                                </p>
+                                                <p className="schedule_activeschedule_body_taskcontent_routinebadge text-center mt-1 d-block">
+                                                  Routine
+                                                </p>
+                                              </div>
+                                            </div>
                                           ) : (
-                                            <>
+                                            <div className="d-flex flex-row h-100">
                                               {/* NOT DAILY TASKS*/}
-                                              <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-1">
-                                                {task.task}
-                                              </p>
-                                              <p className="schedule_activeschedule_body_taskcontent_tasktimenodaily mt-2 mb-0">
-                                                {durationConvert(task.duration)}
-                                                {task.endtime !== ""
-                                                  ? " ->  " + task.endtime
-                                                  : ""}
-                                              </p>
-                                            </>
+                                              <i
+                                                className={
+                                                  task.icon + " my-auto mr-4"
+                                                }
+                                              ></i>
+                                              <div>
+                                                <p className="schedule_activeschedule_body_taskcontent_tasktext mb-0 mt-2 pt-1">
+                                                  {task.task}
+                                                </p>
+                                                <p className="schedule_activeschedule_body_taskcontent_tasktimenodaily mt-2 mb-0">
+                                                  {durationConvert(
+                                                    task.duration
+                                                  )}
+                                                  {task.endtime !== ""
+                                                    ? " ->  " + task.endtime
+                                                    : ""}
+                                                </p>
+                                              </div>
+                                            </div>
                                           )}
                                           <Dropdown className="schedule_activeschedule_body_taskcontent_edittask">
                                             <Dropdown.Toggle

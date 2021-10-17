@@ -240,10 +240,17 @@
   cursor: pointer;
 }
 
-.testtt {
+.schedule_task_checkbox {
   position: absolute;
   top: 33%;
   left: 33%;
+}
+
+.schedule_task_checkboxfix {
+  position: absolute;
+  top: 33%;
+  left: 33%;
+  padding-top: 5px;
 }
 
 .schedule_todaydot {
@@ -274,4 +281,8 @@
   border: 2px solid #0048ff80;
   border-radius: 16px;
   background-color: rgba(151, 251, 151, 0.418);
+}
+
+.iconfix {
+  padding-top: 5px;
 }
