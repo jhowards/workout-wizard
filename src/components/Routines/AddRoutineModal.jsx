@@ -248,6 +248,7 @@ const AddRoutineModal = (props) => {
                 type="text"
                 minlength="2"
                 maxlength="40"
+                required
                 placeholder="Ex: Walk the dog"
                 onChange={(e) => handleInput(e, "task")}
               />

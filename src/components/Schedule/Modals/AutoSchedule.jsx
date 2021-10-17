@@ -115,7 +115,7 @@ const AutoSchedule = (props) => {
             newTime = addMinutes(newTime, items[i].duration);
             const formatEndTime = format(newTime, "HH:mm");
             if (isAfter(newTime, endTime)) {
-              alert("Error! Schedule is set to end before End Time!");
+              alert("Error! Not enough time available to schedule all tasks.");
               return;
             }
             items[i].endtime = formatEndTime;
@@ -125,7 +125,7 @@ const AutoSchedule = (props) => {
             items[i].starttime = format(newTime, "HH:mm");
             newTime = addMinutes(newTime, items[i].duration);
             if (isAfter(newTime, endTime)) {
-              alert("Error! Schedule is set to end before End Time!");
+              alert("Error! Not enough time available to schedule all tasks.");
               return;
             }
             items[i].endtime = format(newTime, "HH:mm");

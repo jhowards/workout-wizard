@@ -132,6 +132,9 @@ const EditGoalModal = (props) => {
                 className="border border-dark"
                 size="sm"
                 type="text"
+                minlength="2"
+                maxlength="40"
+                required
                 placeholder="Ex: Walk the dog"
                 defaultValue={goalDetails.goal}
                 onChange={(e) => handleInput(e, "goal")}
@@ -147,6 +150,9 @@ const EditGoalModal = (props) => {
                   className="border border-dark durationform mr-3"
                   size="sm"
                   type="text"
+                  minlength="2"
+                  maxlength="40"
+                  required
                   defaultValue={goalDetails.tag}
                   placeholder="Ex. Reading"
                   onChange={(e) => handleInput(e, "tag")}
@@ -175,6 +181,9 @@ const EditGoalModal = (props) => {
                   className="border border-dark durationform mr-3"
                   size="sm"
                   type="text"
+                  minlength="2"
+                  maxlength="40"
+                  required
                   defaultValue={selectedSubtasks.subtask1}
                   placeholder="Ex. Chapter 1"
                   onChange={(e) => handleSubInput(e, "subtask1")}
@@ -196,7 +205,9 @@ const EditGoalModal = (props) => {
                     className="border border-dark durationform mr-3"
                     size="sm"
                     type="text"
-                    min="0"
+                    minlength="2"
+                    maxlength="40"
+                    required
                     defaultValue={selectedSubtasks[findSubtask(i)]}
                     placeholder={"Ex. Chapter " + (i + 2)}
                     onChange={(e) => handleSubInput(e, "subtask" + (i + 2))}

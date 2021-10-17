@@ -83,12 +83,6 @@ const AddGoalModal = (props) => {
     e.preventDefault();
     let formatDate = format(startDate, "P");
     let id = "g" + Date.now();
-    // setgoalToAdd({
-    //   ...goalToAdd,
-    //   completed: false,
-    //   enddate: formatDate,
-    //   id: id,
-    // });
 
     let chosenColor = getColour(props.goals.length);
     let goalToAddFinal = goalToAdd;
@@ -101,33 +95,6 @@ const AddGoalModal = (props) => {
     goalToAddFinal.count = -1;
     props.addGoal(goalToAddFinal);
     handleClose();
-
-    // if (taskToAdd.task === "") {
-    //   alert("Please input a task!");
-    // } else {
-    //   if (taskToAdd.durationhr === null && taskToAdd.durationmin === null) {
-    //     alert("Please input a duration!");
-    //   } else {
-    //     if (taskToAdd.durationhr === "" || taskToAdd.durationhr === null) {
-    //       hourstomins = 0;
-    //     } else {
-    //       hourstomins = parseInt(taskToAdd.durationhr) * 60;
-    //     }
-    //     if (taskToAdd.durationmin === "" || taskToAdd.durationmin === null) {
-    //       minutes = 0;
-    //     } else {
-    //       minutes = parseInt(taskToAdd.durationmin);
-    //     }
-
-    //     console.log(taskToAddnew);
-    //     if (fullduration === 0) {
-    //       alert("Please add a duration!");
-    //     } else {
-    //       props.addTask(taskToAddnew);
-    //       handleClose();
-    //     }
-    //   }
-    // }
   };
 
   return (
@@ -157,6 +124,9 @@ const AddGoalModal = (props) => {
                 className="border border-dark"
                 size="sm"
                 type="text"
+                minlength="2"
+                maxlength="40"
+                required
                 placeholder="Ex: Walk the dog"
                 onChange={(e) => handleInput(e, "goal")}
               />
@@ -171,7 +141,9 @@ const AddGoalModal = (props) => {
                   className="border border-dark durationform mr-3"
                   size="sm"
                   type="text"
-                  min="0"
+                  minlength="2"
+                  maxlength="40"
+                  required
                   placeholder="Ex. Reading"
                   onChange={(e) => handleInput(e, "tag")}
                 />
@@ -199,7 +171,9 @@ const AddGoalModal = (props) => {
                   className="border border-dark durationform mr-3"
                   size="sm"
                   type="text"
-                  min="0"
+                  minlength="2"
+                  maxlength="40"
+                  required
                   placeholder="Ex. Chapter 1"
                   onChange={(e) => handleSubInput(e, "subtask1")}
                 />
@@ -220,7 +194,9 @@ const AddGoalModal = (props) => {
                     className="border border-dark durationform mr-3"
                     size="sm"
                     type="text"
-                    min="0"
+                    minlength="2"
+                    maxlength="40"
+                    required
                     placeholder={"Ex. Chapter " + (i + 2)}
                     onChange={(e) => handleSubInput(e, "subtask" + (i + 2))}
                   />
