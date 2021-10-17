@@ -261,6 +261,7 @@ const AddRoutineModal = (props) => {
                   size="sm"
                   type="number"
                   min="0"
+                  max="23"
                   placeholder="hours"
                   onChange={(e) => handleInput(e, "durationhr")}
                 />
@@ -269,6 +270,7 @@ const AddRoutineModal = (props) => {
                   size="sm"
                   type="number"
                   min="0"
+                  max="59"
                   placeholder="minutes"
                   onChange={(e) => handleInput(e, "durationmin")}
                 />

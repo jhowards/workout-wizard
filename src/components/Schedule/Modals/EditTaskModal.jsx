@@ -170,6 +170,7 @@ const EditTaskModal = (props) => {
                   size="sm"
                   type="number"
                   min="0"
+                  max="23"
                   placeholder="hours"
                   defaultValue={selectedDurationhr}
                   onChange={(e) => handleInput(e, "durationhr")}
@@ -179,6 +180,7 @@ const EditTaskModal = (props) => {
                   size="sm"
                   type="number"
                   min="0"
+                  max="59"
                   placeholder="minutes"
                   defaultValue={selectedDurationmin}
                   onChange={(e) => handleInput(e, "durationmin")}
