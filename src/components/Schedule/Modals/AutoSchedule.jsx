@@ -101,10 +101,6 @@ const AutoSchedule = (props) => {
         items[i].starttime = "";
         items[i].endtime = "";
         items.push(items.splice(items.indexOf(items[i]), 1)[0]);
-      } else {
-        if (items[i].starttime !== "") {
-          items.unshift(items.splice(items.indexOf(items[i]), 1)[0]);
-        }
       }
     }
 

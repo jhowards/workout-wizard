@@ -5,6 +5,7 @@ import "../Calendar/MainCalendar.css";
 import { connect } from "react-redux";
 import randomColor from "randomcolor";
 import { setDateAction } from "../../actions";
+import addHours from "date-fns/addHours";
 
 const mapStateToProps = (state) => ({
   tasks: state.tasks,
@@ -42,15 +43,18 @@ const MainCalendar = (props) => {
   };
   let tasksArray = [...props.tasks];
   tasksArray = tasksArray.map((task) => {
-    const fromTime = addTimetoDate(task.date, task.starttime);
-    const endTime = addTimetoDate(task.date, task.endtime);
+    const fromTimeGMT = addTimetoDate(task.date, task.starttime);
+    const endTimeGMT = addTimetoDate(task.date, task.endtime);
+    const fromTimeUTC = addHours(fromTimeGMT, 1);
+    const endTimeUTC = addHours(endTimeGMT, 1);
+
     return {
       id: task.id,
       color: randomColor({ hue: "blue", luminosity: "dark" }),
       // from: new Date(task.date).toString(),
       // to: new Date(task.date).toString(),
-      from: fromTime.toString(),
-      to: endTime.toString(),
+      from: fromTimeUTC.toUTCString(),
+      to: endTimeUTC.toUTCString(),
       title: task.task,
     };
   });
