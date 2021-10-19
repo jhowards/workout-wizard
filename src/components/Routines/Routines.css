@@ -1,14 +1,31 @@
 .routines_routinescard {
-  width: 90%;
-  height: 90px;
+  width: 300px;
+  height: 160px;
   border-radius: 10px;
-  background-color: white;
   position: relative;
-  border: 2px solid black;
+  border: 1px solid transparent;
 }
 
 .routines_routinedropdown {
   position: absolute;
   right: 5%;
-  top: 15%;
+  top: 10%;
+}
+
+.routines_daily {
+  background-color: #4cb9fc;
+  color: white;
+  border-radius: 10px;
+}
+
+.routines_weekly {
+  background-color: #6d75e6;
+  color: white;
+  border-radius: 10px;
+}
+
+.routines_monthly {
+  background-color: #4267b2;
+  color: white;
+  border-radius: 10px;
 }

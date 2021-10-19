@@ -87,15 +87,17 @@ const Routines = (props) => {
             ) : (
               ""
             )}
-            <div className="w-100 d-flex flex-column">
+            <div className="w-100 d-flex flex-row">
               {props.routines
                 ? props.routines.map((routine, i) =>
                     routine.repetition === "Daily" ? (
                       <div
                         key={routine.id}
-                        className="routines_routinescard mb-3 mx-auto"
+                        className="routines_routinescard routines_daily mb-3 mx-4"
                       >
-                        <h5 className="mb-0">{routine.task}</h5>
+                        <h5 className="mb-0 mt-4 pt-3 text-white">
+                          {routine.task}
+                        </h5>
                         <p>{routine.date}</p>
                         <p>{routine.duration} minutes</p>
                         <Dropdown className="routines_routinedropdown">
@@ -130,15 +132,17 @@ const Routines = (props) => {
             ) : (
               ""
             )}
-            <div className="w-100 d-flex flex-column">
+            <div className="w-100 d-flex flex-row">
               {props.routines
                 ? props.routines.map((routine, i) =>
                     routine.repetition === "Weekly" ? (
                       <div
                         key={routine.id}
-                        className="routines_routinescard mb-3 mx-auto"
+                        className="routines_routinescard routines_weekly mb-3 mx-4"
                       >
-                        <h5 className="mb-0">{routine.task}</h5>
+                        <h5 className="mb-0 mt-4 pt-3 text-white">
+                          {routine.task}
+                        </h5>
                         <p>{routine.date}</p>
                         <p>{routine.duration} minutes</p>
                         <Dropdown className="routines_routinedropdown">
@@ -174,17 +178,19 @@ const Routines = (props) => {
             ) : (
               ""
             )}
-            <div className="w-100 d-flex flex-column">
+            <div className="w-100 d-flex flex-row">
               {props.routines
                 ? props.routines.map((routine, i) =>
                     routine.repetition === "Monthly" ? (
                       <div
                         key={routine.id}
-                        className="routines_routinescard mb-3 mx-auto"
+                        className="routines_routinescard routines_monthly mb-3 mx-4 d-flex"
                       >
-                        <h5 className="mb-0">{routine.task}</h5>
-                        <p>{routine.date}</p>
-                        <p>{routine.duration} minutes</p>
+                        <div className="m-auto">
+                          <h5 className="mb-0 text-white">{routine.task}</h5>
+                          <p>{routine.date}</p>
+                          <p>{routine.duration} minutes</p>
+                        </div>
                         <Dropdown className="routines_routinedropdown">
                           <Dropdown.Toggle
                             as={CustomToggle}
