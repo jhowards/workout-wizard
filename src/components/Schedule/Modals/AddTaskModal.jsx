@@ -141,18 +141,20 @@ const AddTaskModal = (props) => {
       </Button>
 
       <Modal show={show} onHide={handleClose} centered className="addtaskmodal">
-        <Modal.Header closeButton>
-          <Modal.Title>Add Task</Modal.Title>
+        <Modal.Header className="py-2 mt-1" closeButton>
+          <Modal.Title className="modal_maintitle">
+            <FaPlus className=" ml-2 mr-2 align-middle mb-1" />
+            Add Task
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form id="addTaskForm" onSubmit={handleSubmit}>
-            <Form.Group className="mb-2">
-              <Form.Label className="mb-0">
-                <small>Task Name</small>
+            <Form.Group className="mb-3">
+              <Form.Label className="mb-1 modal_form_heading">
+                Task Name
               </Form.Label>
               <Form.Control
-                className="border border-dark"
-                size="sm"
+                className="modal_form_border"
                 type="text"
                 maxlength="40"
                 minlength="2"
@@ -161,26 +163,25 @@ const AddTaskModal = (props) => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-2">
-              <Form.Label className="mb-0 d-block">
-                <small>Date</small>
+            <Form.Group className="mb-3">
+              <Form.Label className="mb-1 modal_form_heading d-block">
+                Set a date
               </Form.Label>
               <DatePicker
                 defaultValue={moment(selectedDate, "DD/MM/YYYY")}
                 format={"DD/MM/YYYY"}
                 onChange={dateChange}
-                className="border border-dark"
+                className="modal_form_border modal_form_datepicker"
               />
             </Form.Group>
 
-            <Form.Group className="mb-2">
-              <Form.Label className="mb-0">
-                <small>Duration</small>
+            <Form.Group className="mb-3">
+              <Form.Label className="mb-1 modal_form_heading">
+                Duration
               </Form.Label>
               <div className="d-flex flex-row">
                 <Form.Control
-                  className="border border-dark durationform mr-3"
-                  size="sm"
+                  className="modal_form_border durationform mr-3"
                   type="number"
                   min="0"
                   max="23"
@@ -188,8 +189,7 @@ const AddTaskModal = (props) => {
                   onChange={(e) => handleInput(e, "durationhr")}
                 />
                 <Form.Control
-                  className="border border-dark durationform"
-                  size="sm"
+                  className="modal_form_border durationform"
                   type="number"
                   min="0"
                   max="59"
@@ -198,17 +198,21 @@ const AddTaskModal = (props) => {
                 />
               </div>
             </Form.Group>
-            <Form.Label className="mb-0 d-block">
-              <small>Icon</small>
+            <Form.Label className="mb-1 modal_form_heading d-block">
+              Set an icon
             </Form.Label>
             <IconPicker setselectedIcon={setselectedIcon} />
           </Form>
         </Modal.Body>
-        <Modal.Footer className="d-flex justify-content-between">
-          <Button variant="secondary" onClick={handleClose}>
-            Close
+        <Modal.Footer className="d-flex">
+          <Button onClick={handleClose} className="cancel_button">
+            Cancel
           </Button>
-          <Button className="addTaskButton" type="submit" form="addTaskForm">
+          <Button
+            className="add_task_button ml-2"
+            type="submit"
+            form="addTaskForm"
+          >
             Add Task
           </Button>
         </Modal.Footer>

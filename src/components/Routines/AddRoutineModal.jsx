@@ -234,34 +234,33 @@ const AddRoutineModal = (props) => {
 
       <Modal show={show} onHide={handleClose} centered className="addtaskmodal">
         <Modal.Header closeButton>
-          <Modal.Title>Add Routine</Modal.Title>
+          <Modal.Title className="ml-2 modal_maintitle">
+            Add Routine
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form id="addTaskForm" onSubmit={handleSubmit}>
-            <Form.Group className="mb-2">
-              <Form.Label className="mb-0">
-                <small>Task Name</small>
+          <Form id="addRoutineForm" onSubmit={handleSubmit}>
+            <Form.Group className="mb-3">
+              <Form.Label className="mb-1 modal_form_heading">
+                Task Name
               </Form.Label>
               <Form.Control
-                className="border border-dark"
-                size="sm"
+                className="modal_form_border"
                 type="text"
-                minlength="2"
                 maxlength="40"
-                required
+                minlength="2"
                 placeholder="Ex: Walk the dog"
                 onChange={(e) => handleInput(e, "task")}
               />
             </Form.Group>
 
-            <Form.Group className="mb-4">
-              <Form.Label className="mb-0">
-                <small>Duration</small>
+            <Form.Group className="mb-3">
+              <Form.Label className="mb-1 modal_form_heading">
+                Duration
               </Form.Label>
               <div className="d-flex flex-row">
                 <Form.Control
-                  className="border border-dark durationform mr-3"
-                  size="sm"
+                  className="modal_form_border durationform mr-3"
                   type="number"
                   min="0"
                   max="23"
@@ -269,8 +268,7 @@ const AddRoutineModal = (props) => {
                   onChange={(e) => handleInput(e, "durationhr")}
                 />
                 <Form.Control
-                  className="border border-dark durationform"
-                  size="sm"
+                  className="modal_form_border durationform"
                   type="number"
                   min="0"
                   max="59"
@@ -280,18 +278,19 @@ const AddRoutineModal = (props) => {
               </div>
             </Form.Group>
 
-            <Form.Group className="mb-3">
-              <Form.Label className="mb-0">
-                <p className="mr-3">Set Start Date</p>
+            <Form.Group className="mb-4">
+              <Form.Label className="mb-1 modal_form_heading d-block">
+                Set start date
               </Form.Label>
               <DatePicker
                 defaultValue={moment(selectedDate, "DD/MM/YYYY")}
                 format={"DD/MM/YYYY"}
                 onChange={dateChange}
+                className="modal_form_border modal_form_datepicker"
               />
             </Form.Group>
 
-            <Form.Group
+            {/* <Form.Group
               className="mb-4 d-flex flex-row"
               controlId="formWorkingCheckbox"
             >
@@ -312,33 +311,38 @@ const AddRoutineModal = (props) => {
                 disabled={true}
                 onChange={(time) => handleTimeInput(time)}
               />
-            </Form.Group>
+            </Form.Group> */}
 
             <Form.Group className="mb-2">
-              <Form.Label className="mb-0">
-                <p className="mr-3">Set Repetition</p>
+              <Form.Label className="mb-1 modal_form_heading">
+                <p className="mr-3 ml-1">Set Repetition</p>
               </Form.Label>
               <Select
                 defaultValue="Daily"
                 onChange={handleSelectInput}
-                style={{ width: 120 }}
+                style={{ width: 150 }}
+                className=""
               >
                 <Option value="Daily">Daily</Option>
                 <Option value="Weekly">Weekly</Option>
                 <Option value="Monthly">Monthly</Option>
               </Select>
             </Form.Group>
-            <Form.Label className="mb-0 d-block">
-              <small>Icon</small>
+            <Form.Label className="mb-1 ml-1 modal_form_heading mr-3">
+              Set an Icon
             </Form.Label>
             <IconPicker setselectedIcon={setselectedIcon} />
           </Form>
         </Modal.Body>
-        <Modal.Footer className="d-flex justify-content-between">
-          <Button variant="secondary" onClick={handleClose}>
-            Close
+        <Modal.Footer className="d-flex">
+          <Button onClick={handleClose} className="cancel_button">
+            Cancel
           </Button>
-          <Button className="addTaskButton" type="submit" form="addTaskForm">
+          <Button
+            className="add_routine_button ml-2"
+            type="submit"
+            form="addRoutineForm"
+          >
             Add Routine
           </Button>
         </Modal.Footer>

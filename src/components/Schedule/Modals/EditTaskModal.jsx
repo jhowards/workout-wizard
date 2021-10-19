@@ -130,68 +130,62 @@ const EditTaskModal = (props) => {
 
       <Modal show={show} onHide={handleClose} centered className="addtaskmodal">
         <Modal.Header closeButton>
-          <Modal.Title>Edit Task</Modal.Title>
+          <Modal.Title className="ml-3 modal_maintitle">Edit Task</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form id="editTaskForm" onSubmit={handleSubmit}>
-            <Form.Group className="mb-2">
-              <Form.Label className="mb-0">
-                <small>Task Name</small>
+            <Form.Group className="mb-3">
+              <Form.Label className="mb-1 modal_form_heading">
+                Task Name
               </Form.Label>
               <Form.Control
-                className="border border-dark"
-                size="sm"
+                className="modal_form_border"
                 type="text"
-                minlength="2"
                 maxlength="40"
+                minlength="2"
                 placeholder="Ex: Walk the dog"
-                defaultValue={selectedTask}
                 onChange={(e) => handleInput(e, "task")}
               />
             </Form.Group>
 
-            <Form.Group className="mb-2">
-              <Form.Label className="mb-0 d-block">
-                <small>Date</small>
+            <Form.Group className="mb-3">
+              <Form.Label className="mb-1 modal_form_heading d-block">
+                Set a date
               </Form.Label>
               <DatePicker
                 defaultValue={moment(selectedDate, "DD/MM/YYYY")}
                 format={"DD/MM/YYYY"}
                 onChange={dateChange}
-                className="border border-dark"
+                className="modal_form_border modal_form_datepicker"
               />
             </Form.Group>
 
-            <Form.Group className="mb-2">
-              <Form.Label className="mb-0">
-                <small>Duration</small>
+            <Form.Group className="mb-3">
+              <Form.Label className="mb-1 modal_form_heading">
+                Duration
               </Form.Label>
               <div className="d-flex flex-row">
                 <Form.Control
-                  className="border border-dark durationform mr-3"
-                  size="sm"
+                  className="modal_form_border durationform mr-3"
                   type="number"
                   min="0"
                   max="23"
                   placeholder="hours"
-                  defaultValue={selectedDurationhr}
                   onChange={(e) => handleInput(e, "durationhr")}
                 />
                 <Form.Control
-                  className="border border-dark durationform"
-                  size="sm"
+                  className="modal_form_border durationform"
                   type="number"
                   min="0"
                   max="59"
                   placeholder="minutes"
-                  defaultValue={selectedDurationmin}
                   onChange={(e) => handleInput(e, "durationmin")}
                 />
               </div>
             </Form.Group>
 
-            <Form.Label className="mb-0 d-block">
-              <small>Icon</small>
+            <Form.Label className="mb-1 modal_form_heading d-block">
+              Set an Icon
             </Form.Label>
             <IconPicker
               setselectedIcon={setselectedIcon}
@@ -200,11 +194,15 @@ const EditTaskModal = (props) => {
             />
           </Form>
         </Modal.Body>
-        <Modal.Footer className="d-flex justify-content-between">
-          <Button variant="secondary" onClick={handleClose}>
-            Close
+        <Modal.Footer className="d-flex">
+          <Button onClick={handleClose} className="cancel_button">
+            Cancel
           </Button>
-          <Button className="addTaskButton" type="submit" form="editTaskForm">
+          <Button
+            className="add_task_button ml-2"
+            type="submit"
+            form="editTaskForm"
+          >
             Edit Task
           </Button>
         </Modal.Footer>

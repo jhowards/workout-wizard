@@ -1,14 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
+
 .addtaskmodal {
   font-family: "Lexend", sans-serif;
 }
 
 .durationform {
   width: 20%;
-}
-
-.addTaskButton {
-  background-color: rgba(0, 71, 255, 0.65);
-  font-weight: 600;
 }
 
 .scheduleButton {
@@ -18,4 +15,70 @@
 }
 .auto_timepicker_label {
   font-size: 15px;
+}
+
+.modal-content {
+  border-radius: 16px;
+  border: 1px solid rgba(29, 28, 29, 0.13);
+  font-family: "Lato", sans-serif;
+}
+
+.close {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.modal-body {
+  padding: 1.25rem;
+}
+
+.modal_maintitle {
+  font-weight: 900;
+  font-size: 22px;
+}
+
+.modal_form_heading {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.modal_form_border {
+  border: 1px solid rgba(29, 28, 29, 0.5) !important;
+  border-radius: 3px !important;
+}
+
+.modal_form_datepicker {
+  height: 40px;
+  width: 100%;
+}
+
+.cancel_button {
+  font-weight: 700;
+  font-size: 16px;
+  color: black;
+  background-color: white;
+  border: 1px solid rgba(29, 28, 29, 0.5);
+  border-radius: 3px;
+  width: 96px;
+}
+
+.add_task_button {
+  background-color: rgba(0, 71, 255, 0.65);
+  font-weight: 700;
+  width: 98px;
+  font-size: 16px;
+  border: 1px solid transparent;
+}
+
+.add_routine_button {
+  background-color: rgba(0, 71, 255, 0.65);
+  font-weight: 700;
+  width: 120px;
+  font-size: 16px;
+  border: 1px solid transparent;
+}
+
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  border: 1px solid rgba(29, 28, 29, 0.5) !important;
+  border-radius: 3px !important;
 }

@@ -151,7 +151,9 @@ const AutoSchedule = (props) => {
 
       <Modal show={show} onHide={handleClose} className="addtaskmodal" centered>
         <Modal.Header closeButton>
-          <Modal.Title>Auto Schedule</Modal.Title>
+          <Modal.Title className="modal_maintitle ml-2">
+            Auto Schedule
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form
@@ -161,7 +163,9 @@ const AutoSchedule = (props) => {
           >
             <Form.Group className="mb-2">
               <Form.Label className="mb-0 mr-3">
-                <small className="auto_timepicker_label">Start Time:</small>
+                <small className="auto_timepicker_label modal_form_heading">
+                  Start Time:
+                </small>
               </Form.Label>
               <TimePicker
                 defaultValue={moment(startDatecheck, timeformat)}
@@ -179,7 +183,9 @@ const AutoSchedule = (props) => {
             </Form.Group>
             <Form.Group className="mb-2">
               <Form.Label className="mb-0 mr-3 ml-2">
-                <small className="auto_timepicker_label">End Time:</small>
+                <small className="auto_timepicker_label modal_form_heading">
+                  End Time:
+                </small>
               </Form.Label>
               <TimePicker
                 defaultValue={moment("23:59", timeformat)}
