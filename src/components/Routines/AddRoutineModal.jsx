@@ -290,7 +290,7 @@ const AddRoutineModal = (props) => {
               />
             </Form.Group>
 
-            {/* <Form.Group
+            <Form.Group
               className="mb-4 d-flex flex-row"
               controlId="formWorkingCheckbox"
             >
@@ -311,7 +311,7 @@ const AddRoutineModal = (props) => {
                 disabled={true}
                 onChange={(time) => handleTimeInput(time)}
               />
-            </Form.Group> */}
+            </Form.Group>
 
             <Form.Group className="mb-2">
               <Form.Label className="mb-1 modal_form_heading">

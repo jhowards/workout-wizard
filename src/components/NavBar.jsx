@@ -1,6 +1,5 @@
 import React from "react";
 import { Navbar, Nav, Dropdown } from "react-bootstrap";
-import profilephoto from "../images/placeholder.png";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { connect } from "react-redux";
 import { logoutAction } from "../actions";

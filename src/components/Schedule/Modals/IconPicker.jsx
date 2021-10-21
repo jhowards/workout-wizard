@@ -76,7 +76,6 @@ class IconPicker extends Component {
       onChange: this.handleChange,
       isMulti: false,
       iconsPerPage: 15,
-      theme: "bluegrey",
       closeOnSelect: true,
     };
     return <FontIconPicker {...props} />;

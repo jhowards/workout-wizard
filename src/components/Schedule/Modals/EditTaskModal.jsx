@@ -143,6 +143,7 @@ const EditTaskModal = (props) => {
                 type="text"
                 maxlength="40"
                 minlength="2"
+                defaultValue={selectedTask}
                 placeholder="Ex: Walk the dog"
                 onChange={(e) => handleInput(e, "task")}
               />
@@ -171,6 +172,7 @@ const EditTaskModal = (props) => {
                   min="0"
                   max="23"
                   placeholder="hours"
+                  defaultValue={selectedDurationhr}
                   onChange={(e) => handleInput(e, "durationhr")}
                 />
                 <Form.Control
@@ -178,6 +180,7 @@ const EditTaskModal = (props) => {
                   type="number"
                   min="0"
                   max="59"
+                  defaultValue={selectedDurationmin}
                   placeholder="minutes"
                   onChange={(e) => handleInput(e, "durationmin")}
                 />
