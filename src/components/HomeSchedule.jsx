@@ -58,9 +58,13 @@ const HomeSchedule = (props) => {
                             ""
                           )}
                         </s>
-                        <s className="home_schedule_tasks_timetext ml-2 mb-0 d-block">
-                          {task.starttime} {"->"} {task.endtime}
-                        </s>
+                        {task.endtime !== "" ? (
+                          <s className="home_schedule_tasks_timetext ml-2 mb-0 d-block">
+                            {task.starttime} {"->"} {task.endtime}
+                          </s>
+                        ) : (
+                          ""
+                        )}
                       </>
                     ) : (
                       <>
@@ -74,9 +78,13 @@ const HomeSchedule = (props) => {
                             ""
                           )}
                         </p>
-                        <p className="home_schedule_tasks_timetext ml-2 mb-0">
-                          {task.starttime} {"->"} {task.endtime}
-                        </p>
+                        {task.endtime !== "" ? (
+                          <p className="home_schedule_tasks_timetext ml-2 mb-0">
+                            {task.starttime} {"->"} {task.endtime}
+                          </p>
+                        ) : (
+                          ""
+                        )}
                       </>
                     )}
                   </Col>

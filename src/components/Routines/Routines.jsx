@@ -98,7 +98,7 @@ const Routines = (props) => {
                         <h5 className="mb-0 mt-4 pt-3 text-white">
                           {routine.task}
                         </h5>
-                        <p>{routine.date}</p>
+                        <p>Starting {routine.date}</p>
                         <p>{routine.duration} minutes</p>
                         <Dropdown className="routines_routinedropdown">
                           <Dropdown.Toggle
@@ -143,7 +143,7 @@ const Routines = (props) => {
                         <h5 className="mb-0 mt-4 pt-3 text-white">
                           {routine.task}
                         </h5>
-                        <p>{routine.date}</p>
+                        <p>Starting {routine.date}</p>
                         <p>{routine.duration} minutes</p>
                         <Dropdown className="routines_routinedropdown">
                           <Dropdown.Toggle
@@ -188,7 +188,7 @@ const Routines = (props) => {
                       >
                         <div className="m-auto">
                           <h5 className="mb-0 text-white">{routine.task}</h5>
-                          <p>{routine.date}</p>
+                          <p>Starting {routine.date}</p>
                           <p>{routine.duration} minutes</p>
                         </div>
                         <Dropdown className="routines_routinedropdown">
