@@ -19,7 +19,6 @@ const MainCalendar = (props) => {
   const moveToSchedule = (event) => {
     let taskDate = props.tasks.filter((el) => el.id === event);
     let dateToPass = new Date(taskDate[0].date);
-    console.log(dateToPass);
     props.setDate(dateToPass);
     props.history.push("/schedule");
   };
@@ -58,7 +57,6 @@ const MainCalendar = (props) => {
       title: task.task,
     };
   });
-  console.log(tasksArray);
 
   return (
     <div className="d-flex h-100 mainwrapper">

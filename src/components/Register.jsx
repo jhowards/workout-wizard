@@ -36,7 +36,6 @@ const Register = (props) => {
 
   const imageUpload = async (e) => {
     if (e.target.files.length === 0) {
-      console.log("No image selected!");
     } else {
       let imageupload = URL.createObjectURL(e.target.files[0]);
       setimagePreview(imageupload);
@@ -110,7 +109,6 @@ const Register = (props) => {
       password: userToAdd.password,
       profileimage: profileImageToSet,
     };
-    console.log(userToRegister);
     props.registerUser(userToRegister);
     props.setRegister();
 

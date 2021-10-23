@@ -99,7 +99,6 @@ const AddTaskModal = (props) => {
         } else {
           icon = selectedIcon;
         }
-        console.log(icon);
 
         let taskToAddnew = {
           id: id,
@@ -116,7 +115,6 @@ const AddTaskModal = (props) => {
           routineid: "",
         };
 
-        console.log(taskToAddnew);
         if (fullduration === 0) {
           alert("Please add a duration!");
         } else {
